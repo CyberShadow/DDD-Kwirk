@@ -982,8 +982,9 @@ const char* formatProblemFileName(const char* name, const char* detail, const ch
 
 // ******************************************************************************************************
 
-void writeSolution(FILE* f, const State* initialState, Step steps[], int stepNr)
+void writeSolution(const State* initialState, Step steps[], int stepNr)
 {
+	FILE* f = fopen(formatProblemFileName(NULL, NULL, "txt"), "wt");
 	steps[stepNr].action = NONE;
 	steps[stepNr].x = initialState->players[0].x-1;
 	steps[stepNr].y = initialState->players[0].y-1;
@@ -999,6 +1000,7 @@ void writeSolution(FILE* f, const State* initialState, Step steps[], int stepNr)
 	// last one
 	fprintf(f, "%s\n%s", steps[0].toString(), state.toString());
 	fprintf(f, "Total steps: %u", totalSteps);
+	fclose(f);
 }
 
 // ******************************************************************************************************

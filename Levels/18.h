@@ -2,7 +2,13 @@
 #define X 15
 #define Y 18
 #define PLAYERS 3
+#define BLOCKS 14
+#define ROTATORS 2
+#define BLOCKX 3
+#define BLOCKY 3
+#define HOLES 3
 #define MAX_STEPS 150
+#define COMPRESSED_ALIGN_BITS 2
 const char level[Y][X+1] = {
 "###############",
 "#  2 ##########",

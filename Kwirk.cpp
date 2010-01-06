@@ -125,12 +125,17 @@ struct Player
 #define GROUP_FRAMES
 #define FRAMES_PER_GROUP 10 // minimal distance between two states
 
+#ifndef COMPRESSED_ALIGN_BITS // bits lost due to 32-bit alignment
+#define COMPRESSED_ALIGN_BITS 0
+#endif
+
 #define COMPRESSED_BITS ( \
 	(PLAYERS>2 ? 2 : (PLAYERS>1 ? 1 : 0)) + \
 	(XBITS_WITH_INVAL + YBITS_WITH_INVAL) * PLAYERS + \
 	(XBITS_WITH_INVAL + YBITS_WITH_INVAL) * BLOCKS + \
 	4 * ROTATORS + \
-	HOLES \
+	HOLES + \
+	COMPRESSED_ALIGN_BITS \
 )
 
 #define COMPRESSED_BYTES ((COMPRESSED_BITS + 7) / 8)
@@ -936,7 +941,7 @@ void expandChildren(FRAME frame, const State* state)
 			np->y = c.y;
 			int res = newState.perform(SWITCH);
 			assert(res == DELAY_SWITCH);
-			step.action = (unsigned)SWITCH;
+			step.action = SWITCH;
 			CHILD_HANDLER::handleChild(&newState, step, frame + dist * DELAY_MOVE + DELAY_SWITCH);
 			newState = *state;
 		#endif
@@ -953,7 +958,7 @@ void expandChildren(FRAME frame, const State* state)
 				int res = newState.perform(action);
 				if (res > 0)
 				{
-					step.action = /*(unsigned)*/action;
+					step.action = action;
 					CHILD_HANDLER::handleChild(&newState, step, frame + dist * DELAY_MOVE + res);
 				}
 				if (res >= 0)

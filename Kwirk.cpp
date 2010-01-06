@@ -734,6 +734,13 @@ struct State
 			players[n].x = s->BOOST_PP_CAT(player, BOOST_PP_CAT(n, x))+1, \
 			players[n].y = s->BOOST_PP_CAT(player, BOOST_PP_CAT(n, y))+1;
 		#include BOOST_PP_LOCAL_ITERATE()
+
+		#if (PLAYERS>1)
+		#define BOOST_PP_LOCAL_LIMITS (0, PLAYERS-1)
+		#define BOOST_PP_LOCAL_MACRO(n) \
+			if (n != activePlayer) map[players[n].y][players[n].x] = CELL_WALL;
+		#include BOOST_PP_LOCAL_ITERATE()
+		#endif
 		
 		#if (HOLES>0)
 		#define BOOST_PP_LOCAL_LIMITS (0, HOLES-1)
@@ -787,6 +794,10 @@ struct State
 		for (int y=0;y<Y;y++)
 			for (int x=0;x<X;x++)
 				map[y][x] &= ~0x1F; // clear blocks and rotators
+		#if (PLAYERS>1)
+		for (int p=1; p<PLAYERS; p++)
+			map[players[p].y][players[p].x] = 0;
+		#endif
 	}
 
 	const char* toString() const

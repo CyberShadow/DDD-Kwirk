@@ -10,7 +10,7 @@
 #define BLOCKY 3
 #define HOLES 3
 #define MAX_STEPS (130+6)
-#define COMPRESSED_ALIGN_BITS 3
+#define COMPRESSED_ALIGN_BITS 2
 const char level[Y][X+1] = {
 "###############",
 "#  2 ##########",

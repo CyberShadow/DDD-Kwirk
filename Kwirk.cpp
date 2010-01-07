@@ -37,19 +37,20 @@
 #if ((X-2)!=4 && (X-2)!=8 && (X-2)!=16)
 #define XBITS_WITH_INVAL XBITS
 #define YBITS_WITH_INVAL YBITS
-#define IS_INVALID(CX,CY) (CX==X-2)
 #elif ((Y-2)!=4 && (Y-2)!=8 && (Y-2)!=16)
 #define XBITS_WITH_INVAL XBITS
 #define YBITS_WITH_INVAL YBITS
-#define IS_INVALID(CX,CY) (CY==Y-2)
 #else
 #define XBITS_WITH_INVAL (XBITS+1)
 #define YBITS_WITH_INVAL YBITS
-#define IS_INVALID(CX,CY) (CX==X-2)
 #endif
 
 #define INVALID_X ((1<<XBITS_WITH_INVAL)-1)
 #define INVALID_Y ((1<<YBITS_WITH_INVAL)-1)
+
+#ifndef ROTATORS
+#define ROTATORS 0
+#endif
 
 #ifndef HOLES
 #define HOLES 0
@@ -118,8 +119,8 @@ struct Player
 	uint8_t x, y;
 	
 	INLINE void set(int x, int y) { this->x = x; this->y = y; }
-	INLINE bool exited() const { return x==INVALID_X+1; }
-	INLINE void exit() { x=INVALID_X+1, y=INVALID_Y+1; }
+	INLINE bool exited() const { return x==EXIT_X && y==EXIT_Y; }
+	INLINE void exit() { x=EXIT_X, y=EXIT_Y; }
 };
 
 #define GROUP_FRAMES
@@ -527,11 +528,11 @@ struct State
 							int x2 = x;
 							while (level[y][x2+1] == c)
 								x2++;
-							enforce(x2-x < BLOCKX, "Block too wide");
+							enforce(x2-x < BLOCKX, format("Block too wide: is %d, should be %d", BLOCKX, x2-x+1));
 							int y2 = y;
 							while (level[y2+1][x] == c)
 								y2++;
-							enforce(y2-y < BLOCKY, "Block too tall");
+							enforce(y2-y < BLOCKY, format("Block too tall: is %d, should be %d", BLOCKY, y2-y+1));
 							blockSizeCount[y2-y][x2-x]++;
 						}
 						break;
@@ -574,6 +575,8 @@ struct State
 						error(format("Unknown character in level: %c", c));
 				}
 			}
+
+        enforce((map[EXIT_Y][EXIT_X] & OBJ_MASK) == OBJ_EXIT, "Mismatching exit");
 
 #if (ROTATORS > 0)
 		int seenRotators = 0;
@@ -665,8 +668,8 @@ struct State
 						y2++;
 					x2-=x;
 					y2-=y;
-					assert(x2 < BLOCKX, "Block too wide");
-					assert(y2 < BLOCKY, "Block too tall");
+					assert(x2 < BLOCKX, format("Block too wide: is %d, should be %d", BLOCKX, x2+1));
+					assert(y2 < BLOCKY, format("Block too tall: is %d, should be %d", BLOCKY, y2+1));
 					int index = blockSizeIndex[y2][x2] + blockSizeCount[y2][x2];
 					blocks[index].x = x-1;
 					blocks[index].y = y-1;
@@ -803,8 +806,10 @@ struct State
 	const char* toString() const
 	{
 		char level[Y][X];
+        #if (BLOCKS > 0)
 		int blockSizeCount[BLOCKY][BLOCKX];
 		memset(blockSizeCount, 0, sizeof blockSizeCount);
+        #endif
 
 		for (int y=0; y<Y; y++)
 			for (int x=0; x<X; x++)
@@ -834,6 +839,7 @@ struct State
 						}
 						break;
 					default:
+                        #if (BLOCKS > 0)
 						//level[y][x] = 'x';
 						/*if ((map[y][x] & (OBJ_BLOCKUP | OBJ_BLOCKLEFT)) == (OBJ_BLOCKUP | OBJ_BLOCKLEFT))
 							level[y][x] = blockLetter++;
@@ -852,14 +858,15 @@ struct State
 								y2++;
 							x2-=x;
 							y2-=y;
-							assert(x2 < BLOCKX, "Block too wide");
-							assert(y2 < BLOCKY, "Block too tall");
+							assert(x2 < BLOCKX, format("Block too wide: is %d, should be %d", BLOCKX, x2+1));
+							assert(y2 < BLOCKY, format("Block too tall: is %d, should be %d", BLOCKY, y2+1));
 							int index = blockSizeIndex[y2][x2] + blockSizeCount[y2][x2];
 							for (int by=y; by<=y+y2; by++)
 								for (int bx=x; bx<=x+x2; bx++)
 									level[by][bx] = 'a'+index;
 							blockSizeCount[y2][x2]++;
 						}
+                        #endif
 						break;
 				}
 		for (int p=0;p<PLAYERS;p++)

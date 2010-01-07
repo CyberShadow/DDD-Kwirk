@@ -1,6 +1,8 @@
 #define LEVEL 1
 #define X 16
 #define Y 5
+#define EXIT_X 2
+#define EXIT_Y 2
 #define PLAYERS 1
 #define BLOCKS 3
 #define ROTATORS 0

@@ -1,7 +1,14 @@
 #define LEVEL 27
 #define X 18
 #define Y 16
+#define EXIT_X 15
+#define EXIT_Y 13
 #define PLAYERS 4
+#define BLOCKS 4
+#define ROTATORS 3
+#define BLOCKX 1
+#define BLOCKY 11
+#define HOLES 1
 #define MAX_STEPS 217
 const char level[Y][X+1] = {
 "##################",

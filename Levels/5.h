@@ -10,9 +10,6 @@
 #define BLOCKY 1
 #define HOLES 1
 #define MAX_STEPS (34+3)
-#define HOLES 1
-#define EXIT_X 2
-#define EXIT_Y 4
 const char level[Y][X+1] = {
 "###############",
 "#   # # # #   #",

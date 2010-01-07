@@ -7,8 +7,6 @@
 #define BLOCKS 0
 #define ROTATORS 2
 #define MAX_STEPS 23
-#define EXIT_X 2
-#define EXIT_Y 2
 const char level[Y][X+1] = {
 "##################",
 "#   # M    D #   #",

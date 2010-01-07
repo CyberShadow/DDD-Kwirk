@@ -1,6 +1,8 @@
 // To run this instead of a DDD search, add the following line to config.h:
 // #define PROBLEM_RELATED Kwirk_vgm_import
 
+#define MODIFY_LEVEL_11
+
 void import_vgm()
 {
     int Nitrodon_TAS_start_frame[] = {
@@ -36,10 +38,21 @@ void import_vgm()
     /* 29 */ 52080, // + 4513
     };
 
+    int level_11_modification_start = 161;
+    Action level_11_modification[] = {
+        UP,UP,LEFT,LEFT,LEFT,LEFT,UP,UP,LEFT,LEFT,UP,UP,RIGHT,DOWN,DOWN,LEFT,DOWN,RIGHT,RIGHT,UP,RIGHT,DOWN,
+        LEFT,DOWN,RIGHT,RIGHT,UP,RIGHT,DOWN,RIGHT,DOWN,DOWN,DOWN,DOWN,DOWN,DOWN,
+        DOWN,LEFT,DOWN,LEFT,LEFT,LEFT,LEFT,UP
+    };
+
     FILE *vgm = fopen("Kwirk (UA) [!].vbm", "rb");
     fseek(vgm, 0x100 + Nitrodon_TAS_start_frame[LEVEL]*2, SEEK_SET);
 
+#if defined(MODIFY_LEVEL_11) && (LEVEL == 11)
+    FILE *solution = fopen(BOOST_PP_STRINGIZE(LEVEL)"_vgm_mod.txt", "wt");
+#else
     FILE *solution = fopen(BOOST_PP_STRINGIZE(LEVEL)"_vgm.txt", "wt");
+#endif
 
 	int frames = 0;
     int steps = 0;
@@ -55,16 +68,25 @@ void import_vgm()
         while (state.playersLeft())
         {
             Action action;
-            uint16_t input;
-            fread(&input,sizeof(input),1,vgm);
-            switch (input)
+#if defined(MODIFY_LEVEL_11) && (LEVEL == 11)
+            if (steps >= level_11_modification_start)
             {
-            case 0x0004: action=SWITCH; switches++; break;
-            case 0x0010: action=RIGHT;  break;
-            case 0x0020: action=LEFT;   break;
-            case 0x0040: action=UP;     break;
-            case 0x0080: action=DOWN;   break;
-            default: throw format("Unknown input 0x%04X", input);
+                action = level_11_modification[steps - level_11_modification_start];
+            }
+            else
+#endif
+            {
+                uint16_t input;
+                fread(&input,sizeof(input),1,vgm);
+                switch (input)
+                {
+                case 0x0004: action=SWITCH; switches++; break;
+                case 0x0010: action=RIGHT;  break;
+                case 0x0020: action=LEFT;   break;
+                case 0x0040: action=UP;     break;
+                case 0x0080: action=DOWN;   break;
+                default: throw format("Unknown input 0x%04X", input);
+                }
             }
 		    fprintf(solution, "%s%s\n", state.toString(), actionNames[action]);
 			int res = state.perform(action);
@@ -79,6 +101,8 @@ void import_vgm()
 	}
 	catch (const char* s)
 	{
+        fputs(s, solution);
+        fputc('\n', solution);
 		puts(s);
 	}
     fprintf(solution, "Total %d+%d steps, %d frames (%1.3f seconds)\n", steps-switches, switches, frames, frames/60.);

@@ -2,7 +2,6 @@
 // Configuration:
 // LEVEL - sets the level to solve, from 0 (1-1) to 29 (3-10)
 
-
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -33,20 +32,6 @@
 #else
 #define YBITS 5
 #endif
-
-#if ((X-2)!=4 && (X-2)!=8 && (X-2)!=16)
-#define XBITS_WITH_INVAL XBITS
-#define YBITS_WITH_INVAL YBITS
-#elif ((Y-2)!=4 && (Y-2)!=8 && (Y-2)!=16)
-#define XBITS_WITH_INVAL XBITS
-#define YBITS_WITH_INVAL YBITS
-#else
-#define XBITS_WITH_INVAL (XBITS+1)
-#define YBITS_WITH_INVAL YBITS
-#endif
-
-#define INVALID_X ((1<<XBITS_WITH_INVAL)-1)
-#define INVALID_Y ((1<<YBITS_WITH_INVAL)-1)
 
 #ifndef ROTATORS
 #define ROTATORS 0
@@ -120,7 +105,7 @@ struct Player
 	
 	INLINE void set(int x, int y) { this->x = x; this->y = y; }
 	INLINE bool exited() const { return x==EXIT_X && y==EXIT_Y; }
-	INLINE void exit() { x=EXIT_X, y=EXIT_Y; }
+	INLINE void exit() { assert(exited()); }
 };
 
 #define GROUP_FRAMES
@@ -132,8 +117,8 @@ struct Player
 
 #define COMPRESSED_BITS ( \
 	(PLAYERS>2 ? 2 : (PLAYERS>1 ? 1 : 0)) + \
-	(XBITS_WITH_INVAL + YBITS_WITH_INVAL) * PLAYERS + \
-	(XBITS_WITH_INVAL + YBITS_WITH_INVAL) * BLOCKS + \
+	(XBITS + YBITS) * PLAYERS + \
+	(XBITS + YBITS) * BLOCKS + \
 	4 * ROTATORS + \
 	HOLES + \
 	COMPRESSED_ALIGN_BITS \
@@ -154,15 +139,15 @@ struct CompressedState
 	
 	#define BOOST_PP_LOCAL_LIMITS (0, PLAYERS-1)
 	#define BOOST_PP_LOCAL_MACRO(n) \
-		unsigned BOOST_PP_CAT(player, BOOST_PP_CAT(n, x)) : XBITS_WITH_INVAL; \
-		unsigned BOOST_PP_CAT(player, BOOST_PP_CAT(n, y)) : YBITS_WITH_INVAL;
+		unsigned BOOST_PP_CAT(player, BOOST_PP_CAT(n, x)) : XBITS; \
+		unsigned BOOST_PP_CAT(player, BOOST_PP_CAT(n, y)) : YBITS;
 	#include BOOST_PP_LOCAL_ITERATE()
 
 	#if (BLOCKS>0)
 	#define BOOST_PP_LOCAL_LIMITS (0, BLOCKS-1)
 	#define BOOST_PP_LOCAL_MACRO(n) \
-		unsigned BOOST_PP_CAT(block, BOOST_PP_CAT(n, x)) : XBITS_WITH_INVAL; \
-		unsigned BOOST_PP_CAT(block, BOOST_PP_CAT(n, y)) : YBITS_WITH_INVAL;
+		unsigned BOOST_PP_CAT(block, BOOST_PP_CAT(n, x)) : XBITS; \
+		unsigned BOOST_PP_CAT(block, BOOST_PP_CAT(n, y)) : YBITS;
 	#include BOOST_PP_LOCAL_ITERATE()
 	#endif
 
@@ -196,6 +181,48 @@ struct CompressedState
 	//#if (COMPRESSED_SLACK_BYTES != 1) // Align the structure size to dword boundary
 	//unsigned _align3 : 8 * (COMPRESSED_SLACK_BYTES == 0 ? 3 : 1);
 	//#endif
+
+	/// For debugging
+	const char* toString() const
+	{
+		char* buf = getTempString();
+		buf[0] = 0;
+		int pos = 0;
+
+		#if (PLAYERS>1)
+			pos += sprintf(buf+pos, "activePlayer=%d ", activePlayer);
+		#endif
+	
+		#define BOOST_PP_LOCAL_LIMITS (0, PLAYERS-1)
+		#define BOOST_PP_LOCAL_MACRO(n) \
+			pos += sprintf(buf+pos, "player[%d]=(%d,%d) ", n, BOOST_PP_CAT(player, BOOST_PP_CAT(n, x)), BOOST_PP_CAT(player, BOOST_PP_CAT(n, y)));
+		#include BOOST_PP_LOCAL_ITERATE()
+
+		#if (BLOCKS>0)
+		#define BOOST_PP_LOCAL_LIMITS (0, BLOCKS-1)
+		#define BOOST_PP_LOCAL_MACRO(n) \
+			pos += sprintf(buf+pos, "block[%d]=(%d,%d) ", n, BOOST_PP_CAT(block, BOOST_PP_CAT(n, x)), BOOST_PP_CAT(block, BOOST_PP_CAT(n, y)));
+		#include BOOST_PP_LOCAL_ITERATE()
+		#endif
+
+		#if (ROTATORS>0)
+		#define BOOST_PP_LOCAL_LIMITS (0, ROTATORS-1)
+		#define BOOST_PP_LOCAL_MACRO(n) \
+			pos += sprintf(buf+pos, "rotator[%d]=[%d%d%d%d] ", n, BOOST_PP_CAT(rotator, BOOST_PP_CAT(n, u)), BOOST_PP_CAT(rotator, BOOST_PP_CAT(n, r)), BOOST_PP_CAT(rotator, BOOST_PP_CAT(n, d)), BOOST_PP_CAT(rotator, BOOST_PP_CAT(n, l)));
+		#include BOOST_PP_LOCAL_ITERATE()
+		#endif
+
+		#if (HOLES>0)
+		pos += sprintf(buf+pos, "holes=[");
+		#define BOOST_PP_LOCAL_LIMITS (0, HOLES-1)
+		#define BOOST_PP_LOCAL_MACRO(n) \
+			pos += sprintf(buf+pos, "%d", n, BOOST_PP_CAT(hole, n));
+		#include BOOST_PP_LOCAL_ITERATE()
+		pos += sprintf(buf+pos, "]");
+		#endif
+		
+		return buf;
+	}
 };
 
 const char* dumpCompressedState(const CompressedState* cs)
@@ -368,13 +395,13 @@ struct State
 					if (map[ry+DY[d]+DY[d2]][rx+DX[d]+DX[d2]] & (CELL_WALL | OBJ_MASK))                   // no object/wall in corner
 						return -1;
 					uint8_t d2m = 
-					    map[ry+      DY[d2]][rx+      DX[d2]];
+						map[ry+      DY[d2]][rx+      DX[d2]];
 					if (d2m & CELL_WALL)
 						return -1;
 					uint8_t d2obj = d2m & OBJ_MASK;
 					if (d2obj                                   != OBJ_ROTATORUP + d2 &&       // no object in destination (other than part of the rotator)
 					    d2obj                                   != OBJ_NONE)
-					    return -1;
+						return -1;
 				}
 				else
 					oldFlippers[d ] =
@@ -485,6 +512,7 @@ struct State
 						break;
 					case '2':
 						map[y][x] = CELL_WALL | OBJ_EXIT;
+						enforce(x == EXIT_X && y == EXIT_Y, format("Mismatching exit coordinates %d,%d, should be %d,%d", EXIT_X, EXIT_Y, x, y));
 						break;
 					case '3':
 #if (PLAYERS >= 2)
@@ -576,7 +604,7 @@ struct State
 				}
 			}
 
-        enforce((map[EXIT_Y][EXIT_X] & OBJ_MASK) == OBJ_EXIT, "Mismatching exit");
+		enforce((map[EXIT_Y][EXIT_X] & OBJ_MASK) == OBJ_EXIT, "Mismatching exit");
 
 #if (ROTATORS > 0)
 		int seenRotators = 0;
@@ -640,7 +668,10 @@ struct State
 		struct { uint8_t x, y; } blocks[BLOCKS];
 		int blockSizeCount[BLOCKY][BLOCKX];
 		
-		memset(blocks, 0xFF, sizeof blocks);
+		//memset(blocks, 0xFF, sizeof blocks);
+		for (int i=0; i<BLOCKS; i++)
+			blocks[i].x = EXIT_X-1,
+			blocks[i].y = EXIT_Y-1;
 		memset(blockSizeCount, 0, sizeof blockSizeCount);
 		#endif
 		#if (ROTATORS > 0)
@@ -728,37 +759,34 @@ struct State
 	void decompress(const CompressedState* s)
 	{
 		*this = blanked;
-		#if (PLAYERS>1)
-		activePlayer = s->activePlayer;
-		#endif
-
 		#define BOOST_PP_LOCAL_LIMITS (0, PLAYERS-1)
 		#define BOOST_PP_LOCAL_MACRO(n) \
 			players[n].x = s->BOOST_PP_CAT(player, BOOST_PP_CAT(n, x))+1, \
 			players[n].y = s->BOOST_PP_CAT(player, BOOST_PP_CAT(n, y))+1;
 		#include BOOST_PP_LOCAL_ITERATE()
 
-		#if (PLAYERS>1)
-		#define BOOST_PP_LOCAL_LIMITS (0, PLAYERS-1)
-		#define BOOST_PP_LOCAL_MACRO(n) \
-			if (n != activePlayer) map[players[n].y][players[n].x] = CELL_WALL;
-		#include BOOST_PP_LOCAL_ITERATE()
-		#endif
-		
-		#if (HOLES>0)
+		#if (HOLES>0) // process holes first
 		#define BOOST_PP_LOCAL_LIMITS (0, HOLES-1)
 		#define BOOST_PP_LOCAL_MACRO(n) \
 			if (!s->BOOST_PP_CAT(hole, n)) map[holes[n].y][holes[n].x] = CELL_EMPTY;
 		#include BOOST_PP_LOCAL_ITERATE()
 		#endif
 
+		#if (PLAYERS>1)
+		activePlayer = s->activePlayer;
+		#define BOOST_PP_LOCAL_LIMITS (0, PLAYERS-1)
+		#define BOOST_PP_LOCAL_MACRO(n) \
+			if (n != activePlayer && !players[n].exited()) map[players[n].y][players[n].x] = CELL_WALL;
+		#include BOOST_PP_LOCAL_ITERATE()
+		#endif
+		
 		#if (BLOCKS > 0)
 		#define BOOST_PP_LOCAL_LIMITS (0, BLOCKS-1)
 		#define BOOST_PP_LOCAL_MACRO(n) \
 		{ \
 			uint8_t x1 = s->BOOST_PP_CAT(block, BOOST_PP_CAT(n, x)); \
 			uint8_t y1 = s->BOOST_PP_CAT(block, BOOST_PP_CAT(n, y)); \
-			if (x1 != INVALID_X || y1 != INVALID_Y) \
+			if (x1 != EXIT_X-1 || y1 != EXIT_Y-1) \
 			{ \
 				/* Hack: increment x and y after decrementing */ \
 				x1++; y1++; \
@@ -806,10 +834,10 @@ struct State
 	const char* toString() const
 	{
 		char level[Y][X];
-        #if (BLOCKS > 0)
+		#if (BLOCKS > 0)
 		int blockSizeCount[BLOCKY][BLOCKX];
 		memset(blockSizeCount, 0, sizeof blockSizeCount);
-        #endif
+		#endif
 
 		for (int y=0; y<Y; y++)
 			for (int x=0; x<X; x++)
@@ -839,7 +867,7 @@ struct State
 						}
 						break;
 					default:
-                        #if (BLOCKS > 0)
+						#if (BLOCKS > 0)
 						//level[y][x] = 'x';
 						/*if ((map[y][x] & (OBJ_BLOCKUP | OBJ_BLOCKLEFT)) == (OBJ_BLOCKUP | OBJ_BLOCKLEFT))
 							level[y][x] = blockLetter++;
@@ -866,7 +894,7 @@ struct State
 									level[by][bx] = 'a'+index;
 							blockSizeCount[y2][x2]++;
 						}
-                        #endif
+						#endif
 						break;
 				}
 		for (int p=0;p<PLAYERS;p++)

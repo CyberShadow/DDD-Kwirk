@@ -105,7 +105,7 @@ struct Player
 	
 	INLINE void set(int x, int y) { this->x = x; this->y = y; }
 	INLINE bool exited() const { return x==EXIT_X && y==EXIT_Y; }
-	INLINE void exit() { assert(exited()); }
+	INLINE void exit() { debug_assert(exited()); }
 };
 
 #define GROUP_FRAMES

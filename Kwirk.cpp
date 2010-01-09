@@ -105,7 +105,7 @@ struct Player
 	
 	INLINE void set(int x, int y) { this->x = x; this->y = y; }
 	INLINE bool exited() const { return x==EXIT_X && y==EXIT_Y; }
-	INLINE void exit() { assert(exited()); }
+	INLINE void exit() { debug_assert(exited()); }
 };
 
 #define GROUP_FRAMES
@@ -990,7 +990,7 @@ void expandChildren(FRAME frame, const State* state)
 			int res = newState.perform(SWITCH);
 			assert(res == DELAY_SWITCH);
 			step.action = SWITCH;
-			CHILD_HANDLER::handleChild(&newState, step, frame + dist * DELAY_MOVE + DELAY_SWITCH);
+			CHILD_HANDLER::handleChild(state, &newState, step, frame + dist * DELAY_MOVE + DELAY_SWITCH);
 			newState = *state;
 		#endif
 
@@ -1007,7 +1007,7 @@ void expandChildren(FRAME frame, const State* state)
 				if (res > 0)
 				{
 					step.action = action;
-					CHILD_HANDLER::handleChild(&newState, step, frame + dist * DELAY_MOVE + res);
+					CHILD_HANDLER::handleChild(state, &newState, step, frame + dist * DELAY_MOVE + res);
 				}
 				if (res >= 0)
 					newState = *state;

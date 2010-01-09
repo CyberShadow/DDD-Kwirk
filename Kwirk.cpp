@@ -422,6 +422,8 @@ struct State
 				n.x += DX[action];
 				n.y += DY[action];
 			}
+			if (map[n.y][n.x] != CELL_EMPTY)
+				return 0;
 			players[activePlayer] = n;
 			return DELAY_ROTATE;
 		}

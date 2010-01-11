@@ -990,7 +990,7 @@ void expandChildren(FRAME frame, const State* state)
 			int res = newState.perform(SWITCH);
 			assert(res == DELAY_SWITCH);
 			step.action = SWITCH;
-			CHILD_HANDLER::handleChild(state, &newState, step, frame + dist * DELAY_MOVE + DELAY_SWITCH);
+			CHILD_HANDLER::handleChild(state, frame, step, &newState, frame + dist * DELAY_MOVE + DELAY_SWITCH);
 			newState = *state;
 		#endif
 
@@ -1007,7 +1007,7 @@ void expandChildren(FRAME frame, const State* state)
 				if (res > 0)
 				{
 					step.action = action;
-					CHILD_HANDLER::handleChild(state, &newState, step, frame + dist * DELAY_MOVE + res);
+					CHILD_HANDLER::handleChild(state, frame, step, &newState, frame + dist * DELAY_MOVE + res);
 				}
 				if (res >= 0)
 					newState = *state;

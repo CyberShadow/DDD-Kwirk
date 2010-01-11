@@ -1,10 +1,21 @@
 // To run this instead of a DDD search, add the following line to config.h:
 // #define PROBLEM_RELATED Kwirk_redub_solution
 
-void redub_solution()
+int redub_solution()
 {
 	FILE *solution_in  = fopen(BOOST_PP_STRINGIZE(LEVEL)".txt", "rt");
+	if (!solution_in)
+	{
+		fprintf(stderr, "Error reading solution file\n");
+		return -1;
+	}
 	FILE *solution_out = fopen(BOOST_PP_STRINGIZE(LEVEL)"_redubbed.txt", "wt");
+	if (!solution_out)
+	{
+		fclose(solution_in);
+		fprintf(stderr, "Error writing solution file\n");
+		return -1;
+	}
 
 	int frames = 0;
 	int steps = -1;
@@ -70,10 +81,11 @@ void redub_solution()
 
 	fclose(solution_in);
 	fclose(solution_out);
+	return 0;
 }
 
 int run_related(int argc, const char* argv[])
 {
-	redub_solution();
+	return redub_solution();
 	return 0;
 }

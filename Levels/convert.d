@@ -36,9 +36,9 @@ void main()
 				if (c>='a' && c<='z' && !seenBlocks[c])
 				{
 					int x2=x, y2=y;
-					while (map[y2][x2]==c)
+					while (map[y][x2]==c)
 						x2++;
-					while (map[y2][x2]==c)
+					while (map[y2][x]==c)
 						y2++;
 					if (blockX < x2-x)
 						blockX = x2-x;
@@ -80,8 +80,8 @@ void main()
 			options ~= format("ROTATORS %d", rotators);
 		if (holes)
 			options ~= format("HOLES %d", holes);
-		options ~= format("EXITX %d", exitX);
-		options ~= format("EXITY %d", exitY);
+		options ~= format("EXIT_X %d", exitX);
+		options ~= format("EXIT_Y %d", exitY);
 		options ~= userOptions;
 
 		string output;

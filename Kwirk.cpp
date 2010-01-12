@@ -33,6 +33,10 @@
 #define YBITS 5
 #endif
 
+#ifndef BLOCKS
+#define BLOCKS 0
+#endif
+
 #ifndef ROTATORS
 #define ROTATORS 0
 #endif

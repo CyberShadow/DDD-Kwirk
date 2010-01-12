@@ -1,0 +1,17 @@
+MAX_STEPS 243
+################
+#   #      #OOO#
+# aa# 1    #   #
+#   O   ddd#ee #
+####O   ddd#ee #
+# bbOO  OOO#OOO#
+# bbOOO OO     #
+# bbOOO        #
+#   OOO   OOOf #
+#   #      OOf #
+#   #      OOf #
+#####O     #####
+#    O   OO  g #
+# cccO###OO  g #
+#     #2OO     #
+################

@@ -1,0 +1,17 @@
+MAX_STEPS 338
+#################
+##O  a   N  B  1#
+## #M>bb `dBB  ##
+## O c  LL   VV##
+## OO  OOLOXfV ##
+## OOO   O `fg ##
+##eeO   Ott f<Z##
+## A># O tt  h ##
+## i  j O  JO# ##
+## i SS DDJJOO ##
+##   S  D    q ##
+###  #  F  p qs##
+##OOO##FF kp<Hs##
+##O ##  G mm rs##
+#2OO #  GGOn  O##
+#################

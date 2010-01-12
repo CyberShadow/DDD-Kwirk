@@ -1,0 +1,18 @@
+MAX_STEPS 239
+##############
+#   Z ##XXQQ #
+#  ZZZ#  X Q #
+#    a#d     #
+## W a d ## f#
+#  WWa#d     #
+#  W  #    BO#
+#    #####BBO#
+# bb 1#2OO   #
+#    ####    #
+#  T  #      #
+#  TTc#e     #
+#  T c e g# h#
+##   c#e     #
+#  RRR#  G F #
+#  OR ##GGFF #
+##############

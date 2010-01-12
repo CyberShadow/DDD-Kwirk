@@ -48,7 +48,7 @@ void main()
 					seenBlocks[c] = true;
 				}
 				else
-				if (c>='A' && c<='Z' && !seenRotators[c])
+				if (c>='A' && c<='Z' && c!='O' && !seenRotators[c])
 				{
 					rotators++;
 					seenRotators[c] = true;

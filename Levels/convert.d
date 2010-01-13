@@ -26,9 +26,9 @@ void main()
 
 		foreach (y, line; map)
 			foreach (x, c; line)
-				if (c>='3' && c<=5)
+				if (c>='3' && c<='5')
 				{
-					int n = c-'3' + 1;
+					int n = c-'2' + 1;
 					if (players < n)
 						players = n;
 				}

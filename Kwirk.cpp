@@ -7,68 +7,19 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <string.h>
-#include <boost/preprocessor/iteration/local.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/stringize.hpp>
 
-#include BOOST_PP_STRINGIZE(Levels/LEVEL.h)
+#include STRINGIZE(Levels/LEVEL.h)
 
-#if (X-2<=4)
-#define XBITS 2
-#elif (X-2<=8)
-#define XBITS 3
-#elif (X-2<=16)
-#define XBITS 4
-#else
-#define XBITS 5
-#endif
-
-#if (Y-2<=4)
-#define YBITS 2
-#elif (Y-2<=8)
-#define YBITS 3
-#elif (Y-2<=16)
-#define YBITS 4
-#else
-#define YBITS 5
-#endif
-
-#ifndef BLOCKS
-#define BLOCKS 0
-#endif
-
-#ifndef ROTATORS
-#define ROTATORS 0
-#endif
-
-#ifndef HOLES
-#define HOLES 0
-#endif
-
-#define MAX_FRAMES (MAX_STEPS*18)
-
-#define	CELL_EMPTY        0x00
-#define CELL_MASK         0xC0
-#define CELL_WALL         0x40 // also used for "other player"
 #define CELL_HOLE         0x80
 
-#define OBJ_NONE          0x00
-#define OBJ_MASK          0x3F
-	
-// bitfield of borders
-#define OBJ_BLOCKUP       0x01
-#define OBJ_BLOCKRIGHT    0x02
-#define OBJ_BLOCKDOWN     0x04
-#define OBJ_BLOCKLEFT     0x08
-#define OBJ_BLOCKMAX      0x0F
+#define CELL_MASK         0x60
+#define CELL_EMPTY        0x00
+#define CELL_BLOCK        0x20 // index contains block index
+#define CELL_ROTATOR      0x40 // rotator blades - index contains the direction
+#define CELL_WALL         0x60 // also rotator center and inactive players - index contains rotator index
+#define CELL_EXIT         0xE0 // wall+hole
 
-#define OBJ_ROTATORCENTER 0x10
-#define OBJ_ROTATORUP     0x11
-#define OBJ_ROTATORRIGHT  0x12
-#define OBJ_ROTATORDOWN   0x13
-#define OBJ_ROTATORLEFT   0x14
-
-#define OBJ_EXIT          0x20
+#define INDEX_MASK        0x1F
 
 enum Action
 #ifndef __GNUC__
@@ -109,151 +60,23 @@ struct Player
 	
 	INLINE void set(int x, int y) { this->x = x; this->y = y; }
 	INLINE bool exited() const { return x==EXIT_X && y==EXIT_Y; }
-	INLINE void exit() { debug_assert(exited()); }
 };
 
-#define GROUP_FRAMES
-#define FRAMES_PER_GROUP 10 // minimal distance between two states
-
-#ifndef COMPRESSED_ALIGN_BITS // bits lost due to 32-bit alignment
-#define COMPRESSED_ALIGN_BITS 0
-#endif
-
-#define COMPRESSED_BITS ( \
-	(PLAYERS>2 ? 2 : (PLAYERS>1 ? 1 : 0)) + \
-	(XBITS + YBITS) * PLAYERS + \
-	(XBITS + YBITS) * BLOCKS + \
-	4 * ROTATORS + \
-	HOLES + \
-	COMPRESSED_ALIGN_BITS \
-)
-
-#define COMPRESSED_BYTES ((COMPRESSED_BITS + 7) / 8)
-#define COMPRESSED_SLACK_BYTES (3 - ((3 + COMPRESSED_BYTES) % 4))
-
-struct CompressedState
+struct Block
 {
-	// OPTIMIZATION TODO: use 2 bits instead of 4 for rotators?
-
-	#if (PLAYERS>2)
-		unsigned activePlayer : 2;
-	#elif (PLAYERS>1)
-		unsigned activePlayer : 1;
-	#endif
-	
-	#define BOOST_PP_LOCAL_LIMITS (0, PLAYERS-1)
-	#define BOOST_PP_LOCAL_MACRO(n) \
-		unsigned BOOST_PP_CAT(player, BOOST_PP_CAT(n, x)) : XBITS; \
-		unsigned BOOST_PP_CAT(player, BOOST_PP_CAT(n, y)) : YBITS;
-	#include BOOST_PP_LOCAL_ITERATE()
-
-	#if (BLOCKS>0)
-	#define BOOST_PP_LOCAL_LIMITS (0, BLOCKS-1)
-	#define BOOST_PP_LOCAL_MACRO(n) \
-		unsigned BOOST_PP_CAT(block, BOOST_PP_CAT(n, x)) : XBITS; \
-		unsigned BOOST_PP_CAT(block, BOOST_PP_CAT(n, y)) : YBITS;
-	#include BOOST_PP_LOCAL_ITERATE()
-	#endif
-
-	#if (ROTATORS>0)
-	#define BOOST_PP_LOCAL_LIMITS (0, ROTATORS-1)
-	#define BOOST_PP_LOCAL_MACRO(n) \
-		unsigned BOOST_PP_CAT(rotator, BOOST_PP_CAT(n, u)) : 1; \
-		unsigned BOOST_PP_CAT(rotator, BOOST_PP_CAT(n, r)) : 1; \
-		unsigned BOOST_PP_CAT(rotator, BOOST_PP_CAT(n, d)) : 1; \
-		unsigned BOOST_PP_CAT(rotator, BOOST_PP_CAT(n, l)) : 1;
-	#include BOOST_PP_LOCAL_ITERATE()
-	#endif
-
-	#if (HOLES>0)
-	#define BOOST_PP_LOCAL_LIMITS (0, HOLES-1)
-	#define BOOST_PP_LOCAL_MACRO(n) \
-		unsigned BOOST_PP_CAT(hole, n) : 1;
-	#include BOOST_PP_LOCAL_ITERATE()
-	#endif
-
-	// TODO: use zero-width fields for alignment?
-	#if (COMPRESSED_BITS % 8 != 0) // Align the next field to a byte boundary. This must be done in bitfield semantics, 
-	unsigned _align : 8 - (COMPRESSED_BITS % 8); // because the size of a bitfield seems to always be a multiple of 4 bytes.
-	#endif
-	#if (COMPRESSED_SLACK_BYTES == 3) // Align to word boundary if we have the space.
-	unsigned _align2 : 8;
-	#endif
-
-	unsigned subframe : 8; // Used in search (actually, only 3 bits are needed)
-
-	//#if (COMPRESSED_SLACK_BYTES != 1) // Align the structure size to dword boundary
-	//unsigned _align3 : 8 * (COMPRESSED_SLACK_BYTES == 0 ? 3 : 1);
-	//#endif
-
-	/// For debugging
-	const char* toString() const
-	{
-		char* buf = getTempString();
-		buf[0] = 0;
-		int pos = 0;
-
-		#if (PLAYERS>1)
-			pos += sprintf(buf+pos, "activePlayer=%d ", activePlayer);
-		#endif
-	
-		#define BOOST_PP_LOCAL_LIMITS (0, PLAYERS-1)
-		#define BOOST_PP_LOCAL_MACRO(n) \
-			pos += sprintf(buf+pos, "player[%d]=(%d,%d) ", n, BOOST_PP_CAT(player, BOOST_PP_CAT(n, x)), BOOST_PP_CAT(player, BOOST_PP_CAT(n, y)));
-		#include BOOST_PP_LOCAL_ITERATE()
-
-		#if (BLOCKS>0)
-		#define BOOST_PP_LOCAL_LIMITS (0, BLOCKS-1)
-		#define BOOST_PP_LOCAL_MACRO(n) \
-			pos += sprintf(buf+pos, "block[%d]=(%d,%d) ", n, BOOST_PP_CAT(block, BOOST_PP_CAT(n, x)), BOOST_PP_CAT(block, BOOST_PP_CAT(n, y)));
-		#include BOOST_PP_LOCAL_ITERATE()
-		#endif
-
-		#if (ROTATORS>0)
-		#define BOOST_PP_LOCAL_LIMITS (0, ROTATORS-1)
-		#define BOOST_PP_LOCAL_MACRO(n) \
-			pos += sprintf(buf+pos, "rotator[%d]=[%d%d%d%d] ", n, BOOST_PP_CAT(rotator, BOOST_PP_CAT(n, u)), BOOST_PP_CAT(rotator, BOOST_PP_CAT(n, r)), BOOST_PP_CAT(rotator, BOOST_PP_CAT(n, d)), BOOST_PP_CAT(rotator, BOOST_PP_CAT(n, l)));
-		#include BOOST_PP_LOCAL_ITERATE()
-		#endif
-
-		#if (HOLES>0)
-		pos += sprintf(buf+pos, "holes=[");
-		#define BOOST_PP_LOCAL_LIMITS (0, HOLES-1)
-		#define BOOST_PP_LOCAL_MACRO(n) \
-			pos += sprintf(buf+pos, "%d", n, BOOST_PP_CAT(hole, n));
-		#include BOOST_PP_LOCAL_ITERATE()
-		pos += sprintf(buf+pos, "]");
-		#endif
-		
-		return buf;
-	}
+	uint8_t w, h;
 };
 
-const char* dumpCompressedState(const CompressedState* cs)
-{
-	static char s[sizeof(CompressedState)*3+1];
-	for (int i=0; i<sizeof(CompressedState); i++)
-		sprintf(s + i*3, "%02X ", ((const uint8_t*)cs)[i]);
-	return s;
-}
-
-#if (BLOCKS > 0)
-struct { uint8_t x, y; } blockSize[BLOCKS];
-int blockSizeIndex[BLOCKY][BLOCKX];
-#endif
-#if (ROTATORS > 0)
-struct { uint8_t x, y; } rotators[ROTATORS];
-#endif
-#if (HOLES > 0)
-struct { uint8_t x, y; } holes[HOLES];
-#endif
-bool holeMap[Y][X];
+typedef uint8_t Map[Y][X];
 
 struct State
 {
-	static State initial, blanked;
+	const static State initial;
+	const static Map blanked;
+	const static uint8_t holeIndices[Y][X];
+	const static Block blocks[BLOCKS];
 
-	uint8_t map[Y][X];
+	Map map;
 	Player players[PLAYERS];
 	
 #if (PLAYERS==1)
@@ -262,10 +85,84 @@ struct State
 	uint8_t activePlayer;
 #endif
 	
+	CompressedState compressed;
+#ifdef DEBUG
+	bool compressedUpdated;
+	bool uncompressedUpdated;
+#endif
+
 	/// Returns frame delay, 0 if move is invalid and the state was altered, -1 if move is invalid and the state was not altered
+	template<bool UPDATE_UNCOMPRESSED, bool UPDATE_COMPRESSED>
 	int perform(Action action)
+#ifdef DEBUG
 	{
-		assert (action <= ACTION_LAST);
+		State s1 = *this;
+
+		if (compressedUpdated && uncompressedUpdated)
+		{
+			State s2;
+			s2.decompress(&compressed);
+			if (!(s1 == s2))
+			{
+				printf("Initial state:\n%s%s\n%s\n", s1.toString(), s1.compressed.toString(), hexDump(&s1, sizeof(s1), X));
+				printf("After decompressing:\n%s%s\n\n", s2.toString(), hexDump(&s2, sizeof(s2), X));
+				error("Decompression failure");
+			}
+		}
+
+		int r = realPerform<UPDATE_UNCOMPRESSED, UPDATE_COMPRESSED>(action);
+
+		if (UPDATE_COMPRESSED)
+		{
+			State s2 = s1;
+			if (r>0)
+			{
+				s2.realPerform<true, false>(action);
+				State s3;
+				s3.decompress(&compressed);
+				if (!(s2 == s3))
+				{
+					printf("Initial state:\n%s%s\n%s\n", s1.toString(), s1.compressed.toString(), hexDump(&s1, sizeof(s1), X));
+					printf("Action: %s\n\n", actionNames[action]);
+					printf("After compressed perform:\n%s\n%s\n\n", compressed.toString(), hexDump(&compressed, sizeof(compressed)));
+					printf("After decompressing:\n%s%s\n\n", s3.toString(), hexDump(&s3, sizeof(s3), X));
+					printf("After uncompressed perform:\n%s%s\n\n", s2.toString(), hexDump(&s2, sizeof(s2), X));
+					error("Compressed/decompressed perform result mismatch");
+				}
+			}
+		}
+		
+		if (r >= 0)
+		{
+			if (!UPDATE_UNCOMPRESSED)
+				uncompressedUpdated = false;
+			if (!UPDATE_COMPRESSED)
+				compressedUpdated = false;
+		}
+		else // not changed
+		{
+			if (!(*this == s1))
+			{
+				printf("Initial state:\n%s%s\n%s\n", s1.toString(), s1.compressed.toString(), hexDump(&s1, sizeof(s1)));
+				printf("Action: %s\n\n", actionNames[action]);
+				printf("Current state:\n%s\n%s\n\n", toString(), compressed.toString(), hexDump(this, sizeof(*this)));
+				printf("Return value: %d\n", r);
+				error("State was changed, contradicting return value!");
+			}
+			assert(compressed == s1.compressed);
+		}
+		
+		return r;
+	}
+
+	template<bool UPDATE_UNCOMPRESSED, bool UPDATE_COMPRESSED>
+	int realPerform(Action action)
+#endif
+	{
+		assert(action <= ACTION_LAST);
+		debug_assert(uncompressedUpdated);
+		if (UPDATE_COMPRESSED)
+			debug_assert(compressedUpdated);
 		if (action == SWITCH)
 		{
 #if (PLAYERS==1)
@@ -273,7 +170,7 @@ struct State
 #else
 			if (playersLeft())
 			{
-				switchPlayers();
+				switchPlayers<UPDATE_UNCOMPRESSED, UPDATE_COMPRESSED>();
 				return DELAY_SWITCH;
 			}
 			else
@@ -284,155 +181,281 @@ struct State
 		n.x = p.x + DX[action];
 		n.y = p.y + DY[action];
 		uint8_t dmap = map[n.y][n.x];
-		uint8_t dobj = dmap & OBJ_MASK;
-		if (dobj == OBJ_EXIT)
+		if (dmap == CELL_EXIT)
 		{
 			players[activePlayer] = n;
-			players[activePlayer].exit();
+			if (UPDATE_COMPRESSED)
+				updatePlayer(EXIT_X, EXIT_Y);
 			if (playersLeft())
 			{
-				switchPlayers();
+				switchPlayers<UPDATE_UNCOMPRESSED, UPDATE_COMPRESSED>();
 				return DELAY_MOVE + DELAY_SWITCH;
 			}
 			else
 				return DELAY_MOVE + DELAY_EXIT;
 		}
-		if (dmap & CELL_MASK) // neither wall nor hole
+		uint8_t dcell = dmap & CELL_MASK;
+		if (dcell == CELL_WALL || (dmap & CELL_HOLE)) // wall or hole
 			return -1;
-		if (dobj == OBJ_NONE)
+		if (dmap == 0)
 		{
-			players[activePlayer] = n;
+			if (UPDATE_UNCOMPRESSED)
+				players[activePlayer] = n;
+			if (UPDATE_COMPRESSED)
+				updatePlayer(n.x, n.y);
 			return DELAY_MOVE;
 		}
-		else
-		if (dobj <= OBJ_BLOCKMAX)
+		uint8_t index = dmap & INDEX_MASK;
+		if (dcell == CELL_BLOCK)
 		{
-			// find block bounds
-			uint8_t x1=n.x, y1=n.y, x2=n.x, y2=n.y;
-			while (!(map[n.y][x1] & OBJ_BLOCKLEFT )) x1--;
-			while (!(map[n.y][x2] & OBJ_BLOCKRIGHT)) x2++;
-			while (!(map[y1][n.x] & OBJ_BLOCKUP   )) y1--;
-			while (!(map[y2][n.x] & OBJ_BLOCKDOWN )) y2++;
+#if (BLOCKS > 0)
+			assert(dmap == (CELL_BLOCK | index));
+			uint8_t x1=n.x, y1=n.y, x2=x1, y2=y1;
 			// check if destination is free, clear source row/column
 			switch (action)
 			{
 				case UP:
-					for (int x=x1; x<=x2; x++) if (map[y1-1][x]&(CELL_WALL | OBJ_MASK)) return -1;
-					for (int x=x1; x<=x2; x++) map[n.y][x] &= CELL_MASK;
+					do x1--; while ((map[y1][x1]&~CELL_HOLE)==dmap);
+					x1++; x2=x1+blocks[index].w; // here be dragons
+					      y1=y2-blocks[index].h;
+					for (int x=x1; x<x2; x++) if (map[y1][x] & CELL_MASK) return -1;
+					for (int x=x1; x<x2; x++) map[y1][x] |= dmap;
+					for (int x=x1; x<x2; x++) map[n.y][x] &= CELL_HOLE;
 					break;
 				case DOWN:
-					for (int x=x1; x<=x2; x++) if (map[y2+1][x]&(CELL_WALL | OBJ_MASK)) return -1;
-					for (int x=x1; x<=x2; x++) map[n.y][x] &= CELL_MASK;
+					do x1--; while ((map[y1][x1]&~CELL_HOLE)==dmap);
+					x1++; x2=x1+blocks[index].w;
+					      y2=y1+blocks[index].h; y1++;
+					for (int x=x1; x<x2; x++) if (map[y2][x] & CELL_MASK) return -1;
+					for (int x=x1; x<x2; x++) map[y2][x] |= dmap;
+					for (int x=x1; x<x2; x++) map[n.y][x] &= CELL_HOLE;
+					y2++;
 					break;
 				case LEFT:
-					for (int y=y1; y<=y2; y++) if (map[y][x1-1]&(CELL_WALL | OBJ_MASK)) return -1;
-					for (int y=y1; y<=y2; y++) map[y][n.x] &= CELL_MASK;
+					do y1--; while ((map[y1][x1]&~CELL_HOLE)==dmap);
+					y1++; y2=y1+blocks[index].h;
+					      x1=x2-blocks[index].w;
+					for (int y=y1; y<y2; y++) if (map[y][x1] & CELL_MASK) return -1;
+					for (int y=y1; y<y2; y++) map[y][x1] |= dmap;
+					for (int y=y1; y<y2; y++) map[y][n.x] &= CELL_HOLE;
 					break;
 				case RIGHT:
-					for (int y=y1; y<=y2; y++) if (map[y][x2+1]&(CELL_WALL | OBJ_MASK)) return -1;
-					for (int y=y1; y<=y2; y++) map[y][n.x] &= CELL_MASK;
+					do y1--; while ((map[y1][x1]&~CELL_HOLE)==dmap);
+					y1++; y2=y1+blocks[index].h;
+					      x2=x1+blocks[index].w; x1++; 
+					for (int y=y1; y<y2; y++) if (map[y][x2] & CELL_MASK) return -1;
+					for (int y=y1; y<y2; y++) map[y][x2] |= dmap;
+					for (int y=y1; y<y2; y++) map[y][n.x] &= CELL_HOLE;
+					x2++;
 					break;
 			}
 			// move player
-			players[activePlayer] = n;
-			x1 += DX[action];
-			y1 += DY[action];
-			x2 += DX[action];
-			y2 += DY[action];
+			if (UPDATE_UNCOMPRESSED)
+				players[activePlayer] = n;
+			if (UPDATE_COMPRESSED)
+				updatePlayer(n.x, n.y);
+#if (HOLES > 0)
 			// check for holes
-			bool allHoles = true;
-			for (int y=y1; y<=y2; y++)
-				for (int x=x1; x<=x2; x++)
+			for (int y=y1; y<y2; y++)
+				for (int x=x1; x<x2; x++)
 					if (!(map[y][x] & CELL_HOLE))
-					{
-						allHoles = false;
-						goto holeScanDone;
-					}
-		holeScanDone:
-			if (allHoles)
-			{
-				// fill holes
-				for (int y=y1; y<=y2; y++)
-					for (int x=x1; x<=x2; x++)
-					{
-						if (!holeMap[y][x])
-							return 0; // boring hole
+						goto noDrop;
+			// fill holes
+			for (int y=y1; y<y2; y++)
+				for (int x=x1; x<x2; x++)
+				{
+					if (UPDATE_UNCOMPRESSED)
 						map[y][x] = 0;
-					}
-				return DELAY_PUSH + DELAY_FILL;
+					if (UPDATE_COMPRESSED)
+						fillHole(holeIndices[y][x]);
+				}
+			if (UPDATE_COMPRESSED)
+				removeBlock(index);
+			if (UPDATE_UNCOMPRESSED)
+				removeUncompressedBlock(index);
+			return DELAY_PUSH + DELAY_FILL;
+		noDrop:
+#endif
+			updateBlock(index, x1, y1);
+			if (action == UP)
+			{
+				if (UPDATE_COMPRESSED)
+					sortBlockUp(index);
+				if (UPDATE_UNCOMPRESSED)
+					sortUncompressedBlockUp(index, x1, y1);
 			}
 			else
+			if (action == DOWN)
 			{
-				// draw the new block
-				for (int y=y1; y<=y2; y++)
-					for (int x=x1; x<=x2; x++)
-						map[y][x] = (map[y][x] & CELL_MASK) | (
-							((y==y1) << UP   ) |
-							((x==x2) << RIGHT) |
-							((y==y2) << DOWN ) |
-							((x==x1) << LEFT ));
-				return DELAY_PUSH;
+				if (UPDATE_COMPRESSED)
+					sortBlockDown(index);
+				if (UPDATE_UNCOMPRESSED)
+					sortUncompressedBlockDown(index, x1, y1);
 			}
+			return DELAY_PUSH;
+#else
+			assert(0);
+#endif
 		}
-		else 
-		if (dobj == OBJ_ROTATORCENTER)
-			return -1;
 		else // rotator
 		{
-			char rd = dobj - OBJ_ROTATORUP;
+#if (ROTATORS > 0)
+			assert(dcell == CELL_ROTATOR);
+			char rd = index; // direction of pushed blade from rotator
 			if (rd%2 == action%2)
 				return -1;
 			char dd = (char)action - rd; // rotation direction: 1=clockwise, -1=CCW
 			if (dd<0) dd+=4;
-			char rd2 = (rd+2)%4;
+			char rd2 = rd^2;          // direction from blade to rotator
 			uint8_t rx = n.x+DX[rd2]; // rotator center coords
 			uint8_t ry = n.y+DY[rd2];
 			// check for obstacles
 			bool oldFlippers[4], newFlippers[4];
 			for (char d=0;d<4;d++)
 			{
-				uint8_t d2 = (d+dd)%4; // rotated direction
-				if ((map[ry+DY[d]][rx+DX[d]] & OBJ_MASK) == OBJ_ROTATORUP + d)
+				uint8_t d2 = (d+dd)&3; // rotated direction
+				if ((map[ry+DY[d]][rx+DX[d]] & ~CELL_HOLE) == (CELL_ROTATOR | d))
 				{
-					oldFlippers[d ] =
-					newFlippers[d2] = true;
-					if (map[ry+DY[d]+DY[d2]][rx+DX[d]+DX[d2]] & (CELL_WALL | OBJ_MASK))                   // no object/wall in corner
+					if (UPDATE_UNCOMPRESSED)
+						oldFlippers[d ] =
+						newFlippers[d2] = true;
+					if (map[ry+DY[d]+DY[d2]][rx+DX[d]+DX[d2]] & ~CELL_HOLE)                   // no object/wall in corner
 						return -1;
 					uint8_t d2m = 
 						map[ry+      DY[d2]][rx+      DX[d2]];
-					if (d2m & CELL_WALL)
-						return -1;
-					uint8_t d2obj = d2m & OBJ_MASK;
-					if (d2obj                                   != OBJ_ROTATORUP + d2 &&       // no object in destination (other than part of the rotator)
-					    d2obj                                   != OBJ_NONE)
+					if (d2m != (CELL_ROTATOR | d2) &&       // no object in destination (other than part of the rotator)
+					    d2m != CELL_EMPTY)
 						return -1;
 				}
 				else
-					oldFlippers[d ] =
-					newFlippers[d2] = false;
+					if (UPDATE_UNCOMPRESSED)
+						oldFlippers[d ] =
+						newFlippers[d2] = false;
 			}
-			// rotate it
-			for (char d=0;d<4;d++)
-				if (!oldFlippers[d] && newFlippers[d])
-				{
-					uint8_t* m = &map[ry+DY[d]][rx+DX[d]];
-					*m = (*m & CELL_MASK) | (OBJ_ROTATORUP + d);
-				}
-				else
-				if (oldFlippers[d] && !newFlippers[d])
-					map[ry+DY[d]][rx+DX[d]] &= CELL_MASK;
-			if (map[n.y][n.x]) // full push
+			if (UPDATE_UNCOMPRESSED)
 			{
-				n.x += DX[action];
-				n.y += DY[action];
+				// rotate it
+				for (char d=0;d<4;d++)
+					if (!oldFlippers[d] && newFlippers[d])
+					{
+						uint8_t* m = &map[ry+DY[d]][rx+DX[d]];
+						assert((*m & ~CELL_HOLE)==0);
+						*m |= CELL_ROTATOR | d;
+					}
+					else
+					if (oldFlippers[d] && !newFlippers[d])
+						map[ry+DY[d]][rx+DX[d]] &= CELL_HOLE;
+				if (map[n.y][n.x]) // full push
+				{
+					n.x += DX[action];
+					n.y += DY[action];
+					if (map[n.y][n.x] != CELL_EMPTY)
+						return 0;
+				}
+				players[activePlayer] = n;
 			}
-			if (map[n.y][n.x] != CELL_EMPTY)
-				return 0;
-			players[activePlayer] = n;
+			if (UPDATE_COMPRESSED)
+			{
+				uint8_t rotIndex = map[ry][rx] & INDEX_MASK;
+				if (dd==1)
+					rotateCW (rotIndex);
+				else
+					rotateCCW(rotIndex);
+				if (!UPDATE_UNCOMPRESSED)
+				{
+					char bd = (rd2+dd)&3; // direction of blade behind player from rotator
+					if (map[ry+DY[bd]][rx+DX[bd]] == (CELL_ROTATOR | bd)) // full push
+					{
+						n.x += DX[action];
+						n.y += DY[action];
+						if (map[n.y][n.x] != CELL_EMPTY)
+							return 0;
+					}
+				}
+				updatePlayer(n.x, n.y);
+			}
 			return DELAY_ROTATE;
+#else
+			assert(0);
+#endif					
+		}
+		return -1; // unreachable
+	}
+
+	void removeUncompressedBlock(int index)
+	{
+		int w = blocks[index].w, h = blocks[index].h;
+		for (int y=1; y<=Y-1; y++)
+			for (int x=1; x<=X-1; x++)
+				if ((map[y][x] & CELL_MASK)==CELL_BLOCK)
+				{
+					int index2 = map[y][x] & INDEX_MASK;
+					if (blocks[index2].w == w && blocks[index2].h == h && index2 > index)
+						map[y][x]--;
+				}
+	}
+
+	void sortUncompressedBlockUp(int index, int x1, int y1)
+	{
+		int w1 = blocks[index].w, h1 = blocks[index].h, x=x1+w1, y=y1;
+		for (int l=0; l<X-w1; l++)
+		{
+			if ((map[y][x] & CELL_MASK)==CELL_BLOCK)
+			{
+				int index2 = map[y][x] & INDEX_MASK;
+				int w2 = blocks[index2].w, h2 = blocks[index2].h;
+				if (w1 == w2 && h1 == h2 && index > index2)
+				{
+					int x2=x, y2=y;
+					if (map[y-1][x] != map[y][x]) // begins on that row
+					{
+						assert(map[y2][x2-1] != map[y2][x2]);
+						for (int j=y1; j<y1+h1; j++)
+							for (int i=x1; i<x1+w1; i++)
+								map[j][i] = (map[j][i] & ~INDEX_MASK) | index2;
+						for (int j=y2; j<y2+h2; j++)
+							for (int i=x2; i<x2+w2; i++)
+								map[j][i] = (map[j][i] & ~INDEX_MASK) | index;
+						x1 = x2; y1 = y2;
+					}
+				}
+			}
+			x++; if (x==X) { x=0; y++; }
 		}
 	}
 
+	void sortUncompressedBlockDown(int index, int x1, int y1)
+	{
+		int w1 = blocks[index].w, h1 = blocks[index].h, x=x1-1, y=y1;
+		for (int l=0; l<X-w1; l++)
+		{
+			if ((map[y][x] & CELL_MASK)==CELL_BLOCK)
+			{
+				int index2 = map[y][x] & INDEX_MASK;
+				int w2 = blocks[index2].w, h2 = blocks[index2].h;
+				if (w1 == w2 && h1 == h2 && index < index2)
+				{
+					int x2=x-w2+1, y2=y;
+					//printf("%d,%d/%d,%d\n", x1, y1, x2, y2);
+					if (map[y-1][x] != map[y][x]) // begins on that row
+					{
+						assert(map[y2-1][x2] != map[y2][x2]);
+						assert(map[y2][x2-1] != map[y2][x2]);
+						for (int j=y1; j<y1+h1; j++)
+							for (int i=x1; i<x1+w1; i++)
+								map[j][i] = (map[j][i] & ~INDEX_MASK) | index2;
+						for (int j=y2; j<y2+h2; j++)
+							for (int i=x2; i<x2+w2; i++)
+								map[j][i] = (map[j][i] & ~INDEX_MASK) | index;
+						x1 = x2; y1 = y2;
+					}
+				}
+			}
+			if (x==0) { x=X-1; y--; } else x--;
+		}
+	}
+
+	template<bool UPDATE_UNCOMPRESSED, bool UPDATE_COMPRESSED>
 	void switchPlayers()
 	{
 #if (PLAYERS==1)
@@ -441,13 +464,19 @@ struct State
 		Player p = players[activePlayer];
 		if (!p.exited())
 		{
-			assert(map[p.y][p.x]==0 || map[p.y][p.x]==(CELL_WALL | OBJ_EXIT));
-			map[p.y][p.x] = CELL_WALL;
+			assert(map[p.y][p.x]==0 || map[p.y][p.x]==CELL_EXIT);
+			if (UPDATE_UNCOMPRESSED)
+				map[p.y][p.x] = CELL_WALL;
 		}
-		do { activePlayer = (activePlayer+1)%PLAYERS; } while (players[activePlayer].exited());
-		p = players[activePlayer];
-		assert(map[p.y][p.x]==CELL_WALL);
-		map[p.y][p.x] = CELL_EMPTY;
+		if (UPDATE_UNCOMPRESSED)
+		{
+			do { activePlayer = (activePlayer+1)%PLAYERS; } while (players[activePlayer].exited());
+			p = players[activePlayer];
+			assert(map[p.y][p.x]==CELL_WALL);
+			map[p.y][p.x] = CELL_EMPTY;
+		}
+		if (UPDATE_COMPRESSED)
+			do { compressed.activePlayer = (compressed.activePlayer+1)%PLAYERS; } while (players[compressed.activePlayer].exited());
 #endif
 	}
 
@@ -471,359 +500,25 @@ struct State
 		return playersLeft()==0;
 	}
 
-	#ifdef HAVE_VALIDATOR
-	#include BOOST_PP_STRINGIZE(Levels/LEVEL-validator.h)
-	#endif
-
-	void load()
-	{
-		int maxPlayer = 0;
-		int seenHoles = 0;
-
-#if (BLOCKS > 0)
-		int seenBlocks = 0;
-		int blockSizeCount[BLOCKY][BLOCKX];
-		memset(blockSizeCount, 0, sizeof blockSizeCount);
-#endif
-
-		for (int y=0;y<Y;y++)
-			for (int x=0;x<X;x++)
-			{
-				holeMap[y][x] = false;
-				char c = level[y][x];
-				switch (c)
-				{
-					case ' ':
-						map[y][x] = CELL_EMPTY;
-						break;
-					case '#':
-					case '+':
-						map[y][x] = CELL_WALL;
-						break;
-#if (HOLES > 0)
-					case 'O':
-						map[y][x] = CELL_HOLE;
-						holeMap[y][x] = true;
-						holes[seenHoles].x = x;
-						holes[seenHoles].y = y;
-						seenHoles++;
-						break;
-#endif
-					case '.': // boring hole
-						map[y][x] = CELL_HOLE;
-						break;
-					case '1':
-						map[y][x] = CELL_EMPTY;
-						players[0].set(x, y);
-						break;
-					case '2':
-						map[y][x] = CELL_WALL | OBJ_EXIT;
-						enforce(x == EXIT_X && y == EXIT_Y, format("Mismatching exit coordinates %d,%d, should be %d,%d", EXIT_X, EXIT_Y, x, y));
-						break;
-					case '3':
-#if (PLAYERS >= 2)
-						map[y][x] = CELL_WALL;
-						players[1].set(x, y);
-						maxPlayer = max(maxPlayer, 1);
-#else
-						enforce(0, "Invalid player");
-#endif
-						break;
-					case '4':
-#if (PLAYERS >= 3)
-						map[y][x] = CELL_WALL;
-						players[2].set(x, y);
-						maxPlayer = max(maxPlayer, 2);
-#else
-						enforce(0, "Invalid player");
-#endif
-						break;
-					case '5':
-#if (PLAYERS >= 4)
-						map[y][x] = CELL_WALL;
-						players[3].set(x, y);
-						maxPlayer = max(maxPlayer, 3);
-#else
-						enforce(0, "Invalid player");
-#endif
-						break;
-#if (BLOCKS > 0)
-					case 'a': case 'b': case 'c': case 'd': case 'e': case 'f': case 'g': case 'h': case 'i': case 'j': case 'k': case 'l': case 'm': case 'n': case 'o': case 'p': case 'q': case 'r': case 's': case 't': case 'u': case 'v': case 'w': case 'x': case 'y': case 'z':
-						enforce(x>0); enforce(x<X-1);
-						enforce(y>0); enforce(y<Y-1);
-						map[y][x] = 
-							(level[y-1][x  ]!=c ? OBJ_BLOCKUP    : 0) |
-							(level[y  ][x+1]!=c ? OBJ_BLOCKRIGHT : 0) |
-							(level[y+1][x  ]!=c ? OBJ_BLOCKDOWN  : 0) |
-							(level[y  ][x-1]!=c ? OBJ_BLOCKLEFT  : 0);
-						if ((map[y][x] & (OBJ_BLOCKUP | OBJ_BLOCKLEFT)) == (OBJ_BLOCKUP | OBJ_BLOCKLEFT))
-						{
-							seenBlocks++;
-							int x2 = x;
-							while (level[y][x2+1] == c)
-								x2++;
-							enforce(x2-x < BLOCKX, format("Block too wide: is %d, should be %d", BLOCKX, x2-x+1));
-							int y2 = y;
-							while (level[y2+1][x] == c)
-								y2++;
-							enforce(y2-y < BLOCKY, format("Block too tall: is %d, should be %d", BLOCKY, y2-y+1));
-							blockSizeCount[y2-y][x2-x]++;
-						}
-						break;
-#endif
-#if (ROTATORS > 0)
-					case '^':
-						map[y][x] = OBJ_ROTATORUP;
-						break;
-					case '>':
-						map[y][x] = OBJ_ROTATORRIGHT;
-						break;
-					case '`':
-						map[y][x] = OBJ_ROTATORDOWN;
-						break;
-					case '<':
-						map[y][x] = OBJ_ROTATORLEFT;
-						break;
-					case 'A': case 'B': case 'C': case 'D': case 'E': case 'F': case 'G': case 'H': case 'I': case 'J': case 'K': case 'L': case 'M': case 'N':           case 'P': case 'Q': case 'R': case 'S': case 'T': case 'U': case 'V': case 'W': case 'X': case 'Y': case 'Z':
-					{
-						uint8_t neighbors[4];
-						uint8_t neighborCount = 0;
-						bool isCenter = false;
-						for (uint8_t d=0;d<4;d++)
-						{
-							char c2 = level[y+DY[d]][x+DX[d]];
-							if (c2==DR[d])
-								isCenter = true;
-							if (c2==c || c2==DR[d])
-								neighbors[neighborCount++] = d;
-						}
-						//enforce (neighbors.length > 0);
-						if (neighborCount>1 || isCenter)
-							map[y][x] = OBJ_ROTATORCENTER;
-						else
-							map[y][x] = OBJ_ROTATORUP + (2+neighbors[0])%4;
-						break;
-					}
-#endif
-					default:
-						error(format("Unknown character in level: %c", c));
-				}
-			}
-
-		enforce((map[EXIT_Y][EXIT_X] & OBJ_MASK) == OBJ_EXIT, "Mismatching exit");
-
-#if (ROTATORS > 0)
-		int seenRotators = 0;
-		for (int y=0;y<Y;y++)
-			for (int x=0;x<X;x++)
-				if (map[y][x] >= OBJ_ROTATORUP && map[y][x] <= OBJ_ROTATORLEFT)
-				{
-					uint8_t d = (map[y][x]-OBJ_ROTATORUP+2)%4;
-					enforce(map[y+DY[d]][x+DX[d]] == OBJ_ROTATORCENTER, "Invalid rotator configuration");
-				}
-				else
-				if (map[y][x] == OBJ_ROTATORCENTER)
-				{
-					rotators[seenRotators].x = x;
-					rotators[seenRotators].y = y;
-					seenRotators++;
-				}
-		enforce(seenRotators == ROTATORS, format("Mismatching number of rotators: is %d, should be %d", ROTATORS, seenRotators));
-#endif
-
-#if (BLOCKS > 0)
-		int index = 0;
-		for (int y=0;y<BLOCKY;y++)
-			for (int x=0;x<BLOCKX;x++)
-			{
-				blockSizeIndex[y][x] = index;
-				int count = blockSizeCount[y][x];
-				for (int i=index; i<index+count; i++)
-					blockSize[i].x = x,
-					blockSize[i].y = y;
-				index += count;
-			}
-		enforce(seenBlocks == BLOCKS, format("Mismatching number of blocks: is %d, should be %d", BLOCKS, seenBlocks));
-#endif
-
-		enforce(maxPlayer+1 == PLAYERS, format("Mismatching number of players: is %d, should be %d", PLAYERS, maxPlayer+1));
-		enforce(seenHoles == HOLES, format("Mismatching number of holes: is %d, should be %d", HOLES, seenHoles));
-
-
-#if (PLAYERS >= 2)
-		activePlayer = 0;
-#endif
-	}
-
 	void compress(CompressedState* s) const
 	{
-		memset(s, 0, sizeof CompressedState);
-
-		#if (PLAYERS>1)
-		s->activePlayer = activePlayer;
-		#endif
-
-		#define BOOST_PP_LOCAL_LIMITS (0, PLAYERS-1)
-		#define BOOST_PP_LOCAL_MACRO(n) \
-			s->BOOST_PP_CAT(player, BOOST_PP_CAT(n, x))=players[n].x-1, \
-			s->BOOST_PP_CAT(player, BOOST_PP_CAT(n, y))=players[n].y-1;
-		#include BOOST_PP_LOCAL_ITERATE()
-		
-		#if (BLOCKS > 0)
-		int seenBlocks = 0;
-		struct { uint8_t x, y; } blocks[BLOCKS];
-		int blockSizeCount[BLOCKY][BLOCKX];
-		
-		//memset(blocks, 0xFF, sizeof blocks);
-		for (int i=0; i<BLOCKS; i++)
-			blocks[i].x = EXIT_X-1,
-			blocks[i].y = EXIT_Y-1;
-		memset(blockSizeCount, 0, sizeof blockSizeCount);
-		#endif
-		#if (ROTATORS > 0)
-		int seenRotators = 0;
-		struct { bool u, r, d, l; } rotators[ROTATORS];
-		#endif
-		#if (HOLES>0)
-		unsigned int holePos = 0;
-		bool holes[HOLES];
-		#endif
-
-		for (int y=1;y<Y-1;y++)
-			for (int x=1;x<X-1;x++)
-			{
-				uint8_t m = map[y][x];
-
-				#if (BLOCKS > 0)
-				if ((m & (OBJ_BLOCKUP | OBJ_BLOCKLEFT)) == (OBJ_BLOCKUP | OBJ_BLOCKLEFT))
-				{
-					int x2 = x;
-					while ((map[y][x2] & OBJ_BLOCKRIGHT) == 0)
-						x2++;
-					int y2 = y;
-					while ((map[y2][x] & OBJ_BLOCKDOWN) == 0)
-						y2++;
-					x2-=x;
-					y2-=y;
-					assert(x2 < BLOCKX, format("Block too wide: is %d, should be %d", BLOCKX, x2+1));
-					assert(y2 < BLOCKY, format("Block too tall: is %d, should be %d", BLOCKY, y2+1));
-					int index = blockSizeIndex[y2][x2] + blockSizeCount[y2][x2];
-					blocks[index].x = x-1;
-					blocks[index].y = y-1;
-					blockSizeCount[y2][x2]++;
-					seenBlocks++;
-				}
-				#endif
-
-				#if (ROTATORS > 0)
-				if ((m & OBJ_MASK) == OBJ_ROTATORCENTER)
-				{
-					rotators[seenRotators].u = (map[y-1][x  ]&OBJ_MASK)==OBJ_ROTATORUP;
-					rotators[seenRotators].r = (map[y  ][x+1]&OBJ_MASK)==OBJ_ROTATORRIGHT;
-					rotators[seenRotators].d = (map[y+1][x  ]&OBJ_MASK)==OBJ_ROTATORDOWN;
-					rotators[seenRotators].l = (map[y  ][x-1]&OBJ_MASK)==OBJ_ROTATORLEFT;
-					seenRotators++;
-				}
-				#endif
-
-				#if (HOLES>0)
-				if (holeMap[y][x])
-					holes[holePos++] = (m & CELL_MASK) == CELL_HOLE;
-				#endif
-			}
-		
-		#if (BLOCKS > 0)
-		assert(seenBlocks <= BLOCKS, "Too many blocks");
-
-		#define BOOST_PP_LOCAL_LIMITS (0, BLOCKS-1)
-		#define BOOST_PP_LOCAL_MACRO(n) \
-			s->BOOST_PP_CAT(block, BOOST_PP_CAT(n, x)) = blocks[n].x ; \
-			s->BOOST_PP_CAT(block, BOOST_PP_CAT(n, y)) = blocks[n].y ;
-		#include BOOST_PP_LOCAL_ITERATE()
-		#endif
-
-		#if (ROTATORS > 0)
-		assert(seenRotators == ROTATORS, "Vanished rotator?");
-		#define BOOST_PP_LOCAL_LIMITS (0, ROTATORS-1)
-		#define BOOST_PP_LOCAL_MACRO(n) \
-			s->BOOST_PP_CAT(rotator, BOOST_PP_CAT(n, u)) = rotators[n].u; \
-			s->BOOST_PP_CAT(rotator, BOOST_PP_CAT(n, r)) = rotators[n].r; \
-			s->BOOST_PP_CAT(rotator, BOOST_PP_CAT(n, d)) = rotators[n].d; \
-			s->BOOST_PP_CAT(rotator, BOOST_PP_CAT(n, l)) = rotators[n].l;
-		#include BOOST_PP_LOCAL_ITERATE()
-		#endif
-
-		#if (HOLES>0)
-		assert(holePos == HOLES);
-		#define BOOST_PP_LOCAL_LIMITS (0, HOLES-1)
-		#define BOOST_PP_LOCAL_MACRO(n) \
-			s->BOOST_PP_CAT(hole, n) = holes[n];
-		#include BOOST_PP_LOCAL_ITERATE()
-		#endif
+		debug_assert(compressedUpdated, "Inner compressed state is not up to date");
+		*s = compressed;
 	}
 
-	void decompress(const CompressedState* s)
-	{
-		*this = blanked;
-		#define BOOST_PP_LOCAL_LIMITS (0, PLAYERS-1)
-		#define BOOST_PP_LOCAL_MACRO(n) \
-			players[n].x = s->BOOST_PP_CAT(player, BOOST_PP_CAT(n, x))+1, \
-			players[n].y = s->BOOST_PP_CAT(player, BOOST_PP_CAT(n, y))+1;
-		#include BOOST_PP_LOCAL_ITERATE()
+	void decompress(const CompressedState* s);
+	INLINE void updatePlayer(uint8_t x, uint8_t y);
+	INLINE void fillHole(int index);
+	INLINE void updateBlock(int index, uint8_t x, uint8_t y);
+	INLINE void removeBlock(int index);
+	INLINE void sortBlockUp(int index);
+	INLINE void sortBlockDown(int index);
+	INLINE void rotateCW(int index);
+	INLINE void rotateCCW(int index);
 
-		#if (HOLES>0) // process holes first
-		#define BOOST_PP_LOCAL_LIMITS (0, HOLES-1)
-		#define BOOST_PP_LOCAL_MACRO(n) \
-			if (!s->BOOST_PP_CAT(hole, n)) map[holes[n].y][holes[n].x] = CELL_EMPTY;
-		#include BOOST_PP_LOCAL_ITERATE()
-		#endif
-
-		#if (PLAYERS>1)
-		activePlayer = s->activePlayer;
-		#define BOOST_PP_LOCAL_LIMITS (0, PLAYERS-1)
-		#define BOOST_PP_LOCAL_MACRO(n) \
-			if (n != activePlayer && !players[n].exited()) map[players[n].y][players[n].x] = CELL_WALL;
-		#include BOOST_PP_LOCAL_ITERATE()
-		#endif
-		
-		#if (BLOCKS > 0)
-		#define BOOST_PP_LOCAL_LIMITS (0, BLOCKS-1)
-		#define BOOST_PP_LOCAL_MACRO(n) \
-		{ \
-			uint8_t x1 = s->BOOST_PP_CAT(block, BOOST_PP_CAT(n, x)); \
-			uint8_t y1 = s->BOOST_PP_CAT(block, BOOST_PP_CAT(n, y)); \
-			if (x1 != EXIT_X-1 || y1 != EXIT_Y-1) \
-			{ \
-				/* Hack: increment x and y after decrementing */ \
-				x1++; y1++; \
-				uint8_t x2 = x1 + blockSize[n].x; \
-				uint8_t y2 = y1 + blockSize[n].y; \
-				for (uint8_t x=x1; x<=x2; x++) \
-					map[y1][x] |= OBJ_BLOCKUP, \
-					map[y2][x] |= OBJ_BLOCKDOWN; \
-				for (uint8_t y=y1; y<=y2; y++) \
-					map[y][x1] |= OBJ_BLOCKLEFT, \
-					map[y][x2] |= OBJ_BLOCKRIGHT; \
-			} \
-		} 
-		#include BOOST_PP_LOCAL_ITERATE()
-		#endif
-
-		#if (ROTATORS > 0)
-		#define BOOST_PP_LOCAL_LIMITS (0, ROTATORS-1)
-		#define BOOST_PP_LOCAL_MACRO(n) \
-		{ \
-			uint8_t x = rotators[n].x; \
-			uint8_t y = rotators[n].y; \
-			map[y][x] |= OBJ_ROTATORCENTER; \
-			if (s->BOOST_PP_CAT(rotator, BOOST_PP_CAT(n, u))) map[y-1][x  ] |= OBJ_ROTATORUP;    \
-			if (s->BOOST_PP_CAT(rotator, BOOST_PP_CAT(n, r))) map[y  ][x+1] |= OBJ_ROTATORRIGHT; \
-			if (s->BOOST_PP_CAT(rotator, BOOST_PP_CAT(n, d))) map[y+1][x  ] |= OBJ_ROTATORDOWN;  \
-			if (s->BOOST_PP_CAT(rotator, BOOST_PP_CAT(n, l))) map[y  ][x-1] |= OBJ_ROTATORLEFT;  \
-		}
-		#include BOOST_PP_LOCAL_ITERATE()
-		#endif
-	}
+	#ifdef HAVE_VALIDATOR
+	bool validate() const;
+	#endif
 
 	/// Optimize state for decompression
 	void blank()
@@ -839,70 +534,42 @@ struct State
 
 	const char* toString() const
 	{
+		debug_assert(uncompressedUpdated);
 		char level[Y][X];
-		#if (BLOCKS > 0)
-		int blockSizeCount[BLOCKY][BLOCKX];
-		memset(blockSizeCount, 0, sizeof blockSizeCount);
-		#endif
 
 		for (int y=0; y<Y; y++)
 			for (int x=0; x<X; x++)
-				switch (map[y][x] & OBJ_MASK)
+			{
+				uint8_t c = map[y][x];
+				switch (c & CELL_MASK)
 				{
-					case OBJ_ROTATORCENTER:
-						level[y][x] = '+'; break;
-					case OBJ_ROTATORUP:
-						level[y][x] = '^'; break;
-					case OBJ_ROTATORDOWN:
-						level[y][x] = 'v'; break;
-					case OBJ_ROTATORLEFT:
-						level[y][x] = '<'; break;
-					case OBJ_ROTATORRIGHT:
-						level[y][x] = '>'; break;
-					case OBJ_EXIT:
-						level[y][x] = 'X'; break;
-					case OBJ_NONE:
-						switch (map[y][x] & CELL_MASK) 
+					case CELL_WALL:
+						if (c & CELL_HOLE)
+							level[y][x] = 'X';
+						else
 						{
-							case CELL_EMPTY:
-								level[y][x] = ' '; break;
-							case CELL_WALL:
-								level[y][x] = '#'; break;
-							case CELL_HOLE:
-								level[y][x] = 'O'; break;
+							bool rotatorCenter = false;
+							if (x>0 && x<X-1 && y>0 && y<Y-1)
+								for (int d=0; d<4; d++)
+									if (map[y+DY[d]][x+DX[d]]==(CELL_ROTATOR | d))
+										rotatorCenter = true;
+							level[y][x] = rotatorCenter	? '+' : '#';
 						}
 						break;
-					default:
-						#if (BLOCKS > 0)
-						//level[y][x] = 'x';
-						/*if ((map[y][x] & (OBJ_BLOCKUP | OBJ_BLOCKLEFT)) == (OBJ_BLOCKUP | OBJ_BLOCKLEFT))
-							level[y][x] = blockLetter++;
+					case CELL_ROTATOR:
+						level[y][x] = DR[c & INDEX_MASK];
+						break;
+					case CELL_BLOCK:
+						level[y][x] = 'a' + (c & INDEX_MASK);
+						break;
+					case CELL_EMPTY:
+						if (c & CELL_HOLE)
+							level[y][x] = 'O';
 						else
-						if (map[y][x] & OBJ_BLOCKUP)
-							level[y][x] = level[y][x-1];
-						else
-							level[y][x] = level[y-1][x];*/
-						if ((map[y][x] & (OBJ_BLOCKUP | OBJ_BLOCKLEFT)) == (OBJ_BLOCKUP | OBJ_BLOCKLEFT))
-						{
-							int x2 = x;
-							while ((map[y][x2] & OBJ_BLOCKRIGHT) == 0)
-								x2++;
-							int y2 = y;
-							while ((map[y2][x] & OBJ_BLOCKDOWN) == 0)
-								y2++;
-							x2-=x;
-							y2-=y;
-							assert(x2 < BLOCKX, format("Block too wide: is %d, should be %d", BLOCKX, x2+1));
-							assert(y2 < BLOCKY, format("Block too tall: is %d, should be %d", BLOCKY, y2+1));
-							int index = blockSizeIndex[y2][x2] + blockSizeCount[y2][x2];
-							for (int by=y; by<=y+y2; by++)
-								for (int bx=x; bx<=x+x2; bx++)
-									level[by][bx] = 'a'+index;
-							blockSizeCount[y2][x2]++;
-						}
-						#endif
+							level[y][x] = ' ';
 						break;
 				}
+			}
 		for (int p=0;p<PLAYERS;p++)
 			if (!players[p].exited())
 				level[players[p].y][players[p].x] = p==activePlayer ? '@' : '&';
@@ -919,12 +586,33 @@ struct State
 	}
 };
 
+#include STRINGIZE(Levels/LEVEL.cpp)
+
+#ifdef HAVE_VALIDATOR
+#include STRINGIZE(Levels/LEVEL-validator.h)
+#endif
+
 INLINE bool operator==(const State& a, const State& b)
 {
-	return memcmp(&a, &b, sizeof (State))==0;
+	debug_assert(a.uncompressedUpdated);
+	debug_assert(b.uncompressedUpdated);
+	return memcmp(&a.map, &b.map, sizeof(Map))==0 && memcmp(&a.players, &b.players, sizeof(a.players))==0
+#if (PLAYERS>1)
+	 && a.activePlayer == b.activePlayer
+#endif
+	;
 }
 
-State State::initial, State::blanked;
+// ******************************************************************************************************
+
+#ifndef MAX_FRAMES
+#define MAX_FRAMES (MAX_STEPS*18)
+#endif
+
+#define COMPRESSED_BYTES ((COMPRESSED_BITS + 7) / 8)
+
+#define GROUP_FRAMES
+#define FRAMES_PER_GROUP 10 // minimal distance between two states
 
 // ******************************************************************************************************
 
@@ -939,20 +627,21 @@ struct Step
 
 	const char* toString()
 	{
-		return format("@%u,%u: %s", x+1, y+1, actionNames[action]);
+		return format("@%u,%u: %s", x, y, actionNames[action]);
 	}
 };
 
 INLINE int replayStep(State* state, FRAME* frame, Step step)
 {
 	Player* p = &state->players[state->activePlayer];
-	int nx = step.x+1;
-	int ny = step.y+1;
+	int nx = step.x;
+	int ny = step.y;
 	int steps = abs((int)p->x - nx) + abs((int)p->y - ny) + step.extraSteps;
 	p->x = nx;
 	p->y = ny;
 	assert(state->map[ny][nx]==0, "Bad coordinates");
-	int res = state->perform((Action)step.action);
+	DEBUG_ONLY(state->updatePlayer(nx, ny)); // needed to pass decompression check
+	int res = state->perform<true, false>((Action)step.action);
 	assert(res>0, "Replay failed");
 	*frame += steps * DELAY_MOVE + res;
 	return steps; // not counting actual action
@@ -984,40 +673,35 @@ void expandChildren(FRAME frame, const State* state)
 		queueStart = (queueStart+1) % QUEUELENGTH;
 		uint8_t dist = distance[c.y-1][c.x-1];
 		Step step;
-		step.x = c.x-1;
-		step.y = c.y-1;
+		step.x = c.x;
+		step.y = c.y;
 		step.extraSteps = dist - (abs((int)c.x - (int)x0) + abs((int)c.y - (int)y0));
 
-		#if (PLAYERS>1)
-			np->x = c.x;
-			np->y = c.y;
-			int res = newState.perform(SWITCH);
-			assert(res == DELAY_SWITCH);
-			step.action = SWITCH;
-			CHILD_HANDLER::handleChild(state, frame, step, &newState, frame + dist * DELAY_MOVE + DELAY_SWITCH);
-			newState = *state;
-		#endif
+#if (PLAYERS>1)
+		np->x = c.x;
+		np->y = c.y;
+		DEBUG_ONLY(newState.updatePlayer(c.x, c.y)); // needed to pass decompression check
+		int res;
+		if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_UNCOMPRESSED)
+			res = newState.perform<true, false>(SWITCH);
+		else
+			res = newState.perform<false, true>(SWITCH);
+		assert(res == DELAY_SWITCH);
+		step.action = SWITCH;
+		if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_UNCOMPRESSED)
+			CHILD_HANDLER::handleChild(state, frame, step, &newState           , frame + dist * DELAY_MOVE + DELAY_SWITCH);
+		else
+			CHILD_HANDLER::handleChild(state, frame, step, &newState.compressed, frame + dist * DELAY_MOVE + DELAY_SWITCH);
+		newState = *state;
+#endif
 
 		for (Action action = ACTION_FIRST; action < SWITCH; action++)
 		{
 			uint8_t nx = c.x + DX[action];
 			uint8_t ny = c.y + DY[action];
 			uint8_t m = newState.map[ny][nx];
-			if (m & OBJ_MASK)
+			if (m == 0) // free
 			{
-				np->x = c.x;
-				np->y = c.y;
-				int res = newState.perform(action);
-				if (res > 0)
-				{
-					step.action = action;
-					CHILD_HANDLER::handleChild(state, frame, step, &newState, frame + dist * DELAY_MOVE + res);
-				}
-				if (res >= 0)
-					newState = *state;
-			}
-			else
-			if ((m & CELL_MASK) == 0)
 				if (distance[ny-1][nx-1] == 0xFF)
 				{
 					distance[ny-1][nx-1] = dist+1;
@@ -1026,6 +710,32 @@ void expandChildren(FRAME frame, const State* state)
 					queueEnd = (queueEnd+1) % QUEUELENGTH;
 					assert(queueEnd != queueStart, "Queue overflow");
 				}
+			}
+			else
+			{
+				uint8_t cell = m & CELL_MASK;
+				if (((m & CELL_HOLE)!=0) == (cell == CELL_WALL))
+				{
+					np->x = c.x;
+					np->y = c.y;
+					DEBUG_ONLY(newState.updatePlayer(c.x, c.y)); // needed to pass decompression check
+					int res;
+					if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_UNCOMPRESSED)
+						res = newState.perform<true, false>(action);
+					else
+						res = newState.perform<false, true>(action);
+					if (res > 0)
+					{
+						step.action = action;
+						if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_UNCOMPRESSED)
+							CHILD_HANDLER::handleChild(state, frame, step, &newState           , frame + dist * DELAY_MOVE + res);
+						else
+							CHILD_HANDLER::handleChild(state, frame, step, &newState.compressed, frame + dist * DELAY_MOVE + res);
+					}
+					if (res >= 0)
+						newState = *state;
+				}
+			}
 		}
 	}
 }
@@ -1062,7 +772,7 @@ void writeSolution(const State* initialState, Step steps[], int stepNr)
 
 // ******************************************************************************************************
 
-State* initialStates = &State::initial;
+const State* initialStates = &State::initial;
 int initialStateCount = 1;
 
 void initProblem()
@@ -1072,8 +782,4 @@ void initProblem()
 #ifdef HAVE_VALIDATOR
 	printf("Level state validator present\n");
 #endif
-
-	State::initial.load();
-	State::blanked = State::initial;
-	State::blanked.blank();
 }

@@ -174,6 +174,11 @@ struct State
 #else
 			if (playersLeft())
 			{
+				if (UPDATE_COMPRESSED)
+				{
+					Player p = players[activePlayer];
+					updatePlayer(p.x, p.y);
+				}
 				switchPlayers<UPDATE_UNCOMPRESSED, UPDATE_COMPRESSED>();
 #if (PLAYERS>2)
 				int res = justSwitched ? DELAY_SWITCH_AGAIN : DELAY_SWITCH;

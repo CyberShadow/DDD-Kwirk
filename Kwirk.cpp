@@ -15,8 +15,8 @@
 #define CELL_MASK         0x60
 #define CELL_EMPTY        0x00
 #define CELL_BLOCK        0x20 // index contains block index
-#define CELL_ROTATOR      0x40 // rotator blades - index contains the direction
-#define CELL_WALL         0x60 // also rotator center and inactive players - index contains rotator index
+#define CELL_TURNSTILE    0x40 // turnstile wings - index contains the direction
+#define CELL_WALL         0x60 // also turnstile center and inactive players - index contains turnstile index
 #define CELL_EXIT         0xE0 // wall+hole
 
 #define INDEX_MASK        0x1F
@@ -319,53 +319,53 @@ struct State
 			assert(0);
 #endif
 		}
-		else // rotator
+		else // turnstile
 		{
-#if (ROTATORS > 0)
-			assert(dcell == CELL_ROTATOR);
-			char rd = index; // direction of pushed blade from rotator
+#if (TURNSTILES > 0)
+			assert(dcell == CELL_TURNSTILE);
+			char rd = index; // direction of pushed wing from turnstile
 			if (rd%2 == action%2)
 				return -1;
 			char dd = (char)action - rd; // rotation direction: 1=clockwise, -1=CCW
 			if (dd<0) dd+=4;
-			char rd2 = rd^2;          // direction from blade to rotator
-			uint8_t rx = n.x+DX[rd2]; // rotator center coords
+			char rd2 = rd^2;          // direction from wing to turnstile
+			uint8_t rx = n.x+DX[rd2]; // turnstile center coords
 			uint8_t ry = n.y+DY[rd2];
 			// check for obstacles
-			bool oldFlippers[4], newFlippers[4];
+			bool oldWings[4], newWings[4];
 			for (char d=0;d<4;d++)
 			{
 				uint8_t d2 = (d+dd)&3; // rotated direction
-				if ((map[ry+DY[d]][rx+DX[d]] & ~CELL_HOLE) == (CELL_ROTATOR | d))
+				if ((map[ry+DY[d]][rx+DX[d]] & ~CELL_HOLE) == (CELL_TURNSTILE | d))
 				{
 					if (UPDATE_UNCOMPRESSED)
-						oldFlippers[d ] =
-						newFlippers[d2] = true;
+						oldWings[d ] =
+						newWings[d2] = true;
 					if (map[ry+DY[d]+DY[d2]][rx+DX[d]+DX[d2]] & ~CELL_HOLE)                   // no object/wall in corner
 						return -1;
 					uint8_t d2m = 
 						map[ry+      DY[d2]][rx+      DX[d2]] & ~CELL_HOLE;
-					if (d2m != (CELL_ROTATOR | d2) &&       // no object in destination (other than part of the rotator)
+					if (d2m != (CELL_TURNSTILE | d2) &&       // no object in destination (other than part of the turnstile)
 					    d2m != CELL_EMPTY)
 						return -1;
 				}
 				else
 					if (UPDATE_UNCOMPRESSED)
-						oldFlippers[d ] =
-						newFlippers[d2] = false;
+						oldWings[d ] =
+						newWings[d2] = false;
 			}
 			if (UPDATE_UNCOMPRESSED)
 			{
 				// rotate it
 				for (char d=0;d<4;d++)
-					if (!oldFlippers[d] && newFlippers[d])
+					if (!oldWings[d] && newWings[d])
 					{
 						uint8_t* m = &map[ry+DY[d]][rx+DX[d]];
 						assert((*m & ~CELL_HOLE)==0);
-						*m |= CELL_ROTATOR | d;
+						*m |= CELL_TURNSTILE | d;
 					}
 					else
-					if (oldFlippers[d] && !newFlippers[d])
+					if (oldWings[d] && !newWings[d])
 						map[ry+DY[d]][rx+DX[d]] &= CELL_HOLE;
 				if (map[n.y][n.x]) // full push
 				{
@@ -385,8 +385,8 @@ struct State
 					rotateCCW(rotIndex);
 				if (!UPDATE_UNCOMPRESSED)
 				{
-					char bd = (rd2+dd)&3; // direction of blade behind player from rotator
-					if (map[ry+DY[bd]][rx+DX[bd]] == (CELL_ROTATOR | bd)) // full push
+					char bd = (rd2+dd)&3; // direction of wing behind player from turnstile
+					if (map[ry+DY[bd]][rx+DX[bd]] == (CELL_TURNSTILE | bd)) // full push
 					{
 						n.x += DX[action];
 						n.y += DY[action];
@@ -558,7 +558,7 @@ struct State
 	{
 		for (int y=0;y<Y;y++)
 			for (int x=0;x<X;x++)
-				map[y][x] &= ~0x1F; // clear blocks and rotators
+				map[y][x] &= ~0x1F; // clear blocks and turnstiles
 		#if (PLAYERS>1)
 		for (int p=1; p<PLAYERS; p++)
 			map[players[p].y][players[p].x] = 0;
@@ -581,15 +581,15 @@ struct State
 							level[y][x] = 'X';
 						else
 						{
-							bool rotatorCenter = false;
+							bool turnstileCenter = false;
 							if (x>0 && x<X-1 && y>0 && y<Y-1)
 								for (int d=0; d<4; d++)
-									if (map[y+DY[d]][x+DX[d]]==(CELL_ROTATOR | d))
-										rotatorCenter = true;
-							level[y][x] = rotatorCenter	? '+' : '#';
+									if (map[y+DY[d]][x+DX[d]]==(CELL_TURNSTILE | d))
+										turnstileCenter = true;
+							level[y][x] = turnstileCenter ? '+' : '#';
 						}
 						break;
-					case CELL_ROTATOR:
+					case CELL_TURNSTILE:
 						level[y][x] = DR[c & INDEX_MASK];
 						break;
 					case CELL_BLOCK:

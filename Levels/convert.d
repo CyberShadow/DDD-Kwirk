@@ -24,12 +24,12 @@ void main()
 					userOptions ~= line;
 			}
 
-			enum Cell { Floor, Wall, Hole, Exit, Player, RotatorUp, RotatorRight, RotatorDown, RotatorLeft, RotatorCenter, Block }
+			enum Cell { Floor, Wall, Hole, Exit, Player, TurnstileUp, TurnstileRight, TurnstileDown, TurnstileLeft, TurnstileCenter, Block }
 			struct Block { int x, y, w, h, ix, iy, index; int opCmp(Block* other) { return w!=other.w ? w-other.w : h!=other.h ? h-other.h : y!=other.y ? y-other.y : x-other.x; } }
-			enum RotatorType { Uni, Angular, Straight, T, Plus, Max }
-			const string rotatorTypeNames[RotatorType.Max] = ["Uni", "Angular", "Straight", "T", "Plus"];
-			//const int rotatorBits[RotatorType.Max] = [2, 2, 1, 2, 0];
-			struct Rotator { int x, y; RotatorType type; }
+			enum TurnstileType { Uni, RightAngle, Straight, Tri, Plus, Max }
+			const string turnstileTypeNames[TurnstileType.Max] = ["Uni", "RightAngle", "Straight", "Tri", "Plus"];
+			//const int turnstileBits[TurnstileType.Max] = [2, 2, 1, 2, 0];
+			struct Turnstile { int x, y; TurnstileType type; }
 			struct Hole { int x, y; }
 			struct Player { int x, y; }
 
@@ -53,7 +53,7 @@ void main()
 			int exitX, exitY;
 			bool[char.max] seenBlocks;
 			Block[] blocks;
-			Rotator[] rotators;
+			Turnstile[] turnstiles;
 			Hole[] holes;
 			Player[] players;
 		
@@ -119,65 +119,65 @@ void main()
 							}
 							break;
 						case '^':
-							map[y][x] = Cell.RotatorUp;
+							map[y][x] = Cell.TurnstileUp;
 							break;
 						case '>':
-							map[y][x] = Cell.RotatorRight;
+							map[y][x] = Cell.TurnstileRight;
 							break;
 						case '`':
-							map[y][x] = Cell.RotatorDown;
+							map[y][x] = Cell.TurnstileDown;
 							break;
 						case '<':
-							map[y][x] = Cell.RotatorLeft;
+							map[y][x] = Cell.TurnstileLeft;
 							break;
 						case 'A': case 'B': case 'C': case 'D': case 'E': case 'F': case 'G': case 'H': case 'I': case 'J': case 'K': case 'L': case 'M': case 'N':           case 'P': case 'Q': case 'R': case 'S': case 'T': case 'U': case 'V': case 'W': case 'X': case 'Y': case 'Z':
 						{
 							bool isCenter;
-							ubyte[] neighbors;
+							ubyte[] wings;
 							for (int d=0; d<4; d++)
 							{
 								char c2 = level[y+DY[d]][x+DX[d]];
 								if (c2 == DR[d])
 									isCenter = true;
 								if (c2 == c || c2 == DR[d])
-									neighbors ~= d;
+									wings ~= d;
 							}
-							if (!neighbors.length)
-								throw new Exception("Zero-blade rotator?");
-							if (neighbors.length>1 || isCenter) // are we on center?
+							if (!wings.length)
+								throw new Exception("Zero-wing turnstile?");
+							if (wings.length>1 || isCenter) // are we on center?
 							{
-								map[y][x] = Cell.RotatorCenter;
-								indices[y][x] = rotators.length;
-								RotatorType type;
-								switch (neighbors.length)
+								map[y][x] = Cell.TurnstileCenter;
+								indices[y][x] = turnstiles.length;
+								TurnstileType type;
+								switch (wings.length)
 								{
 									case 1:
-										type = RotatorType.Uni;
+										type = TurnstileType.Uni;
 										break;
 									case 2:
-										if (neighbors[1]-neighbors[0]==2)
-											type = RotatorType.Straight;
+										if (wings[1]-wings[0]==2)
+											type = TurnstileType.Straight;
 										else
-											type = RotatorType.Angular;
+											type = TurnstileType.RightAngle;
 										break;
 									case 3:
-										type = RotatorType.T;
+										type = TurnstileType.Tri;
 										break;
 									case 4:
-										type = RotatorType.Plus;
+										type = TurnstileType.Plus;
 										break;
 									default:
-										throw new Exception("Bad rotator neighbors: " ~ format("%s", neighbors));
+										throw new Exception("Bad turnstile wings: " ~ format("%s", wings));
 								}
-								rotators ~= Rotator(x, y, type);
+								turnstiles ~= Turnstile(x, y, type);
 							}
 							else
-								switch (neighbors[0]^2)
+								switch (wings[0]^2)
 								{
-									case 0: map[y][x] = Cell.RotatorUp   ; break;
-									case 1: map[y][x] = Cell.RotatorRight; break;
-									case 2: map[y][x] = Cell.RotatorDown ; break;
-									case 3: map[y][x] = Cell.RotatorLeft ; break;
+									case 0: map[y][x] = Cell.TurnstileUp   ; break;
+									case 1: map[y][x] = Cell.TurnstileRight; break;
+									case 2: map[y][x] = Cell.TurnstileDown ; break;
+									case 3: map[y][x] = Cell.TurnstileLeft ; break;
 								}
 							break;
 						}
@@ -188,8 +188,8 @@ void main()
 			// 5-bit index limits
 			if (blocks.length > 32)
 				throw new Exception("Too many blocks");
-			if (rotators.length > 32)
-				throw new Exception("Too many rotators");
+			if (turnstiles.length > 32)
+				throw new Exception("Too many turnstiles");
 
 			// sort blocks by size
 			foreach (i, ref block; blocks)
@@ -221,7 +221,7 @@ void main()
 			options ~= format("Y %d", height);
 			options ~= format("PLAYERS %d", players.length);
 			options ~= format("BLOCKS %d", blocks.length);
-			options ~= format("ROTATORS %d", rotators.length);
+			options ~= format("TURNSTILES %d", turnstiles.length);
 			options ~= format("HOLES %d", holes.length);
 			options ~= format("EXIT_X %d", exitX);
 			options ~= format("EXIT_Y %d", exitY);
@@ -252,31 +252,31 @@ void main()
 				fields ~= Field(log2(width -2-(block.w-1)), format("block%dx", i), block.x-1);
 				fields ~= Field(log2(height-2-(block.h-1)), format("block%dy", i), block.y-1);
 			}
-			foreach (i, rotator; rotators)
+			foreach (i, turnstile; turnstiles)
 			{
 				bool[4] b;
-				b[0] = map[rotator.y-1][rotator.x  ] == Cell.RotatorUp;
-				b[1] = map[rotator.y  ][rotator.x+1] == Cell.RotatorRight;
-				b[2] = map[rotator.y+1][rotator.x  ] == Cell.RotatorDown;
-				b[3] = map[rotator.y  ][rotator.x-1] == Cell.RotatorLeft;
-				switch (rotator.type)
+				b[0] = map[turnstile.y-1][turnstile.x  ] == Cell.TurnstileUp;
+				b[1] = map[turnstile.y  ][turnstile.x+1] == Cell.TurnstileRight;
+				b[2] = map[turnstile.y+1][turnstile.x  ] == Cell.TurnstileDown;
+				b[3] = map[turnstile.y  ][turnstile.x-1] == Cell.TurnstileLeft;
+				switch (turnstile.type)
 				{
-					case RotatorType.Uni:
-						fields ~= Field(1, format("rotator%dab", i), b[0] || b[1]);
-						fields ~= Field(1, format("rotator%dac", i), b[0] || b[2]);
+					case TurnstileType.Uni:
+						fields ~= Field(1, format("turnstile%dab", i), b[0] || b[1]);
+						fields ~= Field(1, format("turnstile%dac", i), b[0] || b[2]);
 						break;
-					case RotatorType.Angular:
-						fields ~= Field(1, format("rotator%da", i), b[0]);
-						fields ~= Field(1, format("rotator%db", i), b[1]);
+					case TurnstileType.RightAngle:
+						fields ~= Field(1, format("turnstile%da", i), b[0]);
+						fields ~= Field(1, format("turnstile%db", i), b[1]);
 						break;
-					case RotatorType.Straight:
-						fields ~= Field(1, format("rotator%da", i), b[0]);
+					case TurnstileType.Straight:
+						fields ~= Field(1, format("turnstile%da", i), b[0]);
 						break;
-					case RotatorType.T:
-						fields ~= Field(1, format("rotator%dab", i), b[0] && b[1]);
-						fields ~= Field(1, format("rotator%dac", i), b[0] && b[2]);
+					case TurnstileType.Tri:
+						fields ~= Field(1, format("turnstile%dab", i), b[0] && b[1]);
+						fields ~= Field(1, format("turnstile%dac", i), b[0] && b[2]);
 						break;
-					case RotatorType.Plus:
+					case TurnstileType.Plus:
 						// Stateless!
 						break;
 				}
@@ -372,23 +372,23 @@ void main()
 						case Cell.Exit:
 							name = "CELL_EXIT";
 							break;
-						case Cell.RotatorUp:
-							name = "CELL_ROTATOR";
+						case Cell.TurnstileUp:
+							name = "CELL_TURNSTILE";
 							index = "UP";
 							break;
-						case Cell.RotatorRight:
-							name = "CELL_ROTATOR";
+						case Cell.TurnstileRight:
+							name = "CELL_TURNSTILE";
 							index = "RIGHT";
 							break;
-						case Cell.RotatorDown:
-							name = "CELL_ROTATOR";
+						case Cell.TurnstileDown:
+							name = "CELL_TURNSTILE";
 							index = "DOWN";
 							break;
-						case Cell.RotatorLeft:
-							name = "CELL_ROTATOR";
+						case Cell.TurnstileLeft:
+							name = "CELL_TURNSTILE";
 							index = "LEFT";
 							break;
-						case Cell.RotatorCenter:
+						case Cell.TurnstileCenter:
 							name = "CELL_WALL";
 							index = .toString(indices[y][x]);
 							break;
@@ -399,9 +399,9 @@ void main()
 					}
 					
 					if (index)
-						cells ~= format("%-12s | %-5s", name, index);
+						cells ~= format("%-14s | %-5s", name, index);
 					else
-						cells ~= format("%-12s        ", name);
+						cells ~= format("%-14s        ", name);
 				}
 				output ~= "		{ " ~ cells.join(", ") ~ " },";
 			}
@@ -454,35 +454,35 @@ void main()
 						case Cell.Exit:
 							name = "CELL_EXIT";
 							break;
-						case Cell.RotatorUp:
-						case Cell.RotatorRight:
-						case Cell.RotatorDown:
-						case Cell.RotatorLeft:
-							int d = cast(int)(el-Cell.RotatorUp);
-							if (rotators[indices[y-DY[d]][x-DX[d]]].type == RotatorType.Plus) // since Plus rotators are stateless, place the blades in the blanked template
+						case Cell.TurnstileUp:
+						case Cell.TurnstileRight:
+						case Cell.TurnstileDown:
+						case Cell.TurnstileLeft:
+							int d = cast(int)(el-Cell.TurnstileUp);
+							if (turnstiles[indices[y-DY[d]][x-DX[d]]].type == TurnstileType.Plus) // since Plus turnstiles are stateless, place the wings in the blanked template
 							{
-								name = "CELL_ROTATOR";
+								name = "CELL_TURNSTILE";
 								switch (el)
 								{
-									case Cell.RotatorUp:    index = "UP"   ; break;
-									case Cell.RotatorRight: index = "RIGHT"; break;
-									case Cell.RotatorDown:  index = "DOWN" ; break;
-									case Cell.RotatorLeft:  index = "LEFT" ; break;
+									case Cell.TurnstileUp:    index = "UP"   ; break;
+									case Cell.TurnstileRight: index = "RIGHT"; break;
+									case Cell.TurnstileDown:  index = "DOWN" ; break;
+									case Cell.TurnstileLeft:  index = "LEFT" ; break;
 								}
 							}
 							else
 								name = "CELL_EMPTY";
 							break;
-						case Cell.RotatorCenter:
+						case Cell.TurnstileCenter:
 							name = "CELL_WALL";
 							index = .toString(indices[y][x]);
 							break;
 					}
 					
 					if (index)
-						cells ~= format("%-12s | %-5s", name, index);
+						cells ~= format("%-14s | %-5s", name, index);
 					else
-						cells ~= format("%-12s        ", name);
+						cells ~= format("%-14s        ", name);
 				}
 				output ~= "		{ " ~ cells.join(", ") ~ " },";
 			}
@@ -534,22 +534,22 @@ void main()
 				output ~= "	else";
 				output ~= "		sprintf(s+strlen(s), \"block"~.toString(i)~"["~.toString(block.w)~","~.toString(block.h)~"]=(%d,%d) \", block"~.toString(i)~"x+1, block"~.toString(i)~"y+1);";
 			}
-			foreach (i, rotator; rotators)
-				switch (rotator.type)
+			foreach (i, turnstile; turnstiles)
+				switch (turnstile.type)
 				{
-					case RotatorType.Uni:
-						output ~= "	sprintf(s+strlen(s), \"rotator"~.toString(i)~"["~rotatorTypeNames[rotator.type]~"@"~.toString(rotator.x)~","~.toString(rotator.y)~"]=%d%d \", rotator"~.toString(i)~"ab, rotator"~.toString(i)~"ac);"; 
+					case TurnstileType.Uni:
+						output ~= "	sprintf(s+strlen(s), \"turnstile"~.toString(i)~"["~turnstileTypeNames[turnstile.type]~"@"~.toString(turnstile.x)~","~.toString(turnstile.y)~"]=%d%d \", turnstile"~.toString(i)~"ab, turnstile"~.toString(i)~"ac);"; 
 						break;
-					case RotatorType.Angular:
-						output ~= "	sprintf(s+strlen(s), \"rotator"~.toString(i)~"["~rotatorTypeNames[rotator.type]~"@"~.toString(rotator.x)~","~.toString(rotator.y)~"]=%d%d \", rotator"~.toString(i)~"a, rotator"~.toString(i)~"b);"; 
+					case TurnstileType.RightAngle:
+						output ~= "	sprintf(s+strlen(s), \"turnstile"~.toString(i)~"["~turnstileTypeNames[turnstile.type]~"@"~.toString(turnstile.x)~","~.toString(turnstile.y)~"]=%d%d \", turnstile"~.toString(i)~"a, turnstile"~.toString(i)~"b);"; 
 						break;
-					case RotatorType.Straight:
-						output ~= "	sprintf(s+strlen(s), \"rotator"~.toString(i)~"["~rotatorTypeNames[rotator.type]~"@"~.toString(rotator.x)~","~.toString(rotator.y)~"]=%d \", rotator"~.toString(i)~"a);"; 
+					case TurnstileType.Straight:
+						output ~= "	sprintf(s+strlen(s), \"turnstile"~.toString(i)~"["~turnstileTypeNames[turnstile.type]~"@"~.toString(turnstile.x)~","~.toString(turnstile.y)~"]=%d \", turnstile"~.toString(i)~"a);"; 
 						break;
-					case RotatorType.T:
-						output ~= "	sprintf(s+strlen(s), \"rotator"~.toString(i)~"["~rotatorTypeNames[rotator.type]~"@"~.toString(rotator.x)~","~.toString(rotator.y)~"]=%d%d \", rotator"~.toString(i)~"ab, rotator"~.toString(i)~"ac);"; 
+					case TurnstileType.Tri:
+						output ~= "	sprintf(s+strlen(s), \"turnstile"~.toString(i)~"["~turnstileTypeNames[turnstile.type]~"@"~.toString(turnstile.x)~","~.toString(turnstile.y)~"]=%d%d \", turnstile"~.toString(i)~"ab, turnstile"~.toString(i)~"ac);"; 
 						break;
-					case RotatorType.Plus:
+					case TurnstileType.Plus:
 						break;
 				}
 			if (holes)
@@ -612,44 +612,44 @@ void main()
 				output ~= format("	}");
 			}
 
-			foreach (i, rotator; rotators)
+			foreach (i, turnstile; turnstiles)
 			{
-				output ~= format("	{ // rotator %d (%s) at %dx%d", i, rotatorTypeNames[rotator.type], rotator.x, rotator.y);
-				switch (rotator.type)
+				output ~= format("	{ // turnstile %d (%s) at %dx%d", i, turnstileTypeNames[turnstile.type], turnstile.x, turnstile.y);
+				switch (turnstile.type)
 				{
-					case RotatorType.Uni:
-						output ~= format("		uint8_t ab = s->rotator%dab-1;", i);
-						output ~= format("		uint8_t ac = s->rotator%dac-1;", i);
-						output ~= format("		map[%2d][%2d] |= (~ab & ~ac) & (CELL_ROTATOR | UP   );", rotator.y+DY[0], rotator.x+DX[0]);
-						output ~= format("		map[%2d][%2d] |= (~ab &  ac) & (CELL_ROTATOR | RIGHT);", rotator.y+DY[1], rotator.x+DX[1]);
-						output ~= format("		map[%2d][%2d] |= ( ab & ~ac) & (CELL_ROTATOR | DOWN );", rotator.y+DY[2], rotator.x+DX[2]);
-						output ~= format("		map[%2d][%2d] |= ( ab &  ac) & (CELL_ROTATOR | LEFT );", rotator.y+DY[3], rotator.x+DX[3]);
+					case TurnstileType.Uni:
+						output ~= format("		uint8_t ab = s->turnstile%dab-1;", i);
+						output ~= format("		uint8_t ac = s->turnstile%dac-1;", i);
+						output ~= format("		map[%2d][%2d] |= (~ab & ~ac) & (CELL_TURNSTILE | UP   );", turnstile.y+DY[0], turnstile.x+DX[0]);
+						output ~= format("		map[%2d][%2d] |= (~ab &  ac) & (CELL_TURNSTILE | RIGHT);", turnstile.y+DY[1], turnstile.x+DX[1]);
+						output ~= format("		map[%2d][%2d] |= ( ab & ~ac) & (CELL_TURNSTILE | DOWN );", turnstile.y+DY[2], turnstile.x+DX[2]);
+						output ~= format("		map[%2d][%2d] |= ( ab &  ac) & (CELL_TURNSTILE | LEFT );", turnstile.y+DY[3], turnstile.x+DX[3]);
 						break;
-					case RotatorType.Angular:
-						output ~= format("		uint8_t a = s->rotator%da-1;", i);
-						output ~= format("		uint8_t b = s->rotator%db-1;", i);
-						output ~= format("		map[%2d][%2d] |= (~a) & (CELL_ROTATOR | UP   );", rotator.y+DY[0], rotator.x+DX[0]);
-						output ~= format("		map[%2d][%2d] |= (~b) & (CELL_ROTATOR | RIGHT);", rotator.y+DY[1], rotator.x+DX[1]);
-						output ~= format("		map[%2d][%2d] |= ( a) & (CELL_ROTATOR | DOWN );", rotator.y+DY[2], rotator.x+DX[2]);
-						output ~= format("		map[%2d][%2d] |= ( b) & (CELL_ROTATOR | LEFT );", rotator.y+DY[3], rotator.x+DX[3]);
+					case TurnstileType.RightAngle:
+						output ~= format("		uint8_t a = s->turnstile%da-1;", i);
+						output ~= format("		uint8_t b = s->turnstile%db-1;", i);
+						output ~= format("		map[%2d][%2d] |= (~a) & (CELL_TURNSTILE | UP   );", turnstile.y+DY[0], turnstile.x+DX[0]);
+						output ~= format("		map[%2d][%2d] |= (~b) & (CELL_TURNSTILE | RIGHT);", turnstile.y+DY[1], turnstile.x+DX[1]);
+						output ~= format("		map[%2d][%2d] |= ( a) & (CELL_TURNSTILE | DOWN );", turnstile.y+DY[2], turnstile.x+DX[2]);
+						output ~= format("		map[%2d][%2d] |= ( b) & (CELL_TURNSTILE | LEFT );", turnstile.y+DY[3], turnstile.x+DX[3]);
 						break;
-					case RotatorType.Straight:
-						output ~= format("		uint8_t a = s->rotator%da-1;", i);
-						output ~= format("		map[%2d][%2d] |= (~a) & (CELL_ROTATOR | UP   );", rotator.y+DY[0], rotator.x+DX[0]);
-						output ~= format("		map[%2d][%2d] |= ( a) & (CELL_ROTATOR | RIGHT);", rotator.y+DY[1], rotator.x+DX[1]);
-						output ~= format("		map[%2d][%2d] |= (~a) & (CELL_ROTATOR | DOWN );", rotator.y+DY[2], rotator.x+DX[2]);
-						output ~= format("		map[%2d][%2d] |= ( a) & (CELL_ROTATOR | LEFT );", rotator.y+DY[3], rotator.x+DX[3]);
+					case TurnstileType.Straight:
+						output ~= format("		uint8_t a = s->turnstile%da-1;", i);
+						output ~= format("		map[%2d][%2d] |= (~a) & (CELL_TURNSTILE | UP   );", turnstile.y+DY[0], turnstile.x+DX[0]);
+						output ~= format("		map[%2d][%2d] |= ( a) & (CELL_TURNSTILE | RIGHT);", turnstile.y+DY[1], turnstile.x+DX[1]);
+						output ~= format("		map[%2d][%2d] |= (~a) & (CELL_TURNSTILE | DOWN );", turnstile.y+DY[2], turnstile.x+DX[2]);
+						output ~= format("		map[%2d][%2d] |= ( a) & (CELL_TURNSTILE | LEFT );", turnstile.y+DY[3], turnstile.x+DX[3]);
 						break;
-					case RotatorType.T:
-						output ~= format("		uint8_t ab = s->rotator%dab-1;", i);
-						output ~= format("		uint8_t ac = s->rotator%dac-1;", i);
-						output ~= format("		map[%2d][%2d] |= (~ab | ~ac) & (CELL_ROTATOR | UP   );", rotator.y+DY[0], rotator.x+DX[0]);
-						output ~= format("		map[%2d][%2d] |= (~ab |  ac) & (CELL_ROTATOR | RIGHT);", rotator.y+DY[1], rotator.x+DX[1]);
-						output ~= format("		map[%2d][%2d] |= ( ab | ~ac) & (CELL_ROTATOR | DOWN );", rotator.y+DY[2], rotator.x+DX[2]);
-						output ~= format("		map[%2d][%2d] |= ( ab |  ac) & (CELL_ROTATOR | LEFT );", rotator.y+DY[3], rotator.x+DX[3]);
+					case TurnstileType.Tri:
+						output ~= format("		uint8_t ab = s->turnstile%dab-1;", i);
+						output ~= format("		uint8_t ac = s->turnstile%dac-1;", i);
+						output ~= format("		map[%2d][%2d] |= (~ab | ~ac) & (CELL_TURNSTILE | UP   );", turnstile.y+DY[0], turnstile.x+DX[0]);
+						output ~= format("		map[%2d][%2d] |= (~ab |  ac) & (CELL_TURNSTILE | RIGHT);", turnstile.y+DY[1], turnstile.x+DX[1]);
+						output ~= format("		map[%2d][%2d] |= ( ab | ~ac) & (CELL_TURNSTILE | DOWN );", turnstile.y+DY[2], turnstile.x+DX[2]);
+						output ~= format("		map[%2d][%2d] |= ( ab |  ac) & (CELL_TURNSTILE | LEFT );", turnstile.y+DY[3], turnstile.x+DX[3]);
 						break;
-					case RotatorType.Plus:
-						output ~= format("		// Stateless - the blades are already in the blanked template");
+					case TurnstileType.Plus:
+						output ~= format("		// Stateless - the wings are already in the blanked template");
 						break;
 				}
 				output ~= format("	}");
@@ -844,35 +844,35 @@ void main()
 			
 			// **********************************************************************************************************
 
-			if (rotators)
+			if (turnstiles)
 			{
 				output ~= "INLINE void State::rotateCW(int index)";
 				output ~= "{";
 				output ~= "	switch (index)";
 				output ~= "	{";
-				foreach (i, rotator; rotators)
+				foreach (i, turnstile; turnstiles)
 				{
 					output ~= format("		case %d:", i);
 					output ~= format("		{");
-					switch (rotator.type)
+					switch (turnstile.type)
 					{
-						case RotatorType.Uni:
-							output ~= format("			compressed.rotator%dac ^= 1;", i);
-							output ~= format("			compressed.rotator%dab ^= compressed.rotator%dac;", i, i);
+						case TurnstileType.Uni:
+							output ~= format("			compressed.turnstile%dac ^= 1;", i);
+							output ~= format("			compressed.turnstile%dab ^= compressed.turnstile%dac;", i, i);
 							break;
-						case RotatorType.Angular:
-							output ~= format("			bool b = compressed.rotator%db;", i);
-							output ~= format("			compressed.rotator%db = compressed.rotator%da;", i, i);
-							output ~= format("			compressed.rotator%da = !b;", i);
+						case TurnstileType.RightAngle:
+							output ~= format("			bool b = compressed.turnstile%db;", i);
+							output ~= format("			compressed.turnstile%db = compressed.turnstile%da;", i, i);
+							output ~= format("			compressed.turnstile%da = !b;", i);
 							break;
-						case RotatorType.Straight:
-							output ~= format("			compressed.rotator%da ^= 1;", i);
+						case TurnstileType.Straight:
+							output ~= format("			compressed.turnstile%da ^= 1;", i);
 							break;
-						case RotatorType.T:
-							output ~= format("			compressed.rotator%dab ^= compressed.rotator%dac;", i, i);
-							output ~= format("			compressed.rotator%dac ^= 1;", i);
+						case TurnstileType.Tri:
+							output ~= format("			compressed.turnstile%dab ^= compressed.turnstile%dac;", i, i);
+							output ~= format("			compressed.turnstile%dac ^= 1;", i);
 							break;
-						case RotatorType.Plus:
+						case TurnstileType.Plus:
 							break;
 					}
 					output ~= format("			break;");
@@ -886,29 +886,29 @@ void main()
 				output ~= "{";
 				output ~= "	switch (index)";
 				output ~= "	{";
-				foreach (i, rotator; rotators)
+				foreach (i, turnstile; turnstiles)
 				{
 					output ~= format("		case %d:", i);
 					output ~= format("		{");
-					switch (rotator.type)
+					switch (turnstile.type)
 					{
-						case RotatorType.Uni:
-							output ~= format("			compressed.rotator%dab ^= compressed.rotator%dac;", i, i);
-							output ~= format("			compressed.rotator%dac ^= 1;", i);
+						case TurnstileType.Uni:
+							output ~= format("			compressed.turnstile%dab ^= compressed.turnstile%dac;", i, i);
+							output ~= format("			compressed.turnstile%dac ^= 1;", i);
 							break;
-						case RotatorType.Angular:
-							output ~= format("			bool a = compressed.rotator%da;", i);
-							output ~= format("			compressed.rotator%da = compressed.rotator%db;", i, i);
-							output ~= format("			compressed.rotator%db = !a;", i);
+						case TurnstileType.RightAngle:
+							output ~= format("			bool a = compressed.turnstile%da;", i);
+							output ~= format("			compressed.turnstile%da = compressed.turnstile%db;", i, i);
+							output ~= format("			compressed.turnstile%db = !a;", i);
 							break;
-						case RotatorType.Straight:
-							output ~= format("			compressed.rotator%da ^= 1;", i);
+						case TurnstileType.Straight:
+							output ~= format("			compressed.turnstile%da ^= 1;", i);
 							break;
-						case RotatorType.T:
-							output ~= format("			compressed.rotator%dac ^= 1;", i);
-							output ~= format("			compressed.rotator%dab ^= compressed.rotator%dac;", i, i);
+						case TurnstileType.Tri:
+							output ~= format("			compressed.turnstile%dac ^= 1;", i);
+							output ~= format("			compressed.turnstile%dab ^= compressed.turnstile%dac;", i, i);
 							break;
-						case RotatorType.Plus:
+						case TurnstileType.Plus:
 							break;
 					}
 					output ~= format("			break;");

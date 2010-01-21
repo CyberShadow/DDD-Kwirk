@@ -42,12 +42,13 @@ const char* actionNames[] = {"Up", "Right", "Down", "Left", "Switch", "None"};
 
 enum
 {
-	DELAY_MOVE   =  9, // 1+8
-	DELAY_PUSH   = 10, // 2+8
-	DELAY_FILL   = 26,
-	DELAY_ROTATE = 12,
-	DELAY_SWITCH = 30,
-	DELAY_EXIT   =  1, // fake delay to prevent grouping into one frame group
+	DELAY_MOVE         =  9, // 1+8
+	DELAY_PUSH         = 10, // 2+8
+	DELAY_FILL         = 26,
+	DELAY_ROTATE       = 12,
+	DELAY_SWITCH       = 30,
+	DELAY_SWITCH_AGAIN = 32,
+	DELAY_EXIT         =  1, // fake delay to prevent grouping into one frame group
 };
 
 const char DX[4] = {0, 1, 0, -1};
@@ -83,6 +84,9 @@ struct State
 	enum { activePlayer = 0 };
 #else
 	uint8_t activePlayer;
+#endif
+#if (PLAYERS>2)
+	bool justSwitched;
 #endif
 	
 	CompressedState compressed;
@@ -171,7 +175,16 @@ struct State
 			if (playersLeft())
 			{
 				switchPlayers<UPDATE_UNCOMPRESSED, UPDATE_COMPRESSED>();
+#if (PLAYERS>2)
+				int res = justSwitched ? DELAY_SWITCH_AGAIN : DELAY_SWITCH;
+				if (UPDATE_UNCOMPRESSED)
+					justSwitched = true;
+				if (UPDATE_COMPRESSED)
+					compressed.justSwitched = true;
+				return res;
+#else
 				return DELAY_SWITCH;
+#endif
 			}
 			else
 				return -1;
@@ -186,6 +199,7 @@ struct State
 			players[activePlayer] = n;
 			if (UPDATE_COMPRESSED)
 				updatePlayer(EXIT_X, EXIT_Y);
+			clearJustSwitched<UPDATE_UNCOMPRESSED, UPDATE_COMPRESSED>();
 			if (playersLeft())
 			{
 				switchPlayers<UPDATE_UNCOMPRESSED, UPDATE_COMPRESSED>();
@@ -203,6 +217,7 @@ struct State
 				players[activePlayer] = n;
 			if (UPDATE_COMPRESSED)
 				updatePlayer(n.x, n.y);
+			clearJustSwitched<UPDATE_UNCOMPRESSED, UPDATE_COMPRESSED>();
 			return DELAY_MOVE;
 		}
 		uint8_t index = dmap & INDEX_MASK;
@@ -273,6 +288,7 @@ struct State
 				removeBlock(index);
 			if (UPDATE_UNCOMPRESSED)
 				removeUncompressedBlock(index);
+			clearJustSwitched<UPDATE_UNCOMPRESSED, UPDATE_COMPRESSED>();
 			return DELAY_PUSH + DELAY_FILL;
 		noDrop:
 #endif
@@ -292,6 +308,7 @@ struct State
 				if (UPDATE_UNCOMPRESSED)
 					sortUncompressedBlockDown(index, x1, y1);
 			}
+			clearJustSwitched<UPDATE_UNCOMPRESSED, UPDATE_COMPRESSED>();
 			return DELAY_PUSH;
 #else
 			assert(0);
@@ -380,6 +397,17 @@ struct State
 #endif					
 		}
 		return -1; // unreachable
+	}
+
+	template <bool UPDATE_UNCOMPRESSED, bool UPDATE_COMPRESSED>
+	INLINE void clearJustSwitched()
+	{
+#if (PLAYERS>2)
+		if (UPDATE_UNCOMPRESSED)
+			justSwitched = false;
+		if (UPDATE_COMPRESSED)
+			compressed.justSwitched = false;
+#endif
 	}
 
 	void removeUncompressedBlock(int index)
@@ -686,7 +714,7 @@ void expandChildren(FRAME frame, const State* state)
 			res = newState.perform<true, false>(SWITCH);
 		else
 			res = newState.perform<false, true>(SWITCH);
-		assert(res == DELAY_SWITCH);
+		assert(res == DELAY_SWITCH || res == DELAY_SWITCH_AGAIN);
 		step.action = SWITCH;
 		if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_UNCOMPRESSED)
 			CHILD_HANDLER::handleChild(state, frame, step, &newState           , frame + dist * DELAY_MOVE + DELAY_SWITCH);
@@ -758,14 +786,13 @@ void writeSolution(const State* initialState, Step steps[], int stepNr)
 	unsigned int totalSteps = 0;
 	State state = *initialState;
 	FRAME frame = 0;
-	while (stepNr)
+	while (stepNr>=0)
 	{
-		fprintf(f, "%s\n", steps[stepNr].toString());
+		fprintf(f, "[%u] %s\n", frame, steps[stepNr].toString());
 		fprintf(f, "%s", state.toString());
-		totalSteps += (steps[stepNr].action<SWITCH ? 1 : 0) + replayStep(&state, &frame, steps[--stepNr]);
+		if (--stepNr>=0)
+			totalSteps += (steps[stepNr].action<SWITCH ? 1 : 0) + replayStep(&state, &frame, steps[stepNr]);
 	}
-	// last one
-	fprintf(f, "%s\n%s", steps[0].toString(), state.toString());
 	fprintf(f, "Total steps: %u", totalSteps);
 	fclose(f);
 }

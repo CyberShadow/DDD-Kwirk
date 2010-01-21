@@ -240,6 +240,8 @@ void main()
 
 			if (players.length>1)
 				fields ~= Field(log2(players.length), "activePlayer", 0);
+			if (players.length>2)
+				fields ~= Field(1, "justSwitched", 0);
 			foreach (i, player; players)
 			{
 				fields ~= Field(xBits, format("player%dx", i), player.x-1);
@@ -412,6 +414,8 @@ void main()
 			
 			if (players.length > 1)
 				output ~= "	0, // activePlayer"; 
+			if (players.length>2)
+				output ~= "	false, // justSwitched"; 
 
 			output ~= "	{ // compressed";
 			foreach (slot; slots)
@@ -519,6 +523,8 @@ void main()
 
 			if (players.length > 1)
 				output ~= "	sprintf(s+strlen(s), \"activePlayer=%d \", activePlayer);";
+			if (players.length > 2)
+				output ~= "	sprintf(s+strlen(s), \"justSwitched=%d \", justSwitched);";
 			foreach (i, player; players)
 				output ~= "	sprintf(s+strlen(s), \"player"~.toString(i)~"=(%d,%d) \", player"~.toString(i)~"x+1, player"~.toString(i)~"y+1);";
 			foreach (i, block; blocks)
@@ -584,6 +590,9 @@ void main()
 					output ~= format("	players[%d].x = s->player%dx + 1;", i, i);
 					output ~= format("	players[%d].y = s->player%dy + 1;", i, i);
 				}
+
+			if (players.length>2)
+				output ~= "	justSwitched = s->justSwitched;";
 
 			foreach (i, block; blocks)
 			{

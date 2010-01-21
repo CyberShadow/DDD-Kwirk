@@ -49,9 +49,9 @@ void import_vbm()
     fseek(vbm, 0x100 + Nitrodon_TAS_start_frame[LEVEL]*2, SEEK_SET);
 
 #if defined(MODIFY_LEVEL_11) && (LEVEL == 11)
-    FILE *solution = fopen(BOOST_PP_STRINGIZE(LEVEL)"_vbm_mod.txt", "wt");
+    FILE *solution = fopen(STRINGIZE(LEVEL)"_vbm_mod.txt", "wt");
 #else
-    FILE *solution = fopen(BOOST_PP_STRINGIZE(LEVEL)"_vbm.txt", "wt");
+    FILE *solution = fopen(STRINGIZE(LEVEL)"_vbm.txt", "wt");
 #endif
 
 	int frames = 0;
@@ -59,8 +59,7 @@ void import_vbm()
     int switches = 0;
 	try
 	{
-		State initialState;
-		initialState.load();
+		State initialState = State::initial;
 
 		State state = initialState;
         fputs(actionNames[NONE], solution);
@@ -89,7 +88,7 @@ void import_vbm()
                 }
             }
 		    fprintf(solution, "%s%s\n", state.toString(), actionNames[action]);
-			int res = state.perform(action);
+			int res = state.perform<true,false>(action);
 			if (res <= 0)
 				error("Bad action!");
             fseek(vbm, 2*(res-1), SEEK_CUR);

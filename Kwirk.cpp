@@ -322,7 +322,7 @@ struct State
 					if (map[ry+DY[d]+DY[d2]][rx+DX[d]+DX[d2]] & ~CELL_HOLE)                   // no object/wall in corner
 						return -1;
 					uint8_t d2m = 
-						map[ry+      DY[d2]][rx+      DX[d2]];
+						map[ry+      DY[d2]][rx+      DX[d2]] & ~CELL_HOLE;
 					if (d2m != (CELL_ROTATOR | d2) &&       // no object in destination (other than part of the rotator)
 					    d2m != CELL_EMPTY)
 						return -1;

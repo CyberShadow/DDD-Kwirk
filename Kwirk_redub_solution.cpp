@@ -3,13 +3,13 @@
 
 int redub_solution()
 {
-	FILE *solution_in  = fopen(BOOST_PP_STRINGIZE(LEVEL)".txt", "rt");
+	FILE *solution_in  = fopen(STRINGIZE(LEVEL)".txt", "rt");
 	if (!solution_in)
 	{
 		fprintf(stderr, "Error reading solution file\n");
 		return -1;
 	}
-	FILE *solution_out = fopen(BOOST_PP_STRINGIZE(LEVEL)"_redubbed.txt", "wt");
+	FILE *solution_out = fopen(STRINGIZE(LEVEL)"_redubbed.txt", "wt");
 	if (!solution_out)
 	{
 		fclose(solution_in);
@@ -22,8 +22,7 @@ int redub_solution()
 	int switches = 0;
 	try
 	{
-		State initialState;
-		initialState.load();
+		State initialState = State::initial;
 
 		State state = initialState;
 		fputs(actionNames[NONE], solution_out);
@@ -62,7 +61,7 @@ int redub_solution()
 				switches++;
 
 			fprintf(solution_out, "%s%s\n", state.toString(), actionNames[action]);
-			int res = state.perform(action);
+			int res = state.perform<true,false>(action);
 			if (res <= 0)
 				error("Bad action!");
 			frames += res;

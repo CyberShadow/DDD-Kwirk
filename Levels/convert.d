@@ -617,7 +617,7 @@ void main()
 				{
 					case TurnstileType.Uni:
 						output ~= format("		int8_t temp = -(int8_t)s->turnstile%d;", i);
-						output ~= format("		map[%2d+(temp&s->turnstile%d)][%2d+(temp|(s->turnstile%d-2))] |= CELL_TURNSTILE | s->turnstile%d;", turnstile.y-1, i, turnstile.x+2, i, i);
+						output ~= format("		map[%2d + (temp & s->turnstile%d)][%2d + (temp | (s->turnstile%d - 2))] |= CELL_TURNSTILE | s->turnstile%d;", turnstile.y-1, i, turnstile.x+2, i, i);
 						break;
 					case TurnstileType.RightAngle:
 						output ~= format("		uint8_t a = s->turnstile%da-1;", i);
@@ -636,7 +636,7 @@ void main()
 						break;
 					case TurnstileType.Tri:
 						output ~= format("		int8_t temp = -(int8_t)s->turnstile%d;", i);
-						output ~= format("		uint8_t* p = &map[%2d+(temp&s->turnstile%d)][%2d+(temp|(s->turnstile%d-2))];", turnstile.y-1, i, turnstile.x+2, i);
+						output ~= format("		uint8_t* p = &map[%2d + (temp & s->turnstile%d)][%2d + (temp | (s->turnstile%d - 2))];", turnstile.y-1, i, turnstile.x+2, i);
 						output ~= format("		uint8_t old = *p;");
 						output ~= format("		map[%2d][%2d] |= (CELL_TURNSTILE | UP   );", turnstile.y+DY[0], turnstile.x+DX[0]);
 						output ~= format("		map[%2d][%2d] |= (CELL_TURNSTILE | RIGHT);", turnstile.y+DY[1], turnstile.x+DX[1]);

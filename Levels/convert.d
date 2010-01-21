@@ -262,8 +262,7 @@ void main()
 				switch (turnstile.type)
 				{
 					case TurnstileType.Uni:
-						fields ~= Field(1, format("turnstile%dab", i), b[0] || b[1]);
-						fields ~= Field(1, format("turnstile%dac", i), b[0] || b[2]);
+						fields ~= Field(2, format("turnstile%d", i), 1*b[1] + 2*b[2] + 3*b[3]);
 						break;
 					case TurnstileType.RightAngle:
 						fields ~= Field(1, format("turnstile%da", i), b[0]);
@@ -273,8 +272,7 @@ void main()
 						fields ~= Field(1, format("turnstile%da", i), b[0]);
 						break;
 					case TurnstileType.Tri:
-						fields ~= Field(1, format("turnstile%dab", i), b[0] && b[1]);
-						fields ~= Field(1, format("turnstile%dac", i), b[0] && b[2]);
+						fields ~= Field(2, format("turnstile%d", i), 1*!b[1] + 2*!b[2] + 3*!b[3]);
 						break;
 					case TurnstileType.Plus:
 						// Stateless!
@@ -538,7 +536,7 @@ void main()
 				switch (turnstile.type)
 				{
 					case TurnstileType.Uni:
-						output ~= "	sprintf(s+strlen(s), \"turnstile"~.toString(i)~"["~turnstileTypeNames[turnstile.type]~"@"~.toString(turnstile.x)~","~.toString(turnstile.y)~"]=%d%d \", turnstile"~.toString(i)~"ab, turnstile"~.toString(i)~"ac);"; 
+						output ~= "	sprintf(s+strlen(s), \"turnstile"~.toString(i)~"["~turnstileTypeNames[turnstile.type]~"@"~.toString(turnstile.x)~","~.toString(turnstile.y)~"]=%d \", turnstile"~.toString(i)~");"; 
 						break;
 					case TurnstileType.RightAngle:
 						output ~= "	sprintf(s+strlen(s), \"turnstile"~.toString(i)~"["~turnstileTypeNames[turnstile.type]~"@"~.toString(turnstile.x)~","~.toString(turnstile.y)~"]=%d%d \", turnstile"~.toString(i)~"a, turnstile"~.toString(i)~"b);"; 
@@ -547,7 +545,7 @@ void main()
 						output ~= "	sprintf(s+strlen(s), \"turnstile"~.toString(i)~"["~turnstileTypeNames[turnstile.type]~"@"~.toString(turnstile.x)~","~.toString(turnstile.y)~"]=%d \", turnstile"~.toString(i)~"a);"; 
 						break;
 					case TurnstileType.Tri:
-						output ~= "	sprintf(s+strlen(s), \"turnstile"~.toString(i)~"["~turnstileTypeNames[turnstile.type]~"@"~.toString(turnstile.x)~","~.toString(turnstile.y)~"]=%d%d \", turnstile"~.toString(i)~"ab, turnstile"~.toString(i)~"ac);"; 
+						output ~= "	sprintf(s+strlen(s), \"turnstile"~.toString(i)~"["~turnstileTypeNames[turnstile.type]~"@"~.toString(turnstile.x)~","~.toString(turnstile.y)~"]=%d \", turnstile"~.toString(i)~");"; 
 						break;
 					case TurnstileType.Plus:
 						break;
@@ -618,12 +616,8 @@ void main()
 				switch (turnstile.type)
 				{
 					case TurnstileType.Uni:
-						output ~= format("		uint8_t ab = s->turnstile%dab-1;", i);
-						output ~= format("		uint8_t ac = s->turnstile%dac-1;", i);
-						output ~= format("		map[%2d][%2d] |= (~ab & ~ac) & (CELL_TURNSTILE | UP   );", turnstile.y+DY[0], turnstile.x+DX[0]);
-						output ~= format("		map[%2d][%2d] |= (~ab &  ac) & (CELL_TURNSTILE | RIGHT);", turnstile.y+DY[1], turnstile.x+DX[1]);
-						output ~= format("		map[%2d][%2d] |= ( ab & ~ac) & (CELL_TURNSTILE | DOWN );", turnstile.y+DY[2], turnstile.x+DX[2]);
-						output ~= format("		map[%2d][%2d] |= ( ab &  ac) & (CELL_TURNSTILE | LEFT );", turnstile.y+DY[3], turnstile.x+DX[3]);
+						output ~= format("		int8_t temp = -(int8_t)s->turnstile%d;", i);
+						output ~= format("		map[%2d+(temp&s->turnstile%d)][%2d+(temp|(s->turnstile%d-2))] |= CELL_TURNSTILE | s->turnstile%d;", turnstile.y-1, i, turnstile.x+2, i, i);
 						break;
 					case TurnstileType.RightAngle:
 						output ~= format("		uint8_t a = s->turnstile%da-1;", i);
@@ -641,12 +635,14 @@ void main()
 						output ~= format("		map[%2d][%2d] |= ( a) & (CELL_TURNSTILE | LEFT );", turnstile.y+DY[3], turnstile.x+DX[3]);
 						break;
 					case TurnstileType.Tri:
-						output ~= format("		uint8_t ab = s->turnstile%dab-1;", i);
-						output ~= format("		uint8_t ac = s->turnstile%dac-1;", i);
-						output ~= format("		map[%2d][%2d] |= (~ab | ~ac) & (CELL_TURNSTILE | UP   );", turnstile.y+DY[0], turnstile.x+DX[0]);
-						output ~= format("		map[%2d][%2d] |= (~ab |  ac) & (CELL_TURNSTILE | RIGHT);", turnstile.y+DY[1], turnstile.x+DX[1]);
-						output ~= format("		map[%2d][%2d] |= ( ab | ~ac) & (CELL_TURNSTILE | DOWN );", turnstile.y+DY[2], turnstile.x+DX[2]);
-						output ~= format("		map[%2d][%2d] |= ( ab |  ac) & (CELL_TURNSTILE | LEFT );", turnstile.y+DY[3], turnstile.x+DX[3]);
+						output ~= format("		int8_t temp = -(int8_t)s->turnstile%d;", i);
+						output ~= format("		uint8_t* p = &map[%2d+(temp&s->turnstile%d)][%2d+(temp|(s->turnstile%d-2))];", turnstile.y-1, i, turnstile.x+2, i);
+						output ~= format("		uint8_t old = *p;");
+						output ~= format("		map[%2d][%2d] |= (CELL_TURNSTILE | UP   );", turnstile.y+DY[0], turnstile.x+DX[0]);
+						output ~= format("		map[%2d][%2d] |= (CELL_TURNSTILE | RIGHT);", turnstile.y+DY[1], turnstile.x+DX[1]);
+						output ~= format("		map[%2d][%2d] |= (CELL_TURNSTILE | DOWN );", turnstile.y+DY[2], turnstile.x+DX[2]);
+						output ~= format("		map[%2d][%2d] |= (CELL_TURNSTILE | LEFT );", turnstile.y+DY[3], turnstile.x+DX[3]);
+						output ~= format("		*p = old;");
 						break;
 					case TurnstileType.Plus:
 						output ~= format("		// Stateless - the wings are already in the blanked template");
@@ -857,8 +853,7 @@ void main()
 					switch (turnstile.type)
 					{
 						case TurnstileType.Uni:
-							output ~= format("			compressed.turnstile%dac ^= 1;", i);
-							output ~= format("			compressed.turnstile%dab ^= compressed.turnstile%dac;", i, i);
+							output ~= format("			compressed.turnstile%d = (compressed.turnstile%d + 1) & 3;", i, i);
 							break;
 						case TurnstileType.RightAngle:
 							output ~= format("			bool b = compressed.turnstile%db;", i);
@@ -869,8 +864,7 @@ void main()
 							output ~= format("			compressed.turnstile%da ^= 1;", i);
 							break;
 						case TurnstileType.Tri:
-							output ~= format("			compressed.turnstile%dab ^= compressed.turnstile%dac;", i, i);
-							output ~= format("			compressed.turnstile%dac ^= 1;", i);
+							output ~= format("			compressed.turnstile%d = (compressed.turnstile%d + 1) & 3;", i, i);
 							break;
 						case TurnstileType.Plus:
 							break;
@@ -893,8 +887,7 @@ void main()
 					switch (turnstile.type)
 					{
 						case TurnstileType.Uni:
-							output ~= format("			compressed.turnstile%dab ^= compressed.turnstile%dac;", i, i);
-							output ~= format("			compressed.turnstile%dac ^= 1;", i);
+							output ~= format("			compressed.turnstile%d = (compressed.turnstile%d - 1) & 3;", i, i);
 							break;
 						case TurnstileType.RightAngle:
 							output ~= format("			bool a = compressed.turnstile%da;", i);
@@ -905,8 +898,7 @@ void main()
 							output ~= format("			compressed.turnstile%da ^= 1;", i);
 							break;
 						case TurnstileType.Tri:
-							output ~= format("			compressed.turnstile%dac ^= 1;", i);
-							output ~= format("			compressed.turnstile%dab ^= compressed.turnstile%dac;", i, i);
+							output ~= format("			compressed.turnstile%d = (compressed.turnstile%d - 1) & 3;", i, i);
 							break;
 						case TurnstileType.Plus:
 							break;

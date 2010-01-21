@@ -1,9 +1,9 @@
 // To run this instead of a DDD search, add the following line to config.h:
-// #define PROBLEM_RELATED Kwirk_vgm_import
+// #define PROBLEM_RELATED Kwirk_vbm_import
 
 #define MODIFY_LEVEL_11
 
-void import_vgm()
+void import_vbm()
 {
     int Nitrodon_TAS_start_frame[] = {
     /*  0 */   309, // +  220 + 395
@@ -45,13 +45,13 @@ void import_vgm()
         DOWN,LEFT,DOWN,LEFT,LEFT,LEFT,LEFT,UP
     };
 
-    FILE *vgm = fopen("Kwirk (UA) [!].vbm", "rb");
-    fseek(vgm, 0x100 + Nitrodon_TAS_start_frame[LEVEL]*2, SEEK_SET);
+    FILE *vbm = fopen("Kwirk (UA) [!].vbm", "rb");
+    fseek(vbm, 0x100 + Nitrodon_TAS_start_frame[LEVEL]*2, SEEK_SET);
 
 #if defined(MODIFY_LEVEL_11) && (LEVEL == 11)
-    FILE *solution = fopen(BOOST_PP_STRINGIZE(LEVEL)"_vgm_mod.txt", "wt");
+    FILE *solution = fopen(BOOST_PP_STRINGIZE(LEVEL)"_vbm_mod.txt", "wt");
 #else
-    FILE *solution = fopen(BOOST_PP_STRINGIZE(LEVEL)"_vgm.txt", "wt");
+    FILE *solution = fopen(BOOST_PP_STRINGIZE(LEVEL)"_vbm.txt", "wt");
 #endif
 
 	int frames = 0;
@@ -77,7 +77,7 @@ void import_vgm()
 #endif
             {
                 uint16_t input;
-                fread(&input,sizeof(input),1,vgm);
+                fread(&input,sizeof(input),1,vbm);
                 switch (input)
                 {
                 case 0x0004: action=SWITCH; switches++; break;
@@ -92,7 +92,7 @@ void import_vgm()
 			int res = state.perform(action);
 			if (res <= 0)
 				error("Bad action!");
-            fseek(vgm, 2*(res-1), SEEK_CUR);
+            fseek(vbm, 2*(res-1), SEEK_CUR);
 			frames += res;
             steps++;
         }
@@ -108,12 +108,12 @@ void import_vgm()
     fprintf(solution, "Total %d+%d steps, %d frames (%1.3f seconds)\n", steps-switches, switches, frames, frames/60.);
     printf(           "Total %d+%d steps, %d frames (%1.3f seconds)\n", steps-switches, switches, frames, frames/60.);
 
-    fclose(vgm);
+    fclose(vbm);
     fclose(solution);
 }
 
 int run_related(int argc, const char* argv[])
 {
-    import_vgm();
+    import_vbm();
     return 0;
 }

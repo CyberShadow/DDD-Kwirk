@@ -80,11 +80,6 @@ struct State
 	Map map;
 	Player players[PLAYERS];
 	
-#if (PLAYERS==1)
-	enum { activePlayer = 0 };
-#else
-	uint8_t activePlayer;
-#endif
 #if (PLAYERS>2)
 	bool justSwitched;
 #endif
@@ -172,14 +167,15 @@ struct State
 #if (PLAYERS==1)
 			return -1;
 #else
-			if (playersLeft())
+			uint8_t playerCount = playersLeft();
+			if (playerCount)
 			{
 				if (UPDATE_COMPRESSED)
 				{
-					Player p = players[activePlayer];
+					Player p = players[0];
 					updatePlayer(p.x, p.y);
 				}
-				switchPlayers<UPDATE_UNCOMPRESSED, UPDATE_COMPRESSED>();
+				switchPlayers<UPDATE_UNCOMPRESSED, UPDATE_COMPRESSED>(playerCount);
 #if (PLAYERS>2)
 				int res = justSwitched ? DELAY_SWITCH_AGAIN : DELAY_SWITCH;
 				if (UPDATE_UNCOMPRESSED)
@@ -195,19 +191,20 @@ struct State
 				return -1;
 #endif
 		}
-		Player n, p = players[activePlayer];
+		Player n, p = players[0];
 		n.x = p.x + DX[action];
 		n.y = p.y + DY[action];
 		uint8_t dmap = map[n.y][n.x];
 		if (dmap == CELL_EXIT)
 		{
-			players[activePlayer] = n;
+			players[0] = n;
 			if (UPDATE_COMPRESSED)
 				updatePlayer(EXIT_X, EXIT_Y);
 			clearJustSwitched<UPDATE_UNCOMPRESSED, UPDATE_COMPRESSED>();
-			if (playersLeft())
+			uint8_t playerCount = playersLeft();
+			if (playerCount)
 			{
-				switchPlayers<UPDATE_UNCOMPRESSED, UPDATE_COMPRESSED>();
+				switchPlayers<UPDATE_UNCOMPRESSED, UPDATE_COMPRESSED>(playerCount+1);
 				return DELAY_MOVE + DELAY_SWITCH;
 			}
 			else
@@ -219,7 +216,7 @@ struct State
 		if (dmap == 0)
 		{
 			if (UPDATE_UNCOMPRESSED)
-				players[activePlayer] = n;
+				players[0] = n;
 			if (UPDATE_COMPRESSED)
 				updatePlayer(n.x, n.y);
 			clearJustSwitched<UPDATE_UNCOMPRESSED, UPDATE_COMPRESSED>();
@@ -271,7 +268,7 @@ struct State
 			}
 			// move player
 			if (UPDATE_UNCOMPRESSED)
-				players[activePlayer] = n;
+				players[0] = n;
 			if (UPDATE_COMPRESSED)
 				updatePlayer(n.x, n.y);
 #if (HOLES > 0)
@@ -374,7 +371,7 @@ struct State
 					if (map[n.y][n.x] != CELL_EMPTY)
 						return 0;
 				}
-				players[activePlayer] = n;
+				players[0] = n;
 			}
 			if (UPDATE_COMPRESSED)
 			{
@@ -489,27 +486,35 @@ struct State
 	}
 
 	template<bool UPDATE_UNCOMPRESSED, bool UPDATE_COMPRESSED>
-	void switchPlayers()
+	void switchPlayers(uint8_t playersLeft)
 	{
 #if (PLAYERS==1)
 		assert(0);
 #else
-		Player p = players[activePlayer];
+		Player p = players[0];
 		if (!p.exited())
 		{
 			assert(map[p.y][p.x]==0 || map[p.y][p.x]==CELL_EXIT);
 			if (UPDATE_UNCOMPRESSED)
 				map[p.y][p.x] = CELL_WALL;
 		}
-		if (UPDATE_UNCOMPRESSED)
+		if (playersLeft>1)
 		{
-			do { activePlayer = (activePlayer+1)%PLAYERS; } while (players[activePlayer].exited());
-			p = players[activePlayer];
-			assert(map[p.y][p.x]==CELL_WALL);
-			map[p.y][p.x] = CELL_EMPTY;
+			if (UPDATE_UNCOMPRESSED)
+			{
+				memmove(players+0, players+1, sizeof(Player)*(playersLeft-1));
+				players[playersLeft-1] = p;
+				p = players[0];
+				assert(map[p.y][p.x]==CELL_WALL);
+				map[p.y][p.x] = CELL_EMPTY;
+			}
+			if (UPDATE_COMPRESSED)
+				rotatePlayer(
+#if (PLAYERS>2)
+					playersLeft
+#endif
+					);
 		}
-		if (UPDATE_COMPRESSED)
-			do { compressed.activePlayer = (compressed.activePlayer+1)%PLAYERS; } while (players[compressed.activePlayer].exited());
 #endif
 	}
 
@@ -541,6 +546,13 @@ struct State
 
 	void decompress(const CompressedState* s);
 	INLINE void updatePlayer(uint8_t x, uint8_t y);
+#if (PLAYERS>1)
+	INLINE void rotatePlayer(
+#if (PLAYERS>2)
+		uint8_t playersLeft
+#endif
+		);
+#endif
 	INLINE void fillHole(int index);
 	INLINE void updateBlock(int index, uint8_t x, uint8_t y);
 	INLINE void removeBlock(int index);
@@ -605,7 +617,7 @@ struct State
 			}
 		for (int p=0;p<PLAYERS;p++)
 			if (!players[p].exited())
-				level[players[p].y][players[p].x] = p==activePlayer ? '@' : '&';
+				level[players[p].y][players[p].x] = p==0 ? '@' : '&';
 		
 		static char levelstr[Y*(X+1)+1];
 		levelstr[Y*(X+1)] = 0;
@@ -629,11 +641,7 @@ INLINE bool operator==(const State& a, const State& b)
 {
 	debug_assert(a.uncompressedUpdated);
 	debug_assert(b.uncompressedUpdated);
-	return memcmp(&a.map, &b.map, sizeof(Map))==0 && memcmp(&a.players, &b.players, sizeof(a.players))==0
-#if (PLAYERS>1)
-	 && a.activePlayer == b.activePlayer
-#endif
-	;
+	return memcmp(&a.map, &b.map, sizeof(Map))==0 && memcmp(&a.players, &b.players, sizeof(a.players))==0;
 }
 
 // ******************************************************************************************************
@@ -666,7 +674,7 @@ struct Step
 
 INLINE int replayStep(State* state, FRAME* frame, Step step)
 {
-	Player* p = &state->players[state->activePlayer];
+	Player* p = &state->players[0];
 	int nx = step.x;
 	int ny = step.y;
 	int steps = abs((int)p->x - nx) + abs((int)p->y - ny) + step.extraSteps;
@@ -692,14 +700,14 @@ void expandChildren(FRAME frame, const State* state)
 	uint32_t queueStart=0, queueEnd=1;
 	memset(distance, 0xFF, sizeof(distance));
 	
-	uint8_t x0 = state->players[state->activePlayer].x;
-	uint8_t y0 = state->players[state->activePlayer].y;
+	uint8_t x0 = state->players[0].x;
+	uint8_t y0 = state->players[0].y;
 	queue[0].x = x0;
 	queue[0].y = y0;
 	distance[y0-1][x0-1] = 0;
 
 	State newState = *state;
-	Player* np = &newState.players[newState.activePlayer];
+	Player* np = &newState.players[0];
 	while(queueStart != queueEnd)
 	{
 		Coord c = queue[queueStart];

@@ -238,8 +238,6 @@ void main()
 			}
 			Field[] fields;
 
-			if (players.length>1)
-				fields ~= Field(log2(players.length), "activePlayer", 0);
 			if (players.length>2)
 				fields ~= Field(1, "justSwitched", 0);
 			foreach (i, player; players)
@@ -410,8 +408,6 @@ void main()
 				output ~= format("		{ %2d, %2d },", player.x, player.y);
 			output ~= "	},";
 			
-			if (players.length > 1)
-				output ~= "	0, // activePlayer"; 
 			if (players.length>2)
 				output ~= "	false, // justSwitched"; 
 
@@ -519,8 +515,6 @@ void main()
 			output ~= "	char* s = getTempString();";
 			output ~= "	*s = 0;";
 
-			if (players.length > 1)
-				output ~= "	sprintf(s+strlen(s), \"activePlayer=%d \", activePlayer);";
 			if (players.length > 2)
 				output ~= "	sprintf(s+strlen(s), \"justSwitched=%d \", justSwitched);";
 			foreach (i, player; players)
@@ -569,14 +563,13 @@ void main()
 
 			if (players.length>1)
 			{
-				output ~= "	activePlayer = s->activePlayer;";
 				foreach (i, player; players)
 				{
 					output ~= format("	{ // player %d", i);
 					output ~= format("		uint8_t x = s->player%dx + 1;", i);
 					output ~= format("		uint8_t y = s->player%dy + 1;", i);
-					output ~= format("		if (activePlayer != %d)", i);
-					output ~= format("			map[y][x] |= CELL_WALL;");
+					if (i>0)
+						output ~= format("		map[y][x] |= CELL_WALL;");
 					output ~= format("		players[%d].x = x;", i);
 					output ~= format("		players[%d].y = y;", i);
 					output ~= format("	}");
@@ -665,26 +658,41 @@ void main()
 			output ~= "INLINE void State::updatePlayer(uint8_t x, uint8_t y)";
 			output ~= "{";
 			output ~= "	x--; y--;";
-			if (players.length==1)
-			{
-				output ~= "	compressed.player0x = x;";
-				output ~= "	compressed.player0y = y;";
-			}
-			else
-			{
-				output ~= "	switch (activePlayer)";
-				output ~= "	{";
-				foreach (i, player; players)
-				{
-					output ~= format("		case %d:", i);
-					output ~= format("			compressed.player%dx = x;", i);
-					output ~= format("			compressed.player%dy = y;", i);
-					output ~= format("			break;");
-				}
-				output ~= "	}";
-			}
+			output ~= "	compressed.player0x = x;";
+			output ~= "	compressed.player0y = y;";
 			output ~= "}";
 			output ~= "";
+			
+			// **********************************************************************************************************
+
+			if (players.length>1)
+			{
+				output ~= format("INLINE void State::rotatePlayer(%s)", players.length>2 ? "uint8_t playersLeft" : "");
+				output ~= "{";
+				output ~= "	uint8_t x = compressed.player0x;";
+				output ~= "	uint8_t y = compressed.player0y;";
+				for (int i=0; i<players.length-1; i++)
+				{
+					output ~= format("	compressed.player%dx = compressed.player%dx;", i, i+1);
+					output ~= format("	compressed.player%dy = compressed.player%dy;", i, i+1);
+					if (i < players.length-2)
+					{
+						output ~= format("	if (playersLeft==%d)", i+2);
+						output ~= format("	{");
+						output ~= format("		compressed.player%dx = x;", i+1);
+						output ~= format("		compressed.player%dy = y;", i+1);
+						output ~= format("		return;");
+						output ~= format("	}");
+					}
+					else
+					{
+						output ~= format("	compressed.player%dx = x;", i+1);
+						output ~= format("	compressed.player%dy = y;", i+1);
+					}
+				}
+				output ~= "}";
+				output ~= "";
+			}
 			
 			// **********************************************************************************************************
 

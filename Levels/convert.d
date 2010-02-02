@@ -302,7 +302,7 @@ void main()
 
 			options ~= format("COMPRESSED_BITS %d", (slots.length-1)*32 + slots[$-1].size);
 
-			if (slots[$-1].bitsLeft < 8)
+			/+if (slots[$-1].bitsLeft < 8)
 				slots ~= Slot([Field(8, "subframe")]);
 			else
 			{
@@ -312,7 +312,7 @@ void main()
 				if (slots[$-1].bitsLeft%8 != 0)
 					slots[$-1].fields ~= Field(slots[$-1].bitsLeft% 8, "_align");
 				slots[$-1].fields ~= Field(8, "subframe");
-			}
+			}+/
 
 			string[] output;
 			foreach (option; options)

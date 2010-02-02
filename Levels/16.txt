@@ -1,4 +1,5 @@
-MAX_STEPS 239
+MAX_STEPS 232
+MAX_FRAMES 2246
 ##############
 #   Z ##XXQQ #
 #  ZZZ#  X Q #

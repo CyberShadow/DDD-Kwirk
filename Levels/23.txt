@@ -1,4 +1,5 @@
 MAX_STEPS 338
+MAX_FRAMES 3484
 #################
 ##O  a   N  B  1#
 ## #M>bb `dBB  ##

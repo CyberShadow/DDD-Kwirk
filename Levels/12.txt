@@ -1,4 +1,5 @@
-MAX_STEPS 104
+MAX_STEPS 98
+MAX_FRAMES 1015
 #############
 #  # ObO#   #
 #  #  b #   #

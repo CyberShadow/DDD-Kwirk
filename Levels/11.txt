@@ -1,4 +1,5 @@
-MAX_STEPS 231
+MAX_STEPS 205
+MAX_FRAMES 2014
 #################
 #+1  #     e    #
 #+++ #  M ##### #

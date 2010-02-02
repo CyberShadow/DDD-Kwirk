@@ -1,4 +1,5 @@
-MAX_STEPS 243
+MAX_STEPS 241
+MAX_FRAMES 2465
 ################
 #   #      #OOO#
 # aa# 1    #   #

@@ -1,4 +1,5 @@
 MAX_STEPS 33
+MAX_FRAMES 310
 ####################
 ##       1        ##
 #  aabb ccdd eeff  #

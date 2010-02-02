@@ -1,4 +1,5 @@
 MAX_STEPS 23
+MAX_FRAMES 220
 ##################
 #   # M    D #   #
 # 2   MM##DD   1 #

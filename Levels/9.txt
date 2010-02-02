@@ -1,4 +1,5 @@
-MAX_STEPS 47
+MAX_STEPS (47+0)
+MAX_FRAMES 472
 ################
 #     V X      #
 #    VV XX   3 #

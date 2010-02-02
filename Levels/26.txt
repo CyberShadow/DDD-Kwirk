@@ -1,4 +1,5 @@
-MAX_STEPS 360
+MAX_STEPS 322
+MAX_FRAMES 3244
 HAVE_VALIDATOR
 ####################
 #++++++++++++++++++#

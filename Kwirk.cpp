@@ -691,7 +691,7 @@ INLINE int replayStep(State* state, FRAME* frame, Step step)
 // ******************************************************************************************************
 
 template <class CHILD_HANDLER>
-void expandChildren(FRAME frame, const State* state)
+void expandChildren(FRAME frame, const State* state, THREAD_ID thread)
 {
 	struct Coord { uint8_t x, y; };
 	const int QUEUELENGTH = X+Y;
@@ -730,9 +730,9 @@ void expandChildren(FRAME frame, const State* state)
 		assert(res == DELAY_SWITCH || res == DELAY_SWITCH_AGAIN);
 		step.action = SWITCH;
 		if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_UNCOMPRESSED)
-			CHILD_HANDLER::handleChild(state, frame, step, &newState           , frame + dist * DELAY_MOVE + DELAY_SWITCH);
+			CHILD_HANDLER::handleChild(state, frame, step, &newState           , frame + dist * DELAY_MOVE + DELAY_SWITCH, thread);
 		else
-			CHILD_HANDLER::handleChild(state, frame, step, &newState.compressed, frame + dist * DELAY_MOVE + DELAY_SWITCH);
+			CHILD_HANDLER::handleChild(state, frame, step, &newState.compressed, frame + dist * DELAY_MOVE + DELAY_SWITCH, thread);
 		newState = *state;
 #endif
 
@@ -769,9 +769,9 @@ void expandChildren(FRAME frame, const State* state)
 					{
 						step.action = action;
 						if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_UNCOMPRESSED)
-							CHILD_HANDLER::handleChild(state, frame, step, &newState           , frame + dist * DELAY_MOVE + res);
+							CHILD_HANDLER::handleChild(state, frame, step, &newState           , frame + dist * DELAY_MOVE + res, thread);
 						else
-							CHILD_HANDLER::handleChild(state, frame, step, &newState.compressed, frame + dist * DELAY_MOVE + res);
+							CHILD_HANDLER::handleChild(state, frame, step, &newState.compressed, frame + dist * DELAY_MOVE + res, thread);
 					}
 					if (res >= 0)
 						newState = *state;

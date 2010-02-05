@@ -491,15 +491,15 @@ struct State
 #if (PLAYERS==1)
 		assert(0);
 #else
-		Player p = players[0];
-		if (!p.exited())
-		{
-			assert(map[p.y][p.x]==0 || map[p.y][p.x]==CELL_EXIT);
-			if (UPDATE_UNCOMPRESSED)
-				map[p.y][p.x] = CELL_WALL;
-		}
 		if (playersLeft>1)
 		{
+			Player p = players[0];
+			if (!p.exited())
+			{
+				assert(map[p.y][p.x]==0 || map[p.y][p.x]==CELL_EXIT);
+				if (UPDATE_UNCOMPRESSED)
+					map[p.y][p.x] = CELL_WALL;
+			}
 			if (UPDATE_UNCOMPRESSED)
 			{
 				memmove(players+0, players+1, sizeof(Player)*(playersLeft-1));

@@ -60,7 +60,15 @@ int redub_solution()
 			if (action==SWITCH)
 				switches++;
 
-			fprintf(solution_out, "%s%s\n", state.toString(), actionNames[action]);
+			fprintf(solution_out, "%s%s"
+#ifdef HAVE_VALIDATOR
+				"%s"
+#endif
+				"\n", state.toString(),
+#ifdef HAVE_VALIDATOR
+				state.validate()?"(valid)\n":"INVALID!\n",
+#endif
+				actionNames[action]);
 			int res = state.perform<true,false>(action);
 			if (res <= 0)
 				error("Bad action!");

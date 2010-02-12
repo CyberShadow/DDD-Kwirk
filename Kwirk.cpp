@@ -771,7 +771,10 @@ void expandChildren(FRAME frame, const State* state, THREAD_ID thread)
 						if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_UNCOMPRESSED)
 							CHILD_HANDLER::handleChild(state, frame, step, &newState           , frame + dist * DELAY_MOVE + res, thread);
 						else
+						{
 							CHILD_HANDLER::handleChild(state, frame, step, &newState.compressed, frame + dist * DELAY_MOVE + res, thread);
+							debug_assert(canStatesBeParentAndChild(&state->compressed, &newState.compressed));
+						}
 					}
 					if (res >= 0)
 						newState = *state;

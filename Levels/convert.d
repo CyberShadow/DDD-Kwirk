@@ -655,6 +655,18 @@ void main()
 			
 			// **********************************************************************************************************
 
+			// Placeholder for future dynamically generated code. Function should return "false" if the states can
+			// quickly be determined not to be parent and child; otherwise it should return "true", even if more
+			// calculations could reveal that they could not be parent and child.
+			
+			output ~= "INLINE bool canStatesBeParentAndChild(const CompressedState *parent, const CompressedState *child)";
+			output ~= "{";
+			output ~= "	return true;";
+			output ~= "}";
+			output ~= "";
+
+			// **********************************************************************************************************
+
 			output ~= "INLINE void State::updatePlayer(uint8_t x, uint8_t y)";
 			output ~= "{";
 			output ~= "	x--; y--;";

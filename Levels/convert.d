@@ -281,8 +281,11 @@ void main()
 				fields ~= Field(1, format("hole%d", i), 1);
 
 			// **********************************************************************************************************
+			
+			const uint COMPRESSED_BIT_ALIGNMENT = 32;
+			const string COMPRESSED_BIT_TYPE = "unsigned";
 
-			struct Slot { Field[] fields; int size() { int bits; foreach (field; fields) bits += field.size; return bits; } int bitsLeft() { return 32 - size(); } }
+			struct Slot { Field[] fields; int size() { int bits; foreach (field; fields) bits += field.size; return bits; } int bitsLeft() { return COMPRESSED_BIT_ALIGNMENT - size(); } }
 			Slot[] slots;
 			
 			//fields.reverse.sort.reverse;
@@ -300,7 +303,7 @@ void main()
 					slots ~= Slot([field]);
 			}
 
-			options ~= format("COMPRESSED_BITS %d", (slots.length-1)*32 + slots[$-1].size);
+			options ~= format("COMPRESSED_BITS %d", (slots.length-1)*COMPRESSED_BIT_ALIGNMENT + slots[$-1].size);
 
 			/+if (slots[$-1].bitsLeft < 8)
 				slots ~= Slot([Field(8, "subframe")]);
@@ -329,9 +332,9 @@ void main()
 			foreach (i, slot; slots)
 			{
 				foreach (field; slot.fields)
-					output ~= format("\tunsigned %s : %d;", field.name, field.size);
+					output ~= format("\t"~COMPRESSED_BIT_TYPE~" %s : %d;", field.name, field.size);
 				if (slot.bitsLeft && i != slots.length-1)
-					output ~= format("\tunsigned _align%d : %d;", i, slot.bitsLeft);
+					output ~= format("\t"~COMPRESSED_BIT_TYPE~" _align%d : %d;", i, slot.bitsLeft);
 			}
 			output ~= "";
 			output ~= "	const char* toString() const;";

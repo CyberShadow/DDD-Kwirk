@@ -37,6 +37,7 @@ enum Action
 	ACTION_LAST =SWITCH
 };
 
+#ifdef USE_TRANSFORM_INVARIANT_SORTING
 enum StateTransformType {
 	STATE_TRANSFORM_END,
 	STATE_TRANSFORM_BLOCK0_UP,
@@ -48,16 +49,26 @@ enum StateTransformType {
 	STATE_TRANSFORM_TURNSTILE0_CW,
 	STATE_TRANSFORM_TURNSTILE_MAX = STATE_TRANSFORM_TURNSTILE0_CCW + TURNSTILES * 2,
 	STATE_TRANSFORM_SWITCH = STATE_TRANSFORM_TURNSTILE_MAX,
+	STATE_TRANSFORM_EXIT,
 };
 
 struct CompressedStateTransform {
 	StateTransformType type;
-#if X > 16+2 || Y > 16+2
+#if X > 32+2 || Y > 32+2
 #error Please edit this struct to be adaptive.
 #endif
+#if X > 16+2
+	uint8_t playerX : 5;
+#else
 	uint8_t playerX : 4;
+#endif
+#if Y > 16+2
+	uint8_t playerY : 5;
+#else
 	uint8_t playerY : 4;
+#endif
 };
+#endif
 
 inline Action operator++(Action &rs, int) {return rs = (Action)(rs + 1);}
 const char* actionNames[] = {"Up", "Right", "Down", "Left", "Switch", "None"};
@@ -112,10 +123,16 @@ struct State
 	bool uncompressedUpdated;
 #endif
 
+#ifdef USE_TRANSFORM_INVARIANT_SORTING
 	CompressedStateTransform performTransform;
+#endif
 
 	/// Returns frame delay, 0 if move is invalid and the state was altered, -1 if move is invalid and the state was not altered
+#ifdef USE_TRANSFORM_INVARIANT_SORTING
 	template<bool UPDATE_UNCOMPRESSED, bool UPDATE_COMPRESSED, bool UPDATE_TRANSFORM>
+#else
+	template<bool UPDATE_UNCOMPRESSED, bool UPDATE_COMPRESSED>
+#endif
 	int perform(Action action)
 #ifdef DEBUG
 	{
@@ -194,12 +211,14 @@ struct State
 			uint8_t playerCount = playersLeft();
 			if (playerCount)
 			{
+#ifdef USE_TRANSFORM_INVARIANT_SORTING
 				if (UPDATE_TRANSFORM)
 				{
 					performTransform.type = STATE_TRANSFORM_SWITCH;
 					performTransform.playerX = players[0].x;
 					performTransform.playerY = players[0].y;
 				}
+#endif
 				if (UPDATE_COMPRESSED)
 				{
 					Player p = players[0];
@@ -296,12 +315,14 @@ struct State
 					x2++;
 					break;
 			}
+#ifdef USE_TRANSFORM_INVARIANT_SORTING
 			if (UPDATE_TRANSFORM)
 			{
 				performTransform.type = (StateTransformType)(STATE_TRANSFORM_BLOCK0_UP + index*4 + (action-UP));
 				performTransform.playerX = n.x;
 				performTransform.playerY = n.y;
 			}
+#endif
 			// move player
 			if (UPDATE_UNCOMPRESSED)
 				players[0] = n;
@@ -387,12 +408,14 @@ struct State
 						oldWings[d ] =
 						newWings[d2] = false;
 			}
+#ifdef USE_TRANSFORM_INVARIANT_SORTING
 			if (UPDATE_TRANSFORM)
 			{
 				performTransform.type = (StateTransformType)(STATE_TRANSFORM_TURNSTILE0_CCW + (map[ry][rx] & INDEX_MASK)*2 + dd);
 				performTransform.playerX = n.x;
 				performTransform.playerY = n.y;
 			}
+#endif
 			if (UPDATE_UNCOMPRESSED)
 			{
 				// rotate it
@@ -724,7 +747,11 @@ INLINE int replayStep(State* state, FRAME* frame, Step step)
 	p->y = ny;
 	assert(state->map[ny][nx]==0, "Bad coordinates");
 	DEBUG_ONLY(state->updatePlayer(nx, ny)); // needed to pass decompression check
+#ifdef USE_TRANSFORM_INVARIANT_SORTING
 	int res = state->perform<true, false, false>((Action)step.action);
+#else
+	int res = state->perform<true, false>((Action)step.action);
+#endif
 	assert(res>0, "Replay failed");
 	*frame += steps * DELAY_MOVE + res;
 	return steps; // not counting actual action
@@ -765,6 +792,7 @@ void expandChildren(FRAME frame, const State* state, THREAD_ID thread)
 		np->y = c.y;
 		DEBUG_ONLY(newState.updatePlayer(c.x, c.y)); // needed to pass decompression check
 		int res;
+#ifdef USE_TRANSFORM_INVARIANT_SORTING
 		{{}} if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_TRANSFORM)
 			res = newState.perform<false, false, true>(SWITCH);
 		else if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_UNCOMPRESSED)
@@ -779,6 +807,18 @@ void expandChildren(FRAME frame, const State* state, THREAD_ID thread)
 			CHILD_HANDLER::handleChild(state, frame, step, &newState                , frame + dist * DELAY_MOVE + DELAY_SWITCH, thread);
 		else
 			CHILD_HANDLER::handleChild(state, frame, step, &newState.compressed     , frame + dist * DELAY_MOVE + DELAY_SWITCH, thread);
+#else
+		if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_UNCOMPRESSED)
+			res = newState.perform<true, false>(SWITCH);
+		else
+			res = newState.perform<false, true>(SWITCH);
+		assert(res == DELAY_SWITCH || res == DELAY_SWITCH_AGAIN);
+		step.action = SWITCH;
+		if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_UNCOMPRESSED)
+			CHILD_HANDLER::handleChild(state, frame, step, &newState           , frame + dist * DELAY_MOVE + DELAY_SWITCH, thread);
+		else
+			CHILD_HANDLER::handleChild(state, frame, step, &newState.compressed, frame + dist * DELAY_MOVE + DELAY_SWITCH, thread);
+#endif
 		newState = *state;
 #endif
 
@@ -807,6 +847,7 @@ void expandChildren(FRAME frame, const State* state, THREAD_ID thread)
 					np->y = c.y;
 					DEBUG_ONLY(newState.updatePlayer(c.x, c.y)); // needed to pass decompression check
 					int res;
+#ifdef USE_TRANSFORM_INVARIANT_SORTING
 					{{}} if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_TRANSFORM)
 						res = newState.perform<false, false, true>(action);
 					else if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_UNCOMPRESSED)
@@ -826,6 +867,23 @@ void expandChildren(FRAME frame, const State* state, THREAD_ID thread)
 							debug_assert(canStatesBeParentAndChild(&state->compressed, &newState.compressed));
 						}
 					}
+#else
+					if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_UNCOMPRESSED)
+						res = newState.perform<true, false>(action);
+					else
+						res = newState.perform<false, true>(action);
+					if (res > 0)
+					{
+						step.action = action;
+						if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_UNCOMPRESSED)
+							CHILD_HANDLER::handleChild(state, frame, step, &newState           , frame + dist * DELAY_MOVE + res, thread);
+						else
+						{
+							CHILD_HANDLER::handleChild(state, frame, step, &newState.compressed, frame + dist * DELAY_MOVE + res, thread);
+							debug_assert(canStatesBeParentAndChild(&state->compressed, &newState.compressed));
+						}
+					}
+#endif
 					if (res >= 0)
 						newState = *state;
 				}

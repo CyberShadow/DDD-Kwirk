@@ -760,7 +760,7 @@ INLINE int replayStep(State* state, FRAME* frame, Step step)
 // ******************************************************************************************************
 
 template <class CHILD_HANDLER>
-void expandChildren(FRAME frame, const State* state, THREAD_ID thread)
+void expandChildren(FRAME frame, const State* state)
 {
 	struct Coord { uint8_t x, y; };
 	const int QUEUELENGTH = X+Y;
@@ -802,11 +802,11 @@ void expandChildren(FRAME frame, const State* state, THREAD_ID thread)
 		assert(res == DELAY_SWITCH || res == DELAY_SWITCH_AGAIN);
 		step.action = SWITCH;
 		{{}} if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_TRANSFORM)
-			CHILD_HANDLER::handleChild(state, frame, step, newState.performTransform, frame + dist * DELAY_MOVE + DELAY_SWITCH, thread);
+			CHILD_HANDLER::handleChild(state, frame, step, newState.performTransform, frame + dist * DELAY_MOVE + DELAY_SWITCH);
 		else if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_UNCOMPRESSED)
-			CHILD_HANDLER::handleChild(state, frame, step, &newState                , frame + dist * DELAY_MOVE + DELAY_SWITCH, thread);
+			CHILD_HANDLER::handleChild(state, frame, step, &newState                , frame + dist * DELAY_MOVE + DELAY_SWITCH);
 		else
-			CHILD_HANDLER::handleChild(state, frame, step, &newState.compressed     , frame + dist * DELAY_MOVE + DELAY_SWITCH, thread);
+			CHILD_HANDLER::handleChild(state, frame, step, &newState.compressed     , frame + dist * DELAY_MOVE + DELAY_SWITCH);
 #else
 		if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_UNCOMPRESSED)
 			res = newState.perform<true, false>(SWITCH);
@@ -815,9 +815,9 @@ void expandChildren(FRAME frame, const State* state, THREAD_ID thread)
 		assert(res == DELAY_SWITCH || res == DELAY_SWITCH_AGAIN);
 		step.action = SWITCH;
 		if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_UNCOMPRESSED)
-			CHILD_HANDLER::handleChild(state, frame, step, &newState           , frame + dist * DELAY_MOVE + DELAY_SWITCH, thread);
+			CHILD_HANDLER::handleChild(state, frame, step, &newState           , frame + dist * DELAY_MOVE + DELAY_SWITCH);
 		else
-			CHILD_HANDLER::handleChild(state, frame, step, &newState.compressed, frame + dist * DELAY_MOVE + DELAY_SWITCH, thread);
+			CHILD_HANDLER::handleChild(state, frame, step, &newState.compressed, frame + dist * DELAY_MOVE + DELAY_SWITCH);
 #endif
 		newState = *state;
 #endif
@@ -858,12 +858,12 @@ void expandChildren(FRAME frame, const State* state, THREAD_ID thread)
 					{
 						step.action = action;
 						{{}} if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_TRANSFORM)
-							CHILD_HANDLER::handleChild(state, frame, step, newState.performTransform, frame + dist * DELAY_MOVE + res, thread);
+							CHILD_HANDLER::handleChild(state, frame, step, newState.performTransform, frame + dist * DELAY_MOVE + res);
 						else if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_UNCOMPRESSED)
-							CHILD_HANDLER::handleChild(state, frame, step, &newState                , frame + dist * DELAY_MOVE + res, thread);
+							CHILD_HANDLER::handleChild(state, frame, step, &newState                , frame + dist * DELAY_MOVE + res);
 						else
 						{
-							CHILD_HANDLER::handleChild(state, frame, step, &newState.compressed     , frame + dist * DELAY_MOVE + res, thread);
+							CHILD_HANDLER::handleChild(state, frame, step, &newState.compressed     , frame + dist * DELAY_MOVE + res);
 							debug_assert(canStatesBeParentAndChild(&state->compressed, &newState.compressed));
 						}
 					}
@@ -876,10 +876,10 @@ void expandChildren(FRAME frame, const State* state, THREAD_ID thread)
 					{
 						step.action = action;
 						if (CHILD_HANDLER::PREFERRED==PREFERRED_STATE_UNCOMPRESSED)
-							CHILD_HANDLER::handleChild(state, frame, step, &newState           , frame + dist * DELAY_MOVE + res, thread);
+							CHILD_HANDLER::handleChild(state, frame, step, &newState           , frame + dist * DELAY_MOVE + res);
 						else
 						{
-							CHILD_HANDLER::handleChild(state, frame, step, &newState.compressed, frame + dist * DELAY_MOVE + res, thread);
+							CHILD_HANDLER::handleChild(state, frame, step, &newState.compressed, frame + dist * DELAY_MOVE + res);
 							debug_assert(canStatesBeParentAndChild(&state->compressed, &newState.compressed));
 						}
 					}

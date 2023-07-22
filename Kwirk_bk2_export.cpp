@@ -82,26 +82,25 @@ int export_bk2()
 		int delay = 167;
 		if (LEVEL != 0)
 			delay += 1;
-		if (LEVEL==3 || LEVEL==15 || LEVEL==19 || LEVEL==20)
+		if (LEVEL==3 || LEVEL==15)
 			delay += 1;
 		else
 		if (LEVEL==2 || LEVEL==6)
 			delay += 2;
 		else
-		if (LEVEL==18)
+		if (LEVEL==10 || LEVEL==18)
 			delay += 3;
 		else
-		if (LEVEL==5 || LEVEL==10)
+		if (LEVEL==5)
 			delay += 4;
-		else
 #ifdef BIRDS_EYE_VIEW
-		if (LEVEL==1 || LEVEL==6 || LEVEL==8 || LEVEL==9 || LEVEL==22 || LEVEL==27)
+		if (LEVEL==1 || LEVEL==8 || LEVEL==9 || LEVEL==10 || LEVEL==19 || LEVEL==20 || LEVEL==22 || LEVEL==27)
 			delay += 1;
 #else
 		delay += 1;
 		if (LEVEL != 0)
 			delay += 1;
-		if (LEVEL==2 || LEVEL==3 || LEVEL==5 || LEVEL==6 || LEVEL==14 || LEVEL==15 || LEVEL==18 || LEVEL==25 || LEVEL==26 || LEVEL==28)
+		if (LEVEL==14 || LEVEL==25 || LEVEL==26 || LEVEL==28)
 			delay += 1;
 #endif
 		for (int i=0; i<delay; i++)

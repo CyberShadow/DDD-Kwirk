@@ -195,7 +195,7 @@ int export_bk2()
 	fputs(pressStart, bk2_out);
 
 	if (LEVEL == 29)
-		fputs("[/Input]", bk2_out);
+		fputs("[/Input]\n", bk2_out);
 	else
 	{
 		if (LEVEL % 10 == 9)

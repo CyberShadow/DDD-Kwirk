@@ -100,11 +100,14 @@ int export_vbm()
 	control = 0x0000; // no buttons
 	{
 		int delay = 165;
-		if (LEVEL==15 || LEVEL==18)
+		if (LEVEL==15)
 			delay += 1;
 		else
 		if (LEVEL==5 || LEVEL==10)
 			delay += 2;
+		else
+		if (LEVEL==18)
+			delay += 3;
 		else
 #ifdef BIRDS_EYE_VIEW
 		if (LEVEL==1 || LEVEL==6 || LEVEL==8 || LEVEL==9 || LEVEL==22 || LEVEL==27)

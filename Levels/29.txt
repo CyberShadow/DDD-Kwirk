@@ -1,5 +1,5 @@
-MAX_STEPS 434
-MAX_FRAMES 4513
+MAX_STEPS 414
+MAX_FRAMES 4324
 ####################
 #OOOOOOOOO#OOh j ###
 #OOOOOOO#O# f  k ###

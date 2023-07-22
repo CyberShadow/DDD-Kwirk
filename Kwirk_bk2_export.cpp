@@ -4,6 +4,8 @@
 
 #define BIRDS_EYE_VIEW // against intuition, this actually takes less total time, even though it initially adds 1 extra frame; as an added bonus, it's nicer to watch
 
+#define BIZHAWK_2_9_1 // without this, compatibilitiy is with BizHawk 2.5.2
+
 int export_bk2()
 {
 	FILE *solution_in;
@@ -18,9 +20,9 @@ int export_bk2()
 	}
 	FILE *bk2_out;
 	if (LEVEL==0)
-		bk2_out = fopen("Kwirk (UA) [optimized]/Input Log.txt", "wt");
+		bk2_out = fopen("Kwirk (UA) [optimized] 2.9.1/Input Log.txt", "wt");
 	else
-		bk2_out = fopen("Kwirk (UA) [optimized]/Input Log.txt", "at");
+		bk2_out = fopen("Kwirk (UA) [optimized] 2.9.1/Input Log.txt", "at");
 	if (!bk2_out)
 	{
 		fclose(solution_in);
@@ -59,7 +61,11 @@ int export_bk2()
 			fputs(action_to_bk2[NONE], bk2_out);
 		// SELECT SKILL -> EASY
 		fputs(pressStart, bk2_out);
+#ifdef BIZHAWK_2_9_1
+		for (int i=0; i<24; i++)
+#else
 		for (int i=0; i<23; i++)
+#endif
 			fputs(action_to_bk2[NONE], bk2_out);
 		// SELECT FLOOR -> FL# 1
 		fputs(pressA, bk2_out);
@@ -102,6 +108,13 @@ int export_bk2()
 			delay += 1;
 		if (LEVEL==14 || LEVEL==25 || LEVEL==26 || LEVEL==28)
 			delay += 1;
+#endif
+#ifdef BIZHAWK_2_9_1
+		if (LEVEL==3)
+			delay += 1;
+		else
+		if (LEVEL==22)
+			delay += 2;
 #endif
 		for (int i=0; i<delay; i++)
 			fputs(action_to_bk2[NONE], bk2_out);

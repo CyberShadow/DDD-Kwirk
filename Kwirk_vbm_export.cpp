@@ -207,15 +207,15 @@ int export_vbm()
 	}
 	printf("Total %d+%d steps, %d frames (%1.3f seconds)\n", steps-switches, switches, frames, frames/60.);
 
-	control = 0x0000; // no buttons
-	for (int i=0; i<182; i++)
-		fwrite(&control, sizeof(WORD), 1, vbm_out);
-
-	control = 0x0008; // Start
-	fwrite(&control, sizeof(WORD), 1, vbm_out);
-
 	if (LEVEL != 29)
 	{
+		control = 0x0000; // no buttons
+		for (int i=0; i<182; i++)
+			fwrite(&control, sizeof(WORD), 1, vbm_out);
+
+		control = 0x0008; // Start
+		fwrite(&control, sizeof(WORD), 1, vbm_out);
+
 		if (LEVEL % 10 == 9)
 		{
 			control = 0x0000; // no buttons

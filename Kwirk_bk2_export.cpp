@@ -201,15 +201,15 @@ int export_bk2()
 	}
 	printf("Total %d+%d steps, %d frames (%1.3f seconds)\n", steps-switches, switches, frames, frames/59.7275005696058);
 
-	for (int i=0; i<191; i++)
-		fputs(action_to_bk2[NONE], bk2_out);
-
-	fputs(pressStart, bk2_out);
-
 	if (LEVEL == 29)
 		fputs("[/Input]\n", bk2_out);
 	else
 	{
+		for (int i=0; i<191; i++)
+			fputs(action_to_bk2[NONE], bk2_out);
+
+		fputs(pressStart, bk2_out);
+
 		if (LEVEL % 10 == 9)
 		{
 			for (int i=0; i<254; i++)

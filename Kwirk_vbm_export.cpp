@@ -65,19 +65,19 @@ int export_vbm()
 		control = 0x0001; // A
 		fwrite(&control, sizeof(WORD), 1, vbm_out);
 		control = 0x0000; // no buttons
-		for (int i=0; i<16; i++)
+		for (int i=0; i<15; i++)
 			fwrite(&control, sizeof(WORD), 1, vbm_out);
 		// SELECT SKILL -> EASY
-		control = 0x0001; // A
+		control = 0x0008; // Start
 		fwrite(&control, sizeof(WORD), 1, vbm_out);
 		control = 0x0000; // no buttons
-		for (int i=0; i<24; i++)
+		for (int i=0; i<23; i++)
 			fwrite(&control, sizeof(WORD), 1, vbm_out);
 		// SELECT FLOOR -> FL# 1
 		control = 0x0001; // A
 		fwrite(&control, sizeof(WORD), 1, vbm_out);
 		control = 0x0000; // no buttons
-		for (int i=0; i<24; i++)
+		for (int i=0; i<23; i++)
 			fwrite(&control, sizeof(WORD), 1, vbm_out);
 #ifdef BIRDS_EYE_VIEW
 		// BIRD'S-EYE VIEW

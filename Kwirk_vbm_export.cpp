@@ -98,35 +98,24 @@ int export_vbm()
 	control = 0x0001; // A
 	fwrite(&control, sizeof(WORD), 1, vbm_out);
 	control = 0x0000; // no buttons
-	for (int i=0; i<165; i++)
-		fwrite(&control, sizeof(WORD), 1, vbm_out);
-
-	if (LEVEL==15 || LEVEL==18)
 	{
-		control = 0x0000; // no buttons
-		fwrite(&control, sizeof(WORD), 1, vbm_out);
-	}
-	else
-	if (LEVEL==5 || LEVEL==10)
-	{
-		control = 0x0000; // no buttons
-		for (int i=0; i<2; i++)
+		int delay = 165;
+		if (LEVEL==15 || LEVEL==18)
+			delay += 1;
+		else
+		if (LEVEL==5 || LEVEL==10)
+			delay += 2;
+		else
+#ifdef BIRDS_EYE_VIEW
+		if (LEVEL==1 || LEVEL==6 || LEVEL==8 || LEVEL==9 || LEVEL==22 || LEVEL==27)
+			delay += 1;
+#else
+		if (LEVEL==14 || LEVEL==25 || LEVEL==26 || LEVEL==28)
+			delay += 1;
+#endif
+		for (int i=0; i<delay; i++)
 			fwrite(&control, sizeof(WORD), 1, vbm_out);
 	}
-	else
-#ifdef BIRDS_EYE_VIEW
-	if (LEVEL==1 || LEVEL==6 || LEVEL==8 || LEVEL==9 || LEVEL==22 || LEVEL==27)
-	{
-		control = 0x0000; // no buttons
-		fwrite(&control, sizeof(WORD), 1, vbm_out);
-	}
-#else
-	if (LEVEL==14 || LEVEL==25 || LEVEL==26 || LEVEL==28)
-	{
-		control = 0x0000; // no buttons
-		fwrite(&control, sizeof(WORD), 1, vbm_out);
-	}
-#endif
 
 	int frames = 0;
 	int steps = -1;

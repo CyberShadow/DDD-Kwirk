@@ -133,7 +133,7 @@ int export_vbm()
 	int switches = 0;
 	try
 	{
-        State state = State::initial;
+		State state = State::initial;
 		Action lastAction = NONE;
 		while (state.playersLeft())
 		{

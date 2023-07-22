@@ -106,6 +106,9 @@ void import_bk2()
             int res_bk2 = res;
             if (LEVEL == 18 && action == SWITCH)
             {
+                // The real logic is that if multiple SWITCH moves are done in a row, the last one takes 30 frames
+                // and all of the others take 32 frames, but that would be more complicated to implement, so instead
+                // it's targetted specifically at "nitrodon,zenicreverie,alyoshav2-kwirk-goingup.bk2" here.
                 {{}} if (switches == 3)
                     res_bk2 += 2;
                 else if (switches == 4)

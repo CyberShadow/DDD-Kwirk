@@ -8,6 +8,7 @@ int export_vbm()
 {
 	FILE *solution_in;
 	{} {            } solution_in = fopen(STRINGIZE(LEVEL)".txt",         "rt");
+	if (!solution_in) solution_in = fopen(STRINGIZE(LEVEL)"_bk2.txt",     "rt");
 	if (!solution_in) solution_in = fopen(STRINGIZE(LEVEL)"_vbm_mod.txt", "rt");
 	if (!solution_in) solution_in = fopen(STRINGIZE(LEVEL)"_vbm.txt",     "rt");
 	if (!solution_in)
@@ -133,6 +134,7 @@ int export_vbm()
 	try
 	{
         State state = State::initial;
+		Action lastAction = NONE;
 		while (state.playersLeft())
 		{
 			Action action;
@@ -173,8 +175,15 @@ int export_vbm()
 #if 1
 			if (action==SWITCH)
 			{
+				int resAdj = res;
+				if (lastAction==SWITCH)
+				{
+					resAdj -= 2;
+					for (int i=0; i<2; i++)
+						fwrite(&control, sizeof(WORD), 1, vbm_out);
+				}
 				fwrite(&action_to_vbm[action], sizeof(WORD), 1, vbm_out);
-				for (int i=0; i<res-1; i++)
+				for (int i=0; i<resAdj-1; i++)
 					fwrite(&control, sizeof(WORD), 1, vbm_out);
 			}
 			else
@@ -191,6 +200,7 @@ int export_vbm()
 				fwrite(&action_to_vbm[action], sizeof(WORD), 1, vbm_out);
 #endif
 
+			lastAction = action;
 			frames += res;
 		}
 		printf("%s", state.toString());

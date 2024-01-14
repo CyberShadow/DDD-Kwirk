@@ -1,3 +1,5 @@
+import std.algorithm.sorting;
+import std.conv;
 import std.file;
 import std.string;
 import std.stdio;
@@ -9,7 +11,7 @@ void main()
 		try
 		{
 			string[] level, userOptions;
-			foreach (line; splitlines(cast(string)read(format("%d.txt", levelNr))))
+			foreach (line; splitLines(cast(string)read(format("%d.txt", levelNr))))
 			{
 				if (line.length==0)
 					continue;
@@ -25,15 +27,15 @@ void main()
 			}
 
 			enum Cell { Floor, Wall, Hole, Exit, Player, TurnstileUp, TurnstileRight, TurnstileDown, TurnstileLeft, TurnstileCenter, Block }
-			struct Block { int x, y, w, h, ix, iy, index; int opCmp(Block* other) { return w!=other.w ? w-other.w : h!=other.h ? h-other.h : y!=other.y ? y-other.y : x-other.x; } }
+			struct Block { int x, y, w, h, ix, iy, index; int opCmp(ref Block other) { return w!=other.w ? w-other.w : h!=other.h ? h-other.h : y!=other.y ? y-other.y : x-other.x; } }
 			enum TurnstileType { Uni, RightAngle, Straight, Tri, Plus, Max }
-			const string turnstileTypeNames[TurnstileType.Max] = ["Uni", "RightAngle", "Straight", "Tri", "Plus"];
+			static immutable string[TurnstileType.Max] turnstileTypeNames = ["Uni", "RightAngle", "Straight", "Tri", "Plus"];
 			//const int turnstileBits[TurnstileType.Max] = [2, 2, 1, 2, 0];
 			struct Turnstile { int x, y; TurnstileType type; }
 			struct Hole { int x, y; }
 			struct Player { int x, y; }
 
-			int width=level[0].length, height=level.length, xBits = log2(width-2), yBits = log2(height-2);
+			int width=cast(int)level[0].length, height=cast(int)level.length, xBits = log2(width-2), yBits = log2(height-2);
 
 			Cell[][] map;
 			map.length = height;
@@ -57,8 +59,8 @@ void main()
 			Hole[] holes;
 			Player[] players;
 		
-			foreach (y, line; level)
-				foreach (x, c; line)
+			foreach (int y, line; level)
+				foreach (int x, c; line)
 					switch (c)
 					{
 						case ' ':
@@ -70,7 +72,7 @@ void main()
 							break;
 						case 'O':
 							map[y][x] = Cell.Hole;
-							holeIndices[y][x] = holes.length;
+							holeIndices[y][x] = cast(int)holes.length;
 							holes ~= Hole(x, y);
 							break;
 						case '1':
@@ -112,7 +114,7 @@ void main()
 									for (int i=x; i<x2; i++)
 									{
 										map    [j][i] = Cell.Block;
-										indices[j][i] = blocks.length;
+										indices[j][i] = cast(int)blocks.length;
 									}
 								blocks ~= Block(x, y, x2-x, y2-y);
 								seenBlocks[c] = true;
@@ -140,14 +142,14 @@ void main()
 								if (c2 == DR[d])
 									isCenter = true;
 								if (c2 == c || c2 == DR[d])
-									wings ~= d;
+									wings ~= cast(ubyte)d;
 							}
 							if (!wings.length)
 								throw new Exception("Zero-wing turnstile?");
 							if (wings.length>1 || isCenter) // are we on center?
 							{
 								map[y][x] = Cell.TurnstileCenter;
-								indices[y][x] = turnstiles.length;
+								indices[y][x] = cast(int)turnstiles.length;
 								TurnstileType type;
 								switch (wings.length)
 								{
@@ -178,6 +180,7 @@ void main()
 									case 1: map[y][x] = Cell.TurnstileRight; break;
 									case 2: map[y][x] = Cell.TurnstileDown ; break;
 									case 3: map[y][x] = Cell.TurnstileLeft ; break;
+									default:
 								}
 							break;
 						}
@@ -193,10 +196,10 @@ void main()
 
 			// sort blocks by size
 			foreach (i, ref block; blocks)
-				block.index = i;
+				block.index = cast(int)i;
 			blocks.sort;
 			int[] blockMap = new int[blocks.length];
-			foreach (i, block; blocks)
+			foreach (int i, block; blocks)
 				blockMap[block.index] = i;
 			foreach (y, line; map)
 				foreach (x, c; line)
@@ -257,7 +260,7 @@ void main()
 				b[1] = map[turnstile.y  ][turnstile.x+1] == Cell.TurnstileRight;
 				b[2] = map[turnstile.y+1][turnstile.x  ] == Cell.TurnstileDown;
 				b[3] = map[turnstile.y  ][turnstile.x-1] == Cell.TurnstileLeft;
-				switch (turnstile.type)
+				final switch (turnstile.type)
 				{
 					case TurnstileType.Uni:
 						fields ~= Field(2, format("turnstile%d", i), 1*b[1] + 2*b[2] + 3*b[3]);
@@ -275,6 +278,8 @@ void main()
 					case TurnstileType.Plus:
 						// Stateless!
 						break;
+					case TurnstileType.Max:
+						assert(false);
 				}
 			}
 			foreach (i, hole; holes)
@@ -338,7 +343,7 @@ void main()
 			output ~= "};";
 			
 			output ~= "";
-			write(format("%d.h", levelNr), output.join(\n));
+			std.file.write(format("%d.h", levelNr), output.join('\n'));
 
 			// **********************************************************************************************************
 
@@ -386,12 +391,14 @@ void main()
 							break;
 						case Cell.TurnstileCenter:
 							name = "CELL_WALL";
-							index = .toString(indices[y][x]);
+							index = indices[y][x].to!string;
 							break;
 						case Cell.Block:
 							name = "CELL_BLOCK";
-							index = .toString(indices[y][x]);
+							index = indices[y][x].to!string;
 							break;
+						default:
+							assert(false);
 					}
 					
 					if (index)
@@ -462,6 +469,7 @@ void main()
 									case Cell.TurnstileRight: index = "RIGHT"; break;
 									case Cell.TurnstileDown:  index = "DOWN" ; break;
 									case Cell.TurnstileLeft:  index = "LEFT" ; break;
+									default: assert(false);
 								}
 							}
 							else
@@ -469,8 +477,9 @@ void main()
 							break;
 						case Cell.TurnstileCenter:
 							name = "CELL_WALL";
-							index = .toString(indices[y][x]);
+							index = indices[y][x].to!string();
 							break;
+						default: assert(false);
 					}
 					
 					if (index)
@@ -518,37 +527,38 @@ void main()
 			if (players.length > 2)
 				output ~= "	sprintf(s+strlen(s), \"justSwitched=%d \", justSwitched);";
 			foreach (i, player; players)
-				output ~= "	sprintf(s+strlen(s), \"player"~.toString(i)~"=(%d,%d) \", player"~.toString(i)~"x+1, player"~.toString(i)~"y+1);";
+				output ~= "	sprintf(s+strlen(s), \"player"~i.to!string()~"=(%d,%d) \", player"~i.to!string~"x+1, player"~i.to!string~"y+1);";
 			foreach (i, block; blocks)
 			{
-				output ~= "	if (block"~.toString(i)~"x=="~.toString(block.ix-1)~" && block"~.toString(i)~"y=="~.toString(block.ix-1)~")";
-				output ~= "		sprintf(s+strlen(s), \"block"~.toString(i)~"["~.toString(block.w)~","~.toString(block.h)~"]=removed \");";
+				output ~= "	if (block"~i.to!string~"x=="~(block.ix-1).to!string~" && block"~i.to!string~"y=="~(block.ix-1).to!string~")";
+				output ~= "		sprintf(s+strlen(s), \"block"~i.to!string~"["~block.w.to!string~","~block.h.to!string~"]=removed \");";
 				output ~= "	else";
-				output ~= "		sprintf(s+strlen(s), \"block"~.toString(i)~"["~.toString(block.w)~","~.toString(block.h)~"]=(%d,%d) \", block"~.toString(i)~"x+1, block"~.toString(i)~"y+1);";
+				output ~= "		sprintf(s+strlen(s), \"block"~i.to!string~"["~block.w.to!string~","~block.h.to!string~"]=(%d,%d) \", block"~i.to!string~"x+1, block"~i.to!string~"y+1);";
 			}
 			foreach (i, turnstile; turnstiles)
 				switch (turnstile.type)
 				{
 					case TurnstileType.Uni:
-						output ~= "	sprintf(s+strlen(s), \"turnstile"~.toString(i)~"["~turnstileTypeNames[turnstile.type]~"@"~.toString(turnstile.x)~","~.toString(turnstile.y)~"]=%d \", turnstile"~.toString(i)~");"; 
+						output ~= "	sprintf(s+strlen(s), \"turnstile"~i.to!string~"["~turnstileTypeNames[turnstile.type]~"@"~turnstile.x.to!string~","~turnstile.y.to!string~"]=%d \", turnstile"~i.to!string~");"; 
 						break;
 					case TurnstileType.RightAngle:
-						output ~= "	sprintf(s+strlen(s), \"turnstile"~.toString(i)~"["~turnstileTypeNames[turnstile.type]~"@"~.toString(turnstile.x)~","~.toString(turnstile.y)~"]=%d%d \", turnstile"~.toString(i)~"a, turnstile"~.toString(i)~"b);"; 
+						output ~= "	sprintf(s+strlen(s), \"turnstile"~i.to!string~"["~turnstileTypeNames[turnstile.type]~"@"~turnstile.x.to!string~","~turnstile.y.to!string~"]=%d%d \", turnstile"~i.to!string~"a, turnstile"~i.to!string~"b);"; 
 						break;
 					case TurnstileType.Straight:
-						output ~= "	sprintf(s+strlen(s), \"turnstile"~.toString(i)~"["~turnstileTypeNames[turnstile.type]~"@"~.toString(turnstile.x)~","~.toString(turnstile.y)~"]=%d \", turnstile"~.toString(i)~"a);"; 
+						output ~= "	sprintf(s+strlen(s), \"turnstile"~i.to!string~"["~turnstileTypeNames[turnstile.type]~"@"~turnstile.x.to!string~","~turnstile.y.to!string~"]=%d \", turnstile"~i.to!string~"a);"; 
 						break;
 					case TurnstileType.Tri:
-						output ~= "	sprintf(s+strlen(s), \"turnstile"~.toString(i)~"["~turnstileTypeNames[turnstile.type]~"@"~.toString(turnstile.x)~","~.toString(turnstile.y)~"]=%d \", turnstile"~.toString(i)~");"; 
+						output ~= "	sprintf(s+strlen(s), \"turnstile"~i.to!string~"["~turnstileTypeNames[turnstile.type]~"@"~turnstile.x.to!string~","~turnstile.y.to!string~"]=%d \", turnstile"~i.to!string~");"; 
 						break;
 					case TurnstileType.Plus:
 						break;
+					default: assert(false);
 				}
 			if (holes)
 			{
 				output ~= "	strcat(s, \"holes=\");"; 
 				foreach (i, hole; holes)
-					output ~= "	sprintf(s+strlen(s), \"%d\", hole"~.toString(i)~");";
+					output ~= "	sprintf(s+strlen(s), \"%d\", hole"~i.to!string~");";
 			}
 
 			output ~= "	return s;";
@@ -640,6 +650,7 @@ void main()
 					case TurnstileType.Plus:
 						output ~= format("		// Stateless - the wings are already in the blanked template");
 						break;
+					default: assert(false);
 				}
 				output ~= format("	}");
 			}
@@ -752,10 +763,10 @@ void main()
 				output ~= "		switch (index)";
 				output ~= "		{";
 			nextBlock:
-				foreach (i, block; blocks)
+				foreach (int i, block; blocks)
 				{
 					output ~= format("			case %d:", i);
-					foreach (ij, block2; blocks[i+1..$])
+					foreach (int ij, block2; blocks[i+1..$])
 						if (block2.w == block.w && block2.h == block.h)
 						{
 							int j = i+1 + ij;
@@ -783,11 +794,11 @@ void main()
 				output ~= "	while (true)";
 				output ~= "		switch (index)";
 				output ~= "		{";
-				foreach (i, block; blocks)
+				foreach (int i, block; blocks)
 				{
 					output ~= format("			case %d:", i);
 					output ~= format("			{");
-					foreach (ij, block2; blocks[i+1..$])
+					foreach (int ij, block2; blocks[i+1..$])
 						if (block2.w == block.w && block2.h == block.h)
 						{
 							int j = i+1 + ij;
@@ -888,6 +899,7 @@ void main()
 							break;
 						case TurnstileType.Plus:
 							break;
+						default: assert(false);
 					}
 					output ~= format("			break;");
 					output ~= format("		}");
@@ -922,6 +934,7 @@ void main()
 							break;
 						case TurnstileType.Plus:
 							break;
+						default: assert(false);
 					}
 					output ~= format("			break;");
 					output ~= format("		}");
@@ -933,17 +946,17 @@ void main()
 			
 			// **********************************************************************************************************
 
-			write(format("%d.cpp", levelNr), output.join(\n));
+			std.file.write(format("%d.cpp", levelNr), output.join('\n'));
 		}
-		catch (Object o)
+		catch (Exception e)
 		{
-			writefln("Error with level %d: %s", levelNr, o.toString());
+			writefln("Error with level %d: %s", levelNr, e.toString());
 		}
 }
 
-const byte DX[4] = [0, 1, 0, -1];
-const byte DY[4] = [-1, 0, 1, 0];
-const char DR[4] = "^>`<";
+const byte[4] DX = [0, 1, 0, -1];
+const byte[4] DY = [-1, 0, 1, 0];
+const char[4] DR = "^>`<";
 
 // log2 of x, rounded up (how many bits do we need to store a number from 0 to x-1)
 uint log2(uint x)

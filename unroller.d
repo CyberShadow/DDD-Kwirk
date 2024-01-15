@@ -1,4 +1,3 @@
-import std.stream;
 import std.string;
 import std.conv;
 import std.stdio;
@@ -22,19 +21,19 @@ void main(string[] args)
 {
 	if (args.length!=2)
 		throw new Exception("Specify solution number to unroll.");
-	string[] level;
-	auto output = new BufferedFile(args[1] ~ "u.txt", FileMode.OutNew);
-	foreach (string line; new BufferedFile(args[1] ~ ".txt"))
+	char[][] level;
+	auto output = File(args[1] ~ "u.txt", "wb");
+	foreach (string line; File(args[1] ~ ".txt", "rb").byLineCopy)
 	{
 		if (line[0]=='[')
-			line = line[line.find(']')+2..$];
+			line = line[line.indexOf(']')+2..$];
 		if (line[0]=='@')
 		{
 			if (level.length)
 			{
-				string[] coords = line[1..line.find(':')].split(",");
-				ubyte x1 = toUbyte(coords[0]);
-				ubyte y1 = toUbyte(coords[1]);
+				string[] coords = line[1..line.indexOf(':')].split(",");
+				ubyte x1 = to!ubyte(coords[0]);
+				ubyte y1 = to!ubyte(coords[1]);
 				ubyte x0, y0;
 				foreach (uint y, l; level)
 					foreach (uint x, c; l)
@@ -45,8 +44,8 @@ void main(string[] args)
 				struct Coord { ubyte x, y; }
 				const ubyte QUEUELENGTH = X+Y;
 				Coord[QUEUELENGTH] queue;
-				ubyte distance[Y-2][X-2];
-				Action from[Y-2][X-2];
+				ubyte[Y-2][X-2]  distance;
+				Action[Y-2][X-2] from;
 				ubyte queueStart=0, queueEnd=1;
 				foreach (ref r;distance)
 					foreach (ref c;r)
@@ -76,10 +75,10 @@ void main(string[] args)
 						for (pos=0; pos<=dist; pos++)
 						{
 							if (pos)
-								output.writeLine(actionNames[from[queue[pos].y-1][queue[pos].x-1]] ~ "~");
+								output.writeln(actionNames[from[queue[pos].y-1][queue[pos].x-1]] ~ "~");
 							level[queue[pos].y][queue[pos].x] = '@';
 							foreach (l; level)
-								output.writeLine(l);
+								output.writeln(l);
 							level[queue[pos].y][queue[pos].x] = ' ';
 						}
 						goto found;
@@ -87,13 +86,13 @@ void main(string[] args)
 
 					for (Action action = Action.min; action <= Action.max; action++)
 					{
-						ubyte nx = c.x + DX[action];
-						ubyte ny = c.y + DY[action];
+						ubyte nx = cast(ubyte)(c.x + DX[action]);
+						ubyte ny = cast(ubyte)(c.y + DY[action]);
 
 						if (level[ny][nx]==' ' && distance[ny-1][nx-1]==ubyte.max)
 						{
 							from[ny-1][nx-1] = action;
-							distance[ny-1][nx-1] = dist+1;
+							distance[ny-1][nx-1] = cast(ubyte)(dist+1);
 							queue[queueEnd].x = nx;
 							queue[queueEnd].y = ny;
 							queueEnd = cast(ubyte)((queueEnd+1) % QUEUELENGTH);
@@ -105,7 +104,7 @@ void main(string[] args)
 				throw new Exception("Can't find path");
 			}
 			found:
-			output.writeLine(line[line.find(':')+2..$] ~ "!");
+			output.writeln(line[line.indexOf(':')+2..$] ~ "!");
 			level = null;
 		}
 		else
@@ -114,9 +113,9 @@ void main(string[] args)
 		else
 		{
 		    foreach (l; level)
-		    	output.writeLine(l);
+		    	output.writeln(l);
 			level = null;
-			output.writeString(line);
+			output.writeln(line);
 		}
 		output.flush();
 	}

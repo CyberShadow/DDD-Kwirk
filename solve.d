@@ -25,11 +25,20 @@ void program(
 
 	for (uint frameNumber = 0; ; frameNumber++)
 	{
-		stderr.writeln("Frame ", frameNumber, ": ", statesAtFrame[frameNumber].count);
+		auto set = statesAtFrame[frameNumber];
+		stderr.writefln("Frame %d: %d / %d",
+			frameNumber,
+			set.count,
+			set.uniqueNodes,
+		);
+
+		set = set.optimize();
+		stderr.writefln("Optimized: %d", set.uniqueNodes);
+
 		foreach (action; Action.init .. enumLength!Action)
 		{
 			Vars v;
-			v.visitor = Visitor(statesAtFrame[frameNumber]);
+			v.visitor = Visitor(set);
 
 			while (v.next())
 			{

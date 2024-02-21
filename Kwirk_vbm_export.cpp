@@ -87,9 +87,9 @@ int export_vbm()
 		// BIRD'S-EYE VIEW
 		control = 0x0080; // DOWN
 		fwrite(&control, sizeof(WORD), 1, vbm_out);
+#endif
 		control = 0x0000; // no buttons
 		fwrite(&control, sizeof(WORD), 1, vbm_out);
-#endif
 		// SELECT DISPLAY -> DIAGONAL VIEW (or BIRD'S-EYE VIEW)
 		control = 0x0001; // A
 		fwrite(&control, sizeof(WORD), 1, vbm_out);

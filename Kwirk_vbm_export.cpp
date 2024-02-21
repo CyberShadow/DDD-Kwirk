@@ -50,7 +50,7 @@ int export_vbm()
 
 	if (LEVEL == 0)
 	{
-		strcpy((char*)(vbm_header+0x40), "CyberShadow and Deadcode");
+		strcpy((char*)(vbm_header+0x40), "Nitrodon, ZenicReverie, Alyosha, CyberShadow, Deadcode");
 		fwrite(vbm_header, sizeof(vbm_header), 1, vbm_out);
 
 		control = 0x0000; // no buttons

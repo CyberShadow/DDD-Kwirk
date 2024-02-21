@@ -1,6 +1,8 @@
 // To run this instead of a DDD search, add the following line to config.h:
 // #define PROBLEM_RELATED Kwirk_vbm_import
 
+//#define USE_OLDER_TAS
+
 //#define DEBUG_PRINT
 #ifdef DEBUG_PRINT
 bool debug_print = false;
@@ -33,7 +35,11 @@ uint16_t get_input(FILE *bk2)
 
 void import_bk2()
 {
+#ifdef USE_OLDER_TAS
+    FILE *bk2 = fopen("nitrodon,zenicreverie,alyosha-kwirk-goingup/Input Log.txt", "rt");
+#else
     FILE *bk2 = fopen("nitrodon,zenicreverie,alyoshav2-kwirk-goingup/Input Log.txt", "rt");
+#endif
 
     char input_line[1024];
     fgets(input_line, sizeof(input_line), bk2);
@@ -56,11 +62,19 @@ void import_bk2()
     debug_print = true;
 #endif
     do input = get_input(bk2); while (input != INPUT_A); // GOING UP? -> START
+#ifdef USE_OLDER_TAS
+    int delay = 165;
+    {{}} if (LEVEL == 10 || LEVEL == 28)
+        delay += 2;
+    else if (LEVEL == 18 || LEVEL == 23)
+        delay++;
+#else
     int delay = 169;
     {{}} if (LEVEL == 5 || LEVEL == 27)
         delay--;
     else if (LEVEL == 10 || LEVEL == 28)
         delay++;
+#endif
     for (int i=0; i<delay; i++)
     {
         fgets(input_line, sizeof(input_line), bk2);
@@ -70,7 +84,11 @@ void import_bk2()
 #endif
     }
 
+#ifdef USE_OLDER_TAS
+    FILE *solution = fopen(STRINGIZE(LEVEL)"_bk2_old.txt", "wt");
+#else
     FILE *solution = fopen(STRINGIZE(LEVEL)"_bk2.txt", "wt");
+#endif
 
     int frames = 0;
     int steps = 0;

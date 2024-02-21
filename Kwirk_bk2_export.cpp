@@ -268,11 +268,31 @@ int export_bk2()
 		fputs("[/Input]\n", bk2_out);
 	else
 	{
-#ifdef BIZHAWK_2_3_2
-		for (int i=0; i<182; i++)
+		int delay;
+#if   defined(BIZHAWK_2_3_2)
+		delay = 182;
+#elif defined(BIZHAWK_2_5_2)
+		delay = 186;
+		if (LEVEL==3)
+			delay += 2;
+		else
+		if (LEVEL==17 || LEVEL==20)
+			delay += 1;
+		else
+		if (LEVEL==19)
+			delay += 4;
+		else
+		if (LEVEL==9)
+			delay += 5;
+	#ifndef BIRDS_EYE_VIEW
+		else
+		if (LEVEL==6)
+			delay += 1;
+	#endif
 #else
-		for (int i=0; i<191; i++)
+		delay = 191;
 #endif
+		for (int i=0; i<delay; i++)
 			fputs(action_to_bk2[NONE], bk2_out);
 
 		fputs(pressStart, bk2_out);
@@ -300,8 +320,12 @@ int export_bk2()
 		}
 		else
 		{
-#ifdef BIZHAWK_2_3_2
+#if   defined(BIZHAWK_2_3_2)
 			for (int i=0; i<45; i++)
+#elif defined(BIZHAWK_2_5_2)
+			if (LEVEL != 0)
+				fputs(action_to_bk2[NONE], bk2_out);
+			for (int i=0; i<51; i++)
 #else
 			for (int i=0; i<57; i++)
 #endif

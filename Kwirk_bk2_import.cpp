@@ -118,6 +118,8 @@ void import_bk2()
             default: throw format("Unknown input 0x%04X", input);
             }
             fprintf(solution, "%s%s\n", state.toString(), actionNames[action]);
+            if (action == NONE)
+                error("Bad action!");
             int res = state.perform<true,false>(action);
             if (res <= 0)
                 error("Bad action!");

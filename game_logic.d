@@ -197,6 +197,7 @@ int perform(ref const Level level, ref Vars v, Action action)
 										{
 											// Fill it - clear type and hole
 											c.type = VarValueCell.Type.empty;
+											c.empty = VarValueCell.Empty.init; // Clear vestigial state
 											assert(c.hole);
 											c.hole = false;
 										}
@@ -215,6 +216,7 @@ int perform(ref const Level level, ref Vars v, Action action)
 									{
 										// Clear only type (leaving hole)
 										c.type = VarValueCell.Type.empty;
+										c.empty = VarValueCell.Empty.init; // Clear vestigial state
 									}
 									v[varNameCell(x, y)] = c;
 								}

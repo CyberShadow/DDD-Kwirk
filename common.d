@@ -78,6 +78,9 @@ align(1):
 
 	union
 	{
+		struct Empty { ubyte[2] padding; }
+		Empty empty;
+
 		struct Block
 		{
 			mixin(bitfields!(

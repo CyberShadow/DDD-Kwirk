@@ -232,7 +232,183 @@ int perform(ref const Level level, ref Vars v, Action action)
 							return delayPush;
 
 						case VarValueCell.Type.turnstile:
-							assert(false, "TODO VarValueCell.Type.turnstile");
+							auto ourWingDir = cell.turnstile.thisDirection;
+							auto cx = n.x + dirX[ourWingDir.opposite];
+							auto cy = n.y + dirY[ourWingDir.opposite];
+
+							byte spin;
+							final switch ((d - ourWingDir + enumLength!Direction) % enumLength!Direction)
+							{
+								case 0:
+									// Impossible, we would need to be on top of the turnstile center.
+									assert(false);
+								case 1:
+									// Counterclockwise
+									spin = 1;
+									break;
+								case 2:
+									// We're walking into it head-on.
+									return -1;
+								case 3:
+									// Clockwise
+									spin = -1;
+									break;
+							}
+
+							// Pushable in theory?
+							foreach (wingDir; Direction.init .. enumLength!Direction)
+								if (cell.turnstile.haveDirection & (1 << wingDir))
+								{
+									auto rotDir = wingDir;
+									// Start with the wing's coordinate.
+									auto x = cx + dirX[rotDir];
+									auto y = cy + dirY[rotDir];
+
+									// Twice go in the direction we're spinning.
+									// First iteration will be checking the corner (45 degree rotation).
+									// Second iteration is the wing's final position (90 degree rotation).
+									foreach (i; 0 .. 2)
+									{
+										rotDir += spin;
+										rotDir %= enumLength!Direction;
+										x += dirX[rotDir];
+										y += dirY[rotDir];
+										final switch (level.map[y][x])
+										{
+											case Tile.free:
+												continue;
+											case Tile.wall:
+											case Tile.turnstileCenter:
+											case Tile.exit:
+												return -1;
+										}
+									}
+								}
+
+							// Pushable in practice?
+							foreach (wingDir; Direction.init .. enumLength!Direction)
+								if (cell.turnstile.haveDirection & (1 << wingDir))
+								{
+									auto rotDir = wingDir;
+									// Start with the wing's coordinate.
+									auto x = cx + dirX[rotDir];
+									auto y = cy + dirY[rotDir];
+
+									// As above.
+									foreach (i; 0 .. 2)
+									{
+										rotDir += spin;
+										rotDir %= enumLength!Direction;
+										x += dirX[rotDir];
+										y += dirY[rotDir];
+										auto ok = {
+											if (x == p.x && y == p.y)
+											{
+												assert(i == 0); // corner
+												return true; // ignore our character
+											}
+
+											if (i == 1)
+											{
+												auto relDir = (wingDir + spin + enumLength!Direction) % enumLength!Direction;
+												if (cell.turnstile.haveDirection & (1 << relDir))
+												{
+													// Our wing is there right now. Therefore, nothing else can be.
+													debug
+													{
+														auto c = v[varNameCell(x, y)].resolve().VarValueCell;
+														assert(c.type == VarValueCell.Type.turnstile
+															&& c.turnstile.thisDirection == relDir
+															&& c.turnstile.haveDirection == cell.turnstile.haveDirection);
+													}
+													return true;
+												}
+											}
+
+											return v[varNameCell(x, y)].map((v) {
+												auto c = v.VarValueCell;
+												final switch (c.type)
+												{
+													case VarValueCell.Type.empty:
+														return true; // regardless of hole
+													case VarValueCell.Type.block:
+													case VarValueCell.Type.character:
+														return false;
+													case VarValueCell.Type.turnstile:
+														auto otherWingDir = c.turnstile.thisDirection;
+														auto cx2 = x + dirX[otherWingDir.opposite];
+														auto cy2 = y + dirY[otherWingDir.opposite];
+														if (cx2 == cx && cy2 == cy)
+															assert(false); // It's us. Impossible.
+														return false; // Another turnstile.
+												}
+											}).resolve();
+										}();
+										if (!ok)
+											return -1;
+									}
+								}
+
+							// How many tiles will the character move forward?
+							{
+								auto prevWingDir = d.opposite;
+								if (cell.turnstile.haveDirection & (1 << prevWingDir))
+								{
+									n.x += dirX[d];
+									n.y += dirY[d];
+									auto targetCell = v[varNameCell(n.x, n.y)].resolve().VarValueCell;
+									assert(targetCell.type == VarValueCell.Type.empty);
+									if (targetCell.hole)
+										return -1;
+								}
+							}
+
+							// Rotate it.
+							if (cell.turnstile.haveDirection == 0b1111)
+							{
+								// Plus-turnstile. No update necessary.
+							}
+							else
+							{
+								foreach (targetDir; Direction.init .. enumLength!Direction)
+								{
+									auto sourceDir = (targetDir - spin + enumLength!Direction) % enumLength!Direction;
+									auto x = cx + dirX[targetDir];
+									auto y = cy + dirY[targetDir];
+									auto c = v[varNameCell(x, y)].resolve().VarValueCell;
+
+									if (cell.turnstile.haveDirection & (1 << targetDir))
+										assert(c.type == VarValueCell.Type.turnstile
+											&& c.turnstile.thisDirection == targetDir);
+									else
+										assert(c.type == VarValueCell.Type.empty);
+
+									if (cell.turnstile.haveDirection & (1 << sourceDir))
+									{
+										c.type = VarValueCell.Type.turnstile;
+										c.turnstile.thisDirection = targetDir;
+										c.turnstile.haveDirection = 0;
+										foreach (targetMaskDir; Direction.init .. enumLength!Direction)
+										{
+											auto sourceMaskDir = (targetMaskDir - spin + enumLength!Direction) % enumLength!Direction;
+											if (cell.turnstile.haveDirection & (1 << sourceMaskDir))
+												c.turnstile.haveDirection |= 1 << targetMaskDir;
+										}
+									}
+									else
+									{
+										c.type = VarValueCell.Type.empty;
+										c.empty = VarValueCell.Empty.init; // Clear vestigial state
+									}
+									v[varNameCell(x, y)] = c;
+								}
+							}
+
+							// Move the character.
+							v[VarName.character0Coord] = n;
+							v[varNameCell(p.x, p.y)] = VarValueCell(VarValueCell.Type.empty);
+							v[varNameCell(n.x, n.y)] = VarValueCell(VarValueCell.Type.character);
+							return delayRotate;
 
 						case VarValueCell.Type.character:
 							return -1;

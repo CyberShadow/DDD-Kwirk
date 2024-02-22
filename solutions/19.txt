@@ -1,0 +1,613 @@
+None
+####################
+##       @        ##
+#  gghh iijj kkll  #
+# ^gghh iijj kkll^ #
+#<+  a ccmmdd b  +>#
+##   a   mm   b   ##
+##  nn        oo  ##
+# +>nn eeppff oo<+ #
+# `  qq  pp  rr  ` #
+##   qq sstt rr   ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Right
+####################
+##        @       ##
+#  gghh iijj kkll  #
+# ^gghh iijj kkll^ #
+#<+  a ccmmdd b  +>#
+##   a   mm   b   ##
+##  nn        oo  ##
+# +>nn eeppff oo<+ #
+# `  qq  pp  rr  ` #
+##   qq sstt rr   ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Right
+####################
+##         @      ##
+#  gghh iijj kkll  #
+# ^gghh iijj kkll^ #
+#<+  a ccmmdd b  +>#
+##   a   mm   b   ##
+##  nn        oo  ##
+# +>nn eeppff oo<+ #
+# `  qq  pp  rr  ` #
+##   qq sstt rr   ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Right
+####################
+##          @     ##
+#  gghh iijj kkll  #
+# ^gghh iijj kkll^ #
+#<+  a ccmmdd b  +>#
+##   a   mm   b   ##
+##  nn        oo  ##
+# +>nn eeppff oo<+ #
+# `  qq  pp  rr  ` #
+##   qq sstt rr   ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Down
+####################
+##                ##
+#  gghh iijj@kkll  #
+# ^gghh iijj kkll^ #
+#<+  a ccmmdd b  +>#
+##   a   mm   b   ##
+##  nn        oo  ##
+# +>nn eeppff oo<+ #
+# `  qq  pp  rr  ` #
+##   qq sstt rr   ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Down
+####################
+##                ##
+#  gghh iijj kkll  #
+# ^gghh iijj@kkll^ #
+#<+  a ccmmdd b  +>#
+##   a   mm   b   ##
+##  nn        oo  ##
+# +>nn eeppff oo<+ #
+# `  qq  pp  rr  ` #
+##   qq sstt rr   ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Down
+####################
+##                ##
+#  gghh iijj kkll  #
+# ^gghh iijj kkll^ #
+#<+  a ccmm @ b  +>#
+##   a   mmdd b   ##
+##  nn        oo  ##
+# +>nn eeppff oo<+ #
+# `  qq  pp  rr  ` #
+##   qq sstt rr   ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Right
+####################
+##                ##
+#  gghh iijj kkll  #
+# ^gghh iijj kkll^ #
+#<+  a ccmm  @b  +>#
+##   a   mmdd b   ##
+##  nn        oo  ##
+# +>nn eeppff oo<+ #
+# `  qq  pp  rr  ` #
+##   qq sstt rr   ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Right
+####################
+##                ##
+#  gghh iijj kkll  #
+# ^gghh iijj kkll^ #
+#<+  a ccmm   @b +>#
+##   a   mmdd  b  ##
+##  nn        oo  ##
+# +>nn eeppff oo<+ #
+# `  qq  pp  rr  ` #
+##   qq sstt rr   ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Right
+####################
+##                ##
+#  gghh iijj kkll  #
+# ^gghh iijj kkll^ #
+#<+  a ccmm    @b+>#
+##   a   mmdd   b ##
+##  nn        oo  ##
+# +>nn eeppff oo<+ #
+# `  qq  pp  rr  ` #
+##   qq sstt rr   ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Up
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll@ ^ #
+#<+  a ccmm     b+>#
+##   a   mmdd   b ##
+##  nn        oo  ##
+# +>nn eeppff oo<+ #
+# `  qq  pp  rr  ` #
+##   qq sstt rr   ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Right
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll @^ #
+#<+  a ccmm     b+>#
+##   a   mmdd   b ##
+##  nn        oo  ##
+# +>nn eeppff oo<+ #
+# `  qq  pp  rr  ` #
+##   qq sstt rr   ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Down
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm     @+>#
+##   a   mmdd   b ##
+##  nn        oob ##
+# +>nn eeppff oo<+ #
+# `  qq  pp  rr  ` #
+##   qq sstt rr   ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Left
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm    @ +>#
+##   a   mmdd   b ##
+##  nn        oob ##
+# +>nn eeppff oo<+ #
+# `  qq  pp  rr  ` #
+##   qq sstt rr   ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Down
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm      +>#
+##   a   mmdd  @b ##
+##  nn        oob ##
+# +>nn eeppff oo<+ #
+# `  qq  pp  rr  ` #
+##   qq sstt rr   ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Right
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm      +>#
+##   a   mmdd   @b##
+##  nn        oo b##
+# +>nn eeppff oo<+ #
+# `  qq  pp  rr  ` #
+##   qq sstt rr   ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Down
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm      +>#
+##   a   mmdd    b##
+##  nn        oo@b##
+# +>nn eeppff oo<+ #
+# `  qq  pp  rr  ` #
+##   qq sstt rr   ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Left
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm      +>#
+##   a   mmdd    b##
+##  nn       oo@ b##
+# +>nn eeppffoo <+ #
+# `  qq  pp  rr  ` #
+##   qq sstt rr   ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Down
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm      +>#
+##   a   mmdd    b##
+##  nn       oo  b##
+# +>nn eeppffoo@<+ #
+# `  qq  pp  rr  ` #
+##   qq sstt rr   ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Down
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm      +>#
+##   a   mmdd    b##
+##  nn       oo  b##
+# +>nn eeppffoo <+ #
+# `  qq  pp  rr@ ` #
+##   qq sstt rr   ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Left
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm      +>#
+##   a   mmdd    b##
+##  nn       oo  b##
+# +>nn eeppffoo <+ #
+# `  qq  pp rr@  ` #
+##   qq ssttrr    ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Up
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm      +>#
+##   a   mmddnn  b##
+##  oo       nn  b##
+# +>oo eeppff @ <+ #
+# `  qq  pp rr   ` #
+##   qq ssttrr    ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Left
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm      +>#
+##   a   mmddnn  b##
+##  oo       nn  b##
+# +>oo eeppff@  <+ #
+# `  qq  pp rr   ` #
+##   qq ssttrr    ##
+##  uu  sstt  vv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Down
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm      +>#
+##   a   mmddnn  b##
+##  oo       nn  b##
+# +>oo eeppff   <+ #
+# `  qq  pp  @   ` #
+##   qq rrsstt    ##
+##  uu  rrssttvv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Left
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm      +>#
+##   a   mmddnn  b##
+##  oo       nn  b##
+# +>oo eeppff   <+ #
+# `  qq  pp @    ` #
+##   qq rrsstt    ##
+##  uu  rrssttvv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Left
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm      +>#
+##   a   mmddnn  b##
+##  oo       nn  b##
+# +>oo eeppff   <+ #
+# `  qq  pp@     ` #
+##   qq rrsstt    ##
+##  uu  rrssttvv  ##
+##  uu        vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Down
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm      +>#
+##   a   mmddnn  b##
+##  oo       nn  b##
+# +>oo eeppff   <+ #
+# `  qq  pp      ` #
+##   qq rr @ss    ##
+##  tt  rruussvv  ##
+##  tt    uu  vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Left
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm      +>#
+##   a   mmddnn  b##
+##  oo       nn  b##
+# +>oo eeppff   <+ #
+# `  qq  pp      ` #
+##   qq rr@ ss    ##
+##  tt  rruussvv  ##
+##  tt    uu  vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Left
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm      +>#
+##   a   mmddnn  b##
+##  oo       nn  b##
+# +>oo eeppff   <+ #
+# `  qq  pp      ` #
+##   qqrr@  ss    ##
+##  tt rr uussvv  ##
+##  tt    uu  vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Down
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm      +>#
+##   a   mmddnn  b##
+##  oo       nn  b##
+# +>oo eeppff   <+ #
+# `  qq  pp      ` #
+##   qqrr   ss    ##
+##  tt rr@uussvv  ##
+##  tt    uu  vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Down
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm      +>#
+##   a   mmddnn  b##
+##  oo       nn  b##
+# +>oo eeppff   <+ #
+# `  qq  pp      ` #
+##   qqrr   ss    ##
+##  tt rr uussvv  ##
+##  tt   @uu  vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Down
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm      +>#
+##   a   mmddnn  b##
+##  oo       nn  b##
+# +>oo eeppff   <+ #
+# `  qq  pp      ` #
+##   qqrr   ss    ##
+##  tt rr uussvv  ##
+##  tt    uu  vv  ##
+#########@##########
+#                  #
+#        X         #
+##                ##
+####################
+Down
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm      +>#
+##   a   mmddnn  b##
+##  oo       nn  b##
+# +>oo eeppff   <+ #
+# `  qq  pp      ` #
+##   qqrr   ss    ##
+##  tt rr uussvv  ##
+##  tt    uu  vv  ##
+######### ##########
+#        @         #
+#        X         #
+##                ##
+####################
+Down
+####################
+##             gg ##
+#  hhii jjkk llgg  #
+# ^hhii jjkk ll  ^ #
+#<+  a ccmm      +>#
+##   a   mmddnn  b##
+##  oo       nn  b##
+# +>oo eeppff   <+ #
+# `  qq  pp      ` #
+##   qqrr   ss    ##
+##  tt rr uussvv  ##
+##  tt    uu  vv  ##
+######### ##########
+#                  #
+#        X         #
+##                ##
+####################
+Total 33+0 steps, 310 frames (5.167 seconds)

@@ -377,11 +377,13 @@ int perform(ref const Level level, ref Vars v, Action action)
 									auto y = cy + dirY[targetDir];
 									auto c = v[varNameCell(x, y)].resolve().VarValueCell;
 
-									if (cell.turnstile.haveDirection & (1 << targetDir))
-										assert(c.type == VarValueCell.Type.turnstile
-											&& c.turnstile.thisDirection == targetDir);
-									else
-										assert(c.type == VarValueCell.Type.empty);
+									// Sanity check - there was a wing here iff it's in our flags.
+									assert(
+										!!(cell.turnstile.haveDirection & (1 << targetDir))
+										==
+										(c.type == VarValueCell.Type.turnstile
+											&& c.turnstile.thisDirection == targetDir)
+									);
 
 									if (cell.turnstile.haveDirection & (1 << sourceDir))
 									{

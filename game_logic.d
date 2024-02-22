@@ -160,28 +160,28 @@ int perform(ref const Level level, ref Vars v, Action action)
 								}
 
 							// Fillable in theory?
-							bool fillable = true;
-							foreach (y; ny0 .. ny1)
-								foreach (x; nx0 .. nx1)
-									if (!level.initialState[varNameCell(x, y)].VarValueCell.hole)
-									{
-										// There was never, and thus can never be, a hole here.
-										fillable = false;
-										break;
-									}
+							auto fillable = {
+								foreach (y; ny0 .. ny1)
+									foreach (x; nx0 .. nx1)
+										if (!level.initialState[varNameCell(x, y)].VarValueCell.hole)
+										{
+											// There was never, and thus can never be, a hole here.
+											return false;
+										}
+								return true;
+							}();
 
 							// Fillable in practice?
-							if (fillable)
-							{
+							fillable = fillable && {
 								foreach (y; ny0 .. ny1)
 									foreach (x; nx0 .. nx1)
 										if (!v[varNameCell(x, y)].resolve().VarValueCell.hole)
 										{
 											// There was a hole here once, but not right now.
-											fillable = false;
-											break;
+											return false;
 										}
-							}
+								return true;
+							}();
 
 							foreach (y; min(oy0, ny0) .. max(oy1, ny1))
 								foreach (x; min(ox0, nx0) .. max(ox1, nx1))

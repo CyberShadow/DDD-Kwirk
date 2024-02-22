@@ -2,6 +2,7 @@ import std.algorithm.comparison;
 
 import ae.utils.mapset;
 import ae.utils.mapset.vars;
+import ae.utils.meta;
 
 import common;
 
@@ -67,7 +68,7 @@ int perform(ref const Level level, ref Vars v, Action action)
 		case Action.down:
 			auto p = v[VarName.character0Coord].resolve().VarValueCharacterCoord;
 			auto n = p;
-			auto d = (action - Action.right) + Direction.right;
+			const d = cast(Direction)((action - Action.right) + Direction.right);
 			n.x += dirX[d];
 			n.y += dirY[d];
 
@@ -93,7 +94,10 @@ int perform(ref const Level level, ref Vars v, Action action)
 					return -1;
 
 				case Tile.free:
-					auto cell = v[varNameCell(n.x, n.y)].resolve().VarValueCell;
+					const cell = v[varNameCell(n.x, n.y)].resolve().VarValueCell;
+
+					// If there is a hole, we cannot step into it,
+					// no matter what else is here.
 					if (cell.hole)
 						return -1;
 
@@ -118,7 +122,7 @@ int perform(ref const Level level, ref Vars v, Action action)
 							auto nx1 = ox1 + dirX[d];
 							auto ny1 = oy1 + dirY[d];
 
-							// First check: bumping into a wall?
+							// Pushable in theory?
 							foreach (y; ny0 .. ny1)
 								foreach (x; nx0 .. nx1)
 								{
@@ -135,7 +139,7 @@ int perform(ref const Level level, ref Vars v, Action action)
 										}
 								}
 
-							// Second check: bumping into an object?
+							// Pushable in practice?
 							foreach (y; ny0 .. ny1)
 								foreach (x; nx0 .. nx1)
 								{

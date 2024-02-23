@@ -7,7 +7,8 @@
 //#define BIZHAWK_2_3_2 // requires Config -> Cores -> GB -> GBHawk
 //#define BIZHAWK_2_5_2
 #define BIZHAWK_2_9_1
-#define GBC_MODE // currently only tested with BIZHAWK_2_9_1
+#define GAMBATTE_CORE // currently only tested with BIZHAWK_2_9_1 with GBC_MODE disabled
+//#define GBC_MODE // currently only tested with BIZHAWK_2_9_1
 
 #if defined(BIZHAWK_2_3_2)
 	#if defined(BIZHAWK_2_5_2) || defined(BIZHAWK_2_9_1)
@@ -32,6 +33,12 @@
 	#error Must define exactly one
 #endif
 
+#ifdef GAMBATTE_CORE
+	#define BIZHAWK_CORE " (Gambatte)"
+#else
+	#define BIZHAWK_CORE ""
+#endif
+
 int export_bk2()
 {
 	FILE *solution_in;
@@ -46,9 +53,9 @@ int export_bk2()
 	}
 	FILE *bk2_out;
 	if (LEVEL==0)
-		bk2_out = fopen("Kwirk (UA) [optimized] " BIZHAWK_VERSION "/Input Log.txt", "wt");
+		bk2_out = fopen("Kwirk (UA) [optimized] " BIZHAWK_VERSION BIZHAWK_CORE "/Input Log.txt", "wt");
 	else
-		bk2_out = fopen("Kwirk (UA) [optimized] " BIZHAWK_VERSION "/Input Log.txt", "at");
+		bk2_out = fopen("Kwirk (UA) [optimized] " BIZHAWK_VERSION BIZHAWK_CORE "/Input Log.txt", "at");
 	if (!bk2_out)
 	{
 		fclose(solution_in);
@@ -71,11 +78,19 @@ int export_bk2()
 	{
 		fputs(
 			"[Input]\n"
-			"LogKey:#P1 Up|P1 Down|P1 Left|P1 Right|P1 Start|P1 Select|P1 B|P1 A|P1 Power|\n", bk2_out);
+#ifdef GAMBATTE_CORE
+			"LogKey:#Up|Down|Left|Right|Start|Select|B|A|Power|"
+#else
+			"LogKey:#P1 Up|P1 Down|P1 Left|P1 Right|P1 Start|P1 Select|P1 B|P1 A|P1 Power|"
+#endif
+			"\n", bk2_out);
 
 		int delay = 378;
 #ifdef BIZHAWK_2_3_2
 		delay -= 12;
+#endif
+#ifdef GAMBATTE_CORE
+		delay += 15;
 #endif
 #ifdef GBC_MODE
 		delay -= 149;
@@ -85,11 +100,14 @@ int export_bk2()
 
 		fputs(pressStart, bk2_out);
 
+		delay = 18;
 #ifdef BIZHAWK_2_3_2
-		for (int i=0; i<14; i++)
-#else
-		for (int i=0; i<18; i++)
+		delay -= 4;
 #endif
+#ifdef GAMBATTE_CORE
+		delay += 2;
+#endif
+		for (int i=0; i<delay; i++)
 			fputs(action_to_bk2[NONE], bk2_out);
 
 		// SELECT GAME -> GOING UP
@@ -130,11 +148,14 @@ int export_bk2()
 #else
 		fputs(pressA, bk2_out);
 #endif
+		delay = 27;
 #ifdef BIZHAWK_2_3_2
-		for (int i=0; i<23; i++)
-#else
-		for (int i=0; i<27; i++)
+		delay -= 4;
 #endif
+#ifdef GAMBATTE_CORE
+		delay += 1;
+#endif
+		for (int i=0; i<delay; i++)
 			fputs(action_to_bk2[NONE], bk2_out);
 	}
 
@@ -146,10 +167,12 @@ int export_bk2()
 #endif
 	fprintf(bk2_out, "Level %u-%u\n", LEVEL/10+1, LEVEL%10+1);
 	{
-#ifdef BIZHAWK_2_3_2
-		int delay = 164;
-#else
 		int delay = 167;
+#ifdef BIZHAWK_2_3_2
+		delay -= 3;
+#endif
+#ifdef GAMBATTE_CORE
+		delay += 1;
 #endif
 		if (LEVEL != 0)
 			delay += 1;
@@ -310,6 +333,9 @@ int export_bk2()
 			delay += 3;
 	#endif
 #endif
+#ifdef GAMBATTE_CORE
+		delay += 2;
+#endif
 #ifdef GBC_MODE
 		if (LEVEL==12 || LEVEL==26)
 			delay += 1;
@@ -321,28 +347,31 @@ int export_bk2()
 
 		if (LEVEL % 10 == 9)
 		{
+			delay = 254;
 #ifdef BIZHAWK_2_3_2
-			for (int i=0; i<253; i++)
-#else
-			for (int i=0; i<254; i++)
+			delay -= 1;
 #endif
-				fputs(action_to_bk2[NONE], bk2_out);
 #ifndef BIRDS_EYE_VIEW
-			fputs(action_to_bk2[NONE], bk2_out);
+			delay += 1;
 #endif
+			for (int i=0; i<delay; i++)
+				fputs(action_to_bk2[NONE], bk2_out);
 
 			fputs(pressStart, bk2_out);
 
+			delay = 33;
 #ifdef BIZHAWK_2_3_2
-			for (int i=0; i<31; i++)
-#else
-			for (int i=0; i<33; i++)
+			delay -= 2;
 #endif
+#ifdef GAMBATTE_CORE
+			delay += 3;
+#endif
+			for (int i=0; i<delay; i++)
 				fputs(action_to_bk2[NONE], bk2_out);
 		}
 		else
 		{
-			int delay = 51;
+			delay = 51;
 #ifdef BIZHAWK_2_3_2
 			delay -= 6;
 #else
@@ -351,6 +380,9 @@ int export_bk2()
 #endif
 #ifndef BIRDS_EYE_VIEW
 			delay += 1;
+#endif
+#ifdef GAMBATTE_CORE
+			delay += 3;
 #endif
 			for (int i=0; i<delay; i++)
 				fputs(action_to_bk2[NONE], bk2_out);

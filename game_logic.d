@@ -398,12 +398,15 @@ int perform(ref const Level level, ref Vars v, Action action)
 
 									if (cell.turnstile.haveDirection & (1 << sourceDir))
 									{
+										// A wing will be here. Configure it, regardless if a wing *was* here.
 										c.type = VarValueCell.Type.turnstile;
 										c.turnstile.thisDirection = targetDir;
 										c.turnstile.haveDirection = newHaveDirection;
 									}
 									else
+									if (cell.turnstile.haveDirection & (1 << targetDir))
 									{
+										// A wing was here, and now won't. Clear it.
 										c.type = VarValueCell.Type.empty;
 										c.empty = VarValueCell.Empty.init; // Clear vestigial state
 									}

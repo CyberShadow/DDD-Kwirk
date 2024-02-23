@@ -26,6 +26,7 @@ void program(
 
 	for (uint frameNumber = 0; ; frameNumber++)
 	{
+		assert(frameNumber < statesAtFrame.length, "No more states.");
 		auto set = statesAtFrame[frameNumber];
 		stderr.writefln("Frame %d: %d / %d",
 			frameNumber,

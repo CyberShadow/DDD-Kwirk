@@ -27,7 +27,7 @@ enum delayPush         = 10; // 2+8
 enum delayFill         = 26;
 enum delayRotate       = 12;
 enum delaySwitch       = 30;
-enum delaySwitch_Again = 32;
+enum delaySwitchAgain  = 32;
 enum delayExit         =  1; // fake delay to prevent grouping into one frame group
 
 int perform(ref const Level level, ref Vars v, Action action)
@@ -42,32 +42,51 @@ int perform(ref const Level level, ref Vars v, Action action)
 				return -1;
 			else
 			{
-				assert(false, "TODO Action.switchCharacter");
-				// ubyte playerCount = playersLeft();
-				// if (playerCount)
-				// {
-				// 	switchPlayers(playerCount);
+				auto c0coord_ = v[VarName.character0Coord];
+				auto c0coord = c0coord_;
 
-				// 	static if (levelDef.characters > 2)
-				// 	{
-				// 		int res = justSwitched ? DELAY_SWITCH_AGAIN : DELAY_SWITCH;
-				// 		if (UPDATE_UNCOMPRESSED)
-				// 			justSwitched = true;
-				// 		if (UPDATE_COMPRESSED)
-				// 			compressed.justSwitched = true;
-				// 		return res;
-				// 	}
-				// 	else
-				// 		return DELAY_SWITCH;
-				// }
-				// else
-				// 	return -1;
+				ubyte c = 1;
+				for (; c <= level.numCharacters; c++)
+				{
+					if (c == level.numCharacters)
+						break;
+
+					auto ccCoord = v[varNameCharacterCoord(c)];
+					auto isPresent = !!ccCoord.map(v => v != 0).resolve();
+					if (!isPresent)
+						break;
+
+					v[varNameCharacterCoord(c - 1)] = ccCoord;
+				}
+
+				if (c == 1)
+					return -1; // Just one character left, no one to switch to.
+
+				v[varNameCharacterCoord(c - 1)] = c0coord;
+
+				bool justSwitched;
+				if (level.numCharacters == 2)
+				{
+					// We can assume the solver will never want to
+					// switch back to the same character immediately
+					justSwitched = false;
+				}
+				else
+				{
+					justSwitched = !!v[VarName.justSwitched].resolve();
+					v[VarName.justSwitched] = true;
+				}
+
+				return justSwitched ? delaySwitchAgain : delaySwitch;
 			}
 
 		case Action.right:
 		case Action.up:
 		case Action.left:
 		case Action.down:
+			if (level.numCharacters > 2)
+				v[VarName.justSwitched] = false;
+
 			auto p = v[VarName.character0Coord].resolve().VarValueCharacterCoord;
 			auto n = p;
 			const d = cast(Direction)((action - Action.right) + Direction.right);

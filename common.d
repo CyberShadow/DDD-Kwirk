@@ -16,6 +16,8 @@ enum maxHeight = 32;
 
 enum VarName : uint
 {
+	justSwitched,
+
 	character0Coord,
 
 	cell00 = maxCharacters,

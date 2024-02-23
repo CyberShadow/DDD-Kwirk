@@ -1,3 +1,5 @@
+import core.bitop;
+
 import std.algorithm.comparison;
 
 import ae.utils.mapset;
@@ -370,6 +372,15 @@ int perform(ref const Level level, ref Vars v, Action action)
 							}
 							else
 							{
+								ubyte newHaveDirection;
+								foreach (targetDir; Direction.init .. enumLength!Direction)
+								{
+									auto sourceDir = (targetDir - spin + enumLength!Direction) % enumLength!Direction;
+									if (cell.turnstile.haveDirection & (1 << sourceDir))
+										newHaveDirection |= 1 << targetDir;
+								}
+								assert(cell.turnstile.haveDirection.popcnt == newHaveDirection.popcnt);
+
 								foreach (targetDir; Direction.init .. enumLength!Direction)
 								{
 									auto sourceDir = (targetDir - spin + enumLength!Direction) % enumLength!Direction;
@@ -389,13 +400,7 @@ int perform(ref const Level level, ref Vars v, Action action)
 									{
 										c.type = VarValueCell.Type.turnstile;
 										c.turnstile.thisDirection = targetDir;
-										c.turnstile.haveDirection = 0;
-										foreach (targetMaskDir; Direction.init .. enumLength!Direction)
-										{
-											auto sourceMaskDir = (targetMaskDir - spin + enumLength!Direction) % enumLength!Direction;
-											if (cell.turnstile.haveDirection & (1 << sourceMaskDir))
-												c.turnstile.haveDirection |= 1 << targetMaskDir;
-										}
+										c.turnstile.haveDirection = newHaveDirection;
 									}
 									else
 									{

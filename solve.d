@@ -22,6 +22,7 @@ void program(
 			initialSet = initialSet.set(name, value);
 
 	StateSet[] statesAtFrame = [initialSet];
+	StateSet seenStates;
 
 	for (uint frameNumber = 0; ; frameNumber++)
 	{
@@ -31,6 +32,9 @@ void program(
 			set.count,
 			set.uniqueNodes,
 		);
+
+		set = set.subtract(seenStates);
+		seenStates = seenStates.merge(set);
 
 		set = set.optimize();
 		stderr.writefln("Optimized: %d", set.uniqueNodes);

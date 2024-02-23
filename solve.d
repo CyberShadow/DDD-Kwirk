@@ -35,6 +35,7 @@ void program(
 
 		set = set.subtract(seenStates);
 		seenStates = seenStates.merge(set);
+		seenStates = seenStates.optimize();
 
 		set = set.optimize();
 		stderr.writefln("Optimized: %d", set.uniqueNodes);

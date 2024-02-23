@@ -7,6 +7,7 @@
 //#define BIZHAWK_2_3_2 // requires Config -> Cores -> GB -> GBHawk
 //#define BIZHAWK_2_5_2
 #define BIZHAWK_2_9_1
+#define GBC_MODE // currently only tested with BIZHAWK_2_9_1
 
 #if defined(BIZHAWK_2_3_2)
 	#if defined(BIZHAWK_2_5_2) || defined(BIZHAWK_2_9_1)
@@ -22,7 +23,11 @@
 	#if defined(BIZHAWK_2_3_2) || defined(BIZHAWK_2_5_2)
 		#error Must define exactly one
 	#endif
-	#define BIZHAWK_VERSION "2.9.1"
+	#ifdef GBC_MODE
+		#define BIZHAWK_VERSION "2.9.1 (GBC)"
+	#else
+		#define BIZHAWK_VERSION "2.9.1"
+	#endif
 #else
 	#error Must define exactly one
 #endif
@@ -68,11 +73,14 @@ int export_bk2()
 			"[Input]\n"
 			"LogKey:#P1 Up|P1 Down|P1 Left|P1 Right|P1 Start|P1 Select|P1 B|P1 A|P1 Power|\n", bk2_out);
 
+		int delay = 378;
 #ifdef BIZHAWK_2_3_2
-		for (int i=0; i<366; i++)
-#else
-		for (int i=0; i<378; i++)
+		delay -= 12;
 #endif
+#ifdef GBC_MODE
+		delay -= 149;
+#endif
+		for (int i=0; i<delay; i++)
 			fputs(action_to_bk2[NONE], bk2_out);
 
 		fputs(pressStart, bk2_out);
@@ -177,6 +185,10 @@ int export_bk2()
 			delay += 1;
 		else
 		if (LEVEL==22)
+			delay += 2;
+#endif
+#ifdef GBC_MODE
+		if (LEVEL==13)
 			delay += 2;
 #endif
 		for (int i=0; i<delay; i++)
@@ -296,6 +308,10 @@ int export_bk2()
 		if (LEVEL==16)
 			delay += 3;
 	#endif
+#endif
+#ifdef GBC_MODE
+		if (LEVEL==12 || LEVEL==26)
+			delay += 1;
 #endif
 		for (int i=0; i<delay; i++)
 			fputs(action_to_bk2[NONE], bk2_out);

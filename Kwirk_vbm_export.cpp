@@ -37,6 +37,7 @@ int export_vbm()
 	/* DOWN   */ 0x0080,
 	/* LEFT   */ 0x0020,
 	/* SWITCH */ 0x0004,
+	/* NONE   */ 0x0000,
 	};
 
 	WORD control;
@@ -127,6 +128,8 @@ int export_vbm()
 	int frames = 0;
 	int steps = -1;
 	int switches = 0;
+	int repeatCount = 0;
+	Action repeatAction = NONE;
 	try
 	{
 		State state = State::initial;
@@ -168,6 +171,8 @@ int export_vbm()
 			if (res <= 0)
 				error("Bad action!");
 
+			for (int i=0; i<repeatCount; i++)
+				fwrite(&action_to_vbm[repeatAction], sizeof(WORD), 1, vbm_out);
 #if 1
 			if (action==SWITCH)
 			{
@@ -176,24 +181,21 @@ int export_vbm()
 				{
 					resAdj -= 2;
 					for (int i=0; i<2; i++)
-						fwrite(&control, sizeof(WORD), 1, vbm_out);
+						fwrite(&action_to_vbm[NONE], sizeof(WORD), 1, vbm_out);
 				}
 				fwrite(&action_to_vbm[action], sizeof(WORD), 1, vbm_out);
-				for (int i=0; i<resAdj-1; i++)
-					fwrite(&control, sizeof(WORD), 1, vbm_out);
+				repeatCount = resAdj - 1;
 			}
 			else
 			{
-				control = 0x0000;
-				fwrite(&control, sizeof(WORD), 1, vbm_out);
+				fwrite(&action_to_vbm[NONE], sizeof(WORD), 1, vbm_out);
 				fwrite(&action_to_vbm[action], sizeof(WORD), 1, vbm_out);
-				control = 0x0000;
-				for (int i=1; i<res-1; i++)
-					fwrite(&control, sizeof(WORD), 1, vbm_out);
+				repeatCount = res - 2;
 			}
 #else
-			for (int i=0; i<res; i++)
-				fwrite(&action_to_vbm[action], sizeof(WORD), 1, vbm_out);
+			fwrite(&action_to_vbm[action], sizeof(WORD), 1, vbm_out);
+			repeatCount = res - 1;
+			repeatAction = action;
 #endif
 
 			lastAction = action;
@@ -209,6 +211,9 @@ int export_vbm()
 
 	if (LEVEL != 29)
 	{
+		for (int i=0; i<repeatCount; i++)
+			fwrite(&action_to_vbm[repeatAction], sizeof(WORD), 1, vbm_out);
+
 		control = 0x0000; // no buttons
 		for (int i=0; i<182; i++)
 			fwrite(&control, sizeof(WORD), 1, vbm_out);

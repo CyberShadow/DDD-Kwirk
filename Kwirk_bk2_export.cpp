@@ -222,6 +222,8 @@ int export_bk2()
 	int frames = 0;
 	int steps = -1;
 	int switches = 0;
+	int repeatCount = 0;
+	Action repeatAction = NONE;
 	try
 	{
 		State state = State::initial;
@@ -263,6 +265,8 @@ int export_bk2()
 			if (res <= 0)
 				error("Bad action!");
 
+			for (int i=0; i<repeatCount; i++)
+				fputs(action_to_bk2[repeatAction], bk2_out);
 #if 1
 			if (action==SWITCH)
 			{
@@ -274,19 +278,18 @@ int export_bk2()
 						fputs(action_to_bk2[NONE], bk2_out);
 				}
 				fputs(action_to_bk2[action], bk2_out);
-				for (int i=0; i<resAdj-1; i++)
-					fputs(action_to_bk2[NONE], bk2_out);
+				repeatCount = resAdj - 1;
 			}
 			else
 			{
 				fputs(action_to_bk2[NONE], bk2_out);
 				fputs(action_to_bk2[action], bk2_out);
-				for (int i=1; i<res-1; i++)
-					fputs(action_to_bk2[NONE], bk2_out);
+				repeatCount = res - 2;
 			}
 #else
-			for (int i=0; i<res; i++)
-				fputs(action_to_bk2[action], bk2_out);
+			fputs(action_to_bk2[action], bk2_out);
+			repeatCount = res - 1;
+			repeatAction = action;
 #endif
 
 			lastAction = action;
@@ -304,6 +307,9 @@ int export_bk2()
 		fputs("[/Input]\n", bk2_out);
 	else
 	{
+		for (int i=0; i<repeatCount; i++)
+			fputs(action_to_bk2[repeatAction], bk2_out);
+
 		int delay;
 #ifdef BIZHAWK_2_3_2
 		delay = 182;

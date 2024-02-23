@@ -341,17 +341,18 @@ int export_bk2()
 		}
 		else
 		{
+			int delay = 51;
 #ifdef BIZHAWK_2_3_2
-			for (int i=0; i<45; i++)
+			delay -= 6;
 #else
 			if (LEVEL != 0)
-				fputs(action_to_bk2[NONE], bk2_out);
-			for (int i=0; i<51; i++)
+				delay += 1;
 #endif
-				fputs(action_to_bk2[NONE], bk2_out);
 #ifndef BIRDS_EYE_VIEW
-			fputs(action_to_bk2[NONE], bk2_out);
+			delay += 1;
 #endif
+			for (int i=0; i<delay; i++)
+				fputs(action_to_bk2[NONE], bk2_out);
 		}
 	}
 

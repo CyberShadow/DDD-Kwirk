@@ -36,14 +36,13 @@ void program(
 
 		set = set.subtract(seenStates);
 		stderr.writefln("  Deduplicated: %d states, %d nodes", set.count, set.uniqueNodes);
+		set = set.optimize();
+		stderr.writefln("  Optimized: %d nodes", set.uniqueNodes);
 
 		seenStates = seenStates.merge(set);
 		stderr.writefln("  Total: %d states, %d nodes", seenStates.count, seenStates.uniqueNodes);
 		seenStates = seenStates.optimize();
 		stderr.writefln("    Optimized: %d nodes", seenStates.uniqueNodes);
-
-		set = set.optimize();
-		stderr.writefln("  Optimized: %d nodes", set.uniqueNodes);
 
 		foreach (action; Action.init .. enumLength!Action)
 		{

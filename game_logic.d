@@ -97,18 +97,32 @@ int perform(ref const Level level, ref Vars v, Action action)
 			final switch (tile)
 			{
 				case Tile.exit:
-					dump(level, v.visitor);
-					assert(false, "TODO Tile.exit");
-					// players[0] = n;
-					// justSwitched = false;
-					// uint8_t playerCount = playersLeft();
-					// if (playerCount)
-					// {
-					// 	switchPlayers(playerCount+1);
-					// 	return DELAY_MOVE + DELAY_SWITCH;
-					// }
-					// else
-					// 	return DELAY_MOVE + DELAY_EXIT;
+					v[varNameCell(p.x, p.y)] = VarValueCell(VarValueCell.Type.empty);
+
+					ubyte c = 1;
+					for (; c <= level.numCharacters; c++)
+					{
+						if (c == level.numCharacters)
+							break;
+
+						auto ccCoord = v[varNameCharacterCoord(c)];
+						auto isPresent = !!ccCoord.map(v => v != 0).resolve();
+						if (!isPresent)
+							break;
+
+						v[varNameCharacterCoord(c - 1)] = ccCoord;
+					}
+
+					v[varNameCharacterCoord(c - 1)] = VarValueCharacterCoord.init;
+
+					if (c == 1)
+					{
+						dump(level, v.visitor);
+						assert(false, "TODO Solved");
+						//return delayMove + delayExit;
+					}
+
+					return delayMove + delaySwitch;
 
 				case Tile.wall:
 				case Tile.turnstileCenter:

@@ -310,11 +310,10 @@ int export_bk2()
 		for (int i=0; i<repeatCount; i++)
 			fputs(action_to_bk2[repeatAction], bk2_out);
 
-		int delay;
+		int delay = 186;
 #ifdef BIZHAWK_2_3_2
-		delay = 182;
+		delay -= 4;
 #else
-		delay = 186;
 		if (LEVEL==3)
 			delay += 2;
 		else
@@ -341,6 +340,14 @@ int export_bk2()
 #endif
 #ifdef GAMBATTE_CORE
 		delay += 2;
+		if (LEVEL==6 || LEVEL==17 || LEVEL==20 || LEVEL==23)
+			delay -= 1;
+		else
+		if (LEVEL==3)
+			delay -= 2;
+		else
+		if (LEVEL==16)
+			delay -= 3;
 #endif
 #ifdef GBC_MODE
 		if (LEVEL==12 || LEVEL==26)

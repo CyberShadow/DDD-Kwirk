@@ -10,11 +10,10 @@ import game_logic;
 import load;
 
 void program(
-	int levelNumber,
+	string levelFileName,
 )
 {
-	auto fn = format("levels/%d.txt", levelNumber);
-	auto level = loadLevel(fn);
+	auto level = loadLevel(levelFileName);
 
 	StateSet initialSet = StateSet.unitSet;
 	foreach (VarName name, VarValue value; level.initialState)

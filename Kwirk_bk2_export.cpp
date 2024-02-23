@@ -64,8 +64,8 @@ int export_bk2()
 	/* SWITCH */ "|.....s...|\n",
 	/* NONE   */ "|.........|\n",
 	};
-	const char *pressStart = "|....S....|\n";
-	const char *pressA     = "|.......A.|\n";
+	const char *pressStart = "|....S....|\n", *pressStart_commented = "|....S....| ";
+	const char *pressA     = "|.......A.|\n", *pressA_commented     = "|.......A.| ";
 
 	if (LEVEL == 0)
 	{
@@ -140,10 +140,11 @@ int export_bk2()
 
 	// GOING UP? -> START
 #ifdef BIZHAWK_2_3_2
-	fputs(pressA, bk2_out);
+	fputs(pressA_commented, bk2_out);
 #else
-	fputs(pressStart, bk2_out);
+	fputs(pressStart_commented, bk2_out);
 #endif
+	fprintf(bk2_out, "Level %u-%u\n", LEVEL/10+1, LEVEL%10+1);
 	{
 #ifdef BIZHAWK_2_3_2
 		int delay = 164;

@@ -1,0 +1,4957 @@
+None
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# k nn ###
+#OOOO#OOOOdqqq m e #
+#XO#OOOOOO oo  m @ #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# l pp ###
+#OOOOOOO#O# l  h ###
+#OOOOOOOOO#OOi j ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# k nn ###
+#OOOO#OOOOdqqq m e #
+#XO#OOOOOO oo  m@  #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# l pp ###
+#OOOOOOO#O# l  h ###
+#OOOOOOOOO#OOi j ###
+####################
+Down
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# k nn ###
+#OOOO#OOOOdqqq m e #
+#XO#OOOOOO oo  m   #
+#OOOO#OOOOfrrr m@g #
+#OOO#OOOOO# l pp ###
+#OOOOOOO#O# l  h ###
+#OOOOOOOOO#OOi j ###
+####################
+Down
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# k nn ###
+#OOOO#OOOOdqqq m e #
+#XO#OOOOOO oo  m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# l pp@###
+#OOOOOOO#O# l  h ###
+#OOOOOOOOO#OOi j ###
+####################
+Down
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# k nn ###
+#OOOO#OOOOdqqq m e #
+#XO#OOOOOO oo  m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# l pp ###
+#OOOOOOO#O# l  h@###
+#OOOOOOOOO#OOi j ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# k nn ###
+#OOOO#OOOOdqqq m e #
+#XO#OOOOOO oo  m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# l pp ###
+#OOOOOOO#O# l h@ ###
+#OOOOOOOOO#OOi j ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# k nn ###
+#OOOO#OOOOdqqq m e #
+#XO#OOOOOO oo  m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# l pp ###
+#OOOOOOO#O# lh@  ###
+#OOOOOOOOO#OOi j ###
+####################
+Down
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# k nn ###
+#OOOO#OOOOdqqq m e #
+#XO#OOOOOO oo  m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# l pp ###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#OOi@j ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# k nn ###
+#OOOO#OOOOdqqq m e #
+#XO#OOOOOO oo  m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# l pp ###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O @ i ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# k nn ###
+#OOOO#OOOOdqqq m e #
+#XO#OOOOOO oo  m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# l pp ###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O  @i ###
+####################
+Up
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# k nn ###
+#OOOO#OOOOdqqq m e #
+#XO#OOOOOO oo  m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# l pp ###
+#OOOOOOO#O# lh@  ###
+#OOOOOOOOO#O   i ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# k nn ###
+#OOOO#OOOOdqqq m e #
+#XO#OOOOOO oo  m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# l pp ###
+#OOOOOOO#O# lh @ ###
+#OOOOOOOOO#O   i ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# k nn ###
+#OOOO#OOOOdqqq m e #
+#XO#OOOOOO oo  m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# l pp ###
+#OOOOOOO#O# lh  @###
+#OOOOOOOOO#O   i ###
+####################
+Up
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# k nn ###
+#OOOO#OOOOdqqq m e #
+#XO#OOOOOO oo  m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# l pp@###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# k nn ###
+#OOOO#OOOOdqqq m e #
+#XO#OOOOOO oo  m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# lpp@ ###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# k nn ###
+#OOOO#OOOOdqqq m e #
+#XO#OOOOOO oo  m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# lpp @###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Up
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# k nn ###
+#OOOO#OOOOdqqq m e #
+#XO#OOOOOO oo  m   #
+#OOOO#OOOOfrrr m@g #
+#OOO#OOOOO# lpp  ###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Up
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# k nn ###
+#OOOO#OOOOdqqq m e #
+#XO#OOOOOO oo  m@  #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# lpp  ###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Up
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# k nn ###
+#OOOO#OOOOdqqq m@e #
+#XO#OOOOOO oo  m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# lpp  ###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Up
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# k nn@###
+#OOOO#OOOOdqqq m e #
+#XO#OOOOOO oo  m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# lpp  ###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn@ ###
+#OOOO#OOOOdqqq m e #
+#XO#OOOOOO oo  m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# lpp  ###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Down
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq @ e #
+#XO#OOOOOO oo  m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# lppm ###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq@  e #
+#XO#OOOOOO oo  m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# lppm ###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Down
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOOOO oo @m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# lppm ###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOOOO oo@ m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# lppm ###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOOOOoo@  m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# lppm ###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOOOoo@   m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# lppm ###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO  @    m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# loom ###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO   @   m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# loom ###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO    @  m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# loom ###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO     @ m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# loom ###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO      @m   #
+#OOOO#OOOOfrrr m g #
+#OOO#OOOOO# loom ###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO       @m  #
+#OOOO#OOOOfrrr  mg #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Down
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#OOOOfrrr @mg #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Down
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#OOOOfrrr  mg #
+#OOO#OOOOO# loo@m###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i ###
+####################
+Down
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#OOOOfrrr  mg #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lh @ ###
+#OOOOOOOOO#O   i ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#OOOOfrrr  mg #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lh  @###
+#OOOOOOOOO#O   i ###
+####################
+Down
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#OOOOfrrr  mg #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O   i@###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#OOOOfrrr  mg #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O  i@ ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#OOOOfrrr  mg #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#O i@  ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#OOOOfrrr  mg #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#Oi@   ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#OOOOfrrr  mg #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO# @    ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#OOOOfrrr  mg #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#@     ###
+####################
+Up
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#OOOOfrrr  mg #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O#@lh   ###
+#OOOOOOOOO#      ###
+####################
+Up
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#OOOOfrrr  mg #
+#OOO#OOOOO#@loo m###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#      ###
+####################
+Up
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO   rrr  m  #
+#OOOO#OOOOf@    mg #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lh   ###
+#OOOOOOOOO#      ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO   rrr  m  #
+#OOOO#OOO @     mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Up
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO  @rrr  m  #
+#OOOO#OOO       mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO   @rrr m  #
+#OOOO#OOO       mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Down
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO    rrr m  #
+#OOOO#OOO  @    mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO    rrr m  #
+#OOOO#OOO   @   mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO    rrr m  #
+#OOOO#OOO    @  mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO    rrr m  #
+#OOOO#OOO     @ mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO    rrr m  #
+#OOOO#OOO      @mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Up
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO    rrr@m  #
+#OOOO#OOO       mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Up
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq @ e #
+#XO#OOOO    rrr m  #
+#OOOO#OOO       mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq@  e #
+#XO#OOOO    rrr m  #
+#OOOO#OOO       mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Down
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO      @ m  #
+#OOOO#OOO   rrr mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO       @m  #
+#OOOO#OOO   rrr mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Down
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#OOO   rrr@mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#OOO  rrr@ mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#OOO rrr@  mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#OOOrrr@   mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#OOrrr@    mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#Orrr@     mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#   @      mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#    @     mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#     @    mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#      @   mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#       @  mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#        @ mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        m  #
+#OOOO#         @mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Up
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO       @m  #
+#OOOO#          mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Up
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq @ e #
+#XO#OOOO        m  #
+#OOOO#          mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq  @e #
+#XO#OOOO        m  #
+#OOOO#          mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg   ###
+#OOOOOOOOO#      ###
+####################
+Down
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        @  #
+#OOOO#          mf #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg  m###
+#OOOOOOOOO#      ###
+####################
+Down
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO           #
+#OOOO#          @f #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO        @  #
+#OOOO#           f #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO         @ #
+#OOOO#           f #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e #
+#XO#OOOO          @#
+#OOOO#           f #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq   e@#
+#XO#OOOO           #
+#OOOO#           f #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq  e@ #
+#XO#OOOO           #
+#OOOO#           f #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq e@  #
+#XO#OOOO           #
+#OOOO#           f #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn @###
+#OOOO#OOOOdqqq e   #
+#XO#OOOO           #
+#OOOO#           f #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn@ ###
+#OOOO#OOOOdqqq e   #
+#XO#OOOO           #
+#OOOO#           f #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq @   #
+#XO#OOOO       e   #
+#OOOO#           f #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq  @  #
+#XO#OOOO       e   #
+#OOOO#           f #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c ###
+#OOO#OOOOO# knn @###
+#OOOO#OOOOdqqq     #
+#XO#OOOO       e   #
+#OOOO#           f #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k  c@###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq     #
+#XO#OOOO       e   #
+#OOOO#           f #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# k c@ ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq     #
+#XO#OOOO       e   #
+#OOOO#           f #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#OOa b ###
+#OOOOOOO#O# kc@  ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq     #
+#XO#OOOO       e   #
+#OOOO#           f #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#OOa@b ###
+#OOOOOOO#O# kc   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOdqqq     #
+#XO#OOOO       e   #
+#OOOO#           f #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lg  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#O @ a ###
+#OOOOOOO#O# kb   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOcqqq     #
+#XO#OOOO       d   #
+#OOOO#           e #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lf  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#O  @a ###
+#OOOOOOO#O# kb   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOcqqq     #
+#XO#OOOO       d   #
+#OOOO#           e #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lf  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#O   a ###
+#OOOOOOO#O# kb@  ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOcqqq     #
+#XO#OOOO       d   #
+#OOOO#           e #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lf  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#O   a ###
+#OOOOOOO#O# kb @ ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOcqqq     #
+#XO#OOOO       d   #
+#OOOO#           e #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lf  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#O   a ###
+#OOOOOOO#O# kb  @###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOcqqq     #
+#XO#OOOO       d   #
+#OOOO#           e #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lf  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#O   a@###
+#OOOOOOO#O# kb   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOcqqq     #
+#XO#OOOO       d   #
+#OOOO#           e #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lf  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#O  a@ ###
+#OOOOOOO#O# kb   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOcqqq     #
+#XO#OOOO       d   #
+#OOOO#           e #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lf  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#O a@  ###
+#OOOOOOO#O# kb   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOcqqq     #
+#XO#OOOO       d   #
+#OOOO#           e #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lf  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#Oa@   ###
+#OOOOOOO#O# kb   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOcqqq     #
+#XO#OOOO       d   #
+#OOOO#           e #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lf  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO# @    ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOObqqq     #
+#XO#OOOO       c   #
+#OOOO#           d #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# le  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#@     ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOObqqq     #
+#XO#OOOO       c   #
+#OOOO#           d #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# le  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#@ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOObqqq     #
+#XO#OOOO       c   #
+#OOOO#           d #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# le  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO#@knn  ###
+#OOOO#OOOObqqq     #
+#XO#OOOO       c   #
+#OOOO#           d #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# le  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOOOb@       #
+#XO#OOOO   qqq c   #
+#OOOO#           d #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# le  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO @        #
+#XO#OOOO   qqq b   #
+#OOOO#           c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO  @       #
+#XO#OOOO   qqq b   #
+#OOOO#           c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   @      #
+#XO#OOOO   qqq b   #
+#OOOO#           c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO    @     #
+#XO#OOOO   qqq b   #
+#OOOO#           c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO     @ b   #
+#OOOO#     qqq   c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO      @b   #
+#OOOO#     qqq   c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO       b   #
+#OOOO#     qqq@  c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO       b   #
+#OOOO#    qqq@   c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO       b   #
+#OOOO#   qqq@    c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO       b   #
+#OOOO#  qqq@     c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO       b   #
+#OOOO# qqq@      c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO       b   #
+#OOOO#qqq@       c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO       b   #
+#OOOO#qqq @      c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO       b   #
+#OOOO#qqq  @     c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO       b   #
+#OOOO#qqq   @    c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO       b   #
+#OOOO#qqq    @   c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO       b   #
+#OOOO#qqq     @  c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO       b   #
+#OOOO#qqq      @ c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO       b   #
+#OOOO#qqq       @c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO       b@  #
+#OOOO#qqq        c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO      b@   #
+#OOOO#qqq        c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO     b@    #
+#OOOO#qqq        c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO    b@     #
+#OOOO#qqq        c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO   b@      #
+#OOOO#qqq        c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO  b@       #
+#OOOO#qqq        c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOO b@        #
+#OOOO#qqq        c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOOOb@         #
+#OOOO#qqq        c #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# ld  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOO @          #
+#OOOO#qqq        b #
+#OOO#OOOOO# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#  @        b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#   @       b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#    @      b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOO   @        #
+#OOOO#           b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOO    @       #
+#OOOO#           b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO  @       #
+#XO#OOO            #
+#OOOO#           b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO#@knn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#           b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#@ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#           b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#@     ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#           b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO# @    ###
+#OOOOOOO#O# ka   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#           b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# @a   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO# @    ###
+#OOOOOOO#O#  a   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#  @   ###
+#OOOOOOO#O#  a   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#   @  ###
+#OOOOOOO#O#  a   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#  a@  ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# a@   ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#a@    ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO# @    ###
+#OOOOOOO#O#a     ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#@     ###
+#OOOOOOO#O#a     ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#@     ###
+#OOO#OOOOO#aknn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#@knn  ###
+#OOOO#OOO  ak      #
+#XO#OOO            #
+#OOOO#           b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO  @k      #
+#XO#OOO    a       #
+#OOOO#           b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO    @       #
+#OOOO#     a     b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO     @      #
+#OOOO#     a     b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#     a@    b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#    a@     b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#   a@      b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#  a@       b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO# a@        b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO @          #
+#OOOO# a         b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO@           #
+#OOOO# a         b #
+#OOO#O   O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO# @         a #
+#OOO#O b O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#  @        a #
+#OOO#O b O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           a #
+#OOO#O b@O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           a #
+#OOO#Ob@ O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO# @         a #
+#OOO#Ob  O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#@          a #
+#OOO#Ob  O# loo m###
+#OOOOOOO#O# lc  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           a #
+#OOO#O@  O# loo m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           a #
+#OOO#O @ O# loo m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           a #
+#OOO#O  @O# loo m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#  @        a #
+#OOO#O   O# loo m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#   @       a #
+#OOO#O   O# loo m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#    @      a #
+#OOO#O   O# loo m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#     @     a #
+#OOO#O   O# loo m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           a #
+#OOO#O   O#@loo m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           a #
+#OOO#O   O# loo m###
+#OOOOO O#O#@lb  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           a #
+#OOO#O   O# loo m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#@    m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           a #
+#OOO#O   O# loo m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO# @   m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           a #
+#OOO#O   O# loo m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#  @  m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           a #
+#OOO#O   O# loo m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#   @ m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           a #
+#OOO#O   O# loo m###
+#OOOOO O#O# lb@ m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#       oo  a #
+#OOO#O   O# l @ m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#       oo  a #
+#OOO#O   O# l  @m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#       oo@ a #
+#OOO#O   O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#      oo@  a #
+#OOO#O   O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#     oo@   a #
+#OOO#O   O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#    oo@    a #
+#OOO#O   O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#   oo@     a #
+#OOO#O   O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#  oo@      a #
+#OOO#O   O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO# oo@       a #
+#OOO#O   O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#oo@        a #
+#OOO#O   O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO @          #
+#OOOO#oo         a #
+#OOO#O   O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO@           #
+#OOOO#oo         a #
+#OOO#O   O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO# @         a #
+#OOO#Ooo O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#  @        a #
+#OOO#Ooo O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           a #
+#OOO#Ooo@O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           a #
+#OOO#oo@ O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO# @         a #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO@           #
+#OOOO#           a #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO @          #
+#OOOO#           a #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO  @         #
+#OOOO#           a #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO   @        #
+#OOOO#           a #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO    @       #
+#OOOO#           a #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO     @      #
+#OOOO#           a #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO      @     #
+#OOOO#           a #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO       @    #
+#OOOO#           a #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO        @   #
+#OOOO#           a #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO         @  #
+#OOOO#           a #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO          @ #
+#OOOO#           a #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO           @#
+#OOOO#           a #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#           a@#
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#          a@ #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#         a@  #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#        a@   #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#       a@    #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#      a@     #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#     a@      #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#    a@       #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#   a@        #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#  a@         #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO# a@          #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO @          #
+#OOOO# a           #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO@           #
+#OOOO# a           #
+#OOO#oo  O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO# @           #
+#OOO#ooa O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#@            #
+#OOO#ooa O# l   m###
+#OOOOO O#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O@a O# l   m###
+#OOOOooO#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#@            #
+#OOO#O a O# l   m###
+#OOOOooO#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO# @           #
+#OOO#O a O# l   m###
+#OOOOooO#O# lb  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O @ O# l   m###
+#OOOOoo #O# la  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O# l   m###
+#OOOOoo@#O# la  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O# l   m###
+#OOO  @ #O# la  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O@  O# l   m###
+#OOO    #O# la  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O @ O# l   m###
+#OOO    #O# la  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O  @O# l   m###
+#OOO    #O# la  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#  @          #
+#OOO#O   O# l   m###
+#OOO    #O# la  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#   @         #
+#OOO#O   O# l   m###
+#OOO    #O# la  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#    @        #
+#OOO#O   O# l   m###
+#OOO    #O# la  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#     @       #
+#OOO#O   O# l   m###
+#OOO    #O# la  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#@l   m###
+#OOO    #O# la  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O# l   m###
+#OOO    #O#@la  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O# l   m###
+#OOO    #O# la  m###
+#OOOOOOOOO#@    m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O# l   m###
+#OOO    #O# la  m###
+#OOOOOOOOO# @   m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#      l      #
+#OOO#O   O# l   m###
+#OOO    #O# @a  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO     l      #
+#OOOO#      l      #
+#OOO#O   O# @   m###
+#OOO    #O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO     l      #
+#OOOO#      l      #
+#OOO#O   O#  @  m###
+#OOO    #O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO     l      #
+#OOOO#      l@     #
+#OOO#O   O#     m###
+#OOO    #O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO    l       #
+#OOOO#     l@      #
+#OOO#O   O#     m###
+#OOO    #O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO   l        #
+#OOOO#    l@       #
+#OOO#O   O#     m###
+#OOO    #O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO  l         #
+#OOOO#   l@        #
+#OOO#O   O#     m###
+#OOO    #O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO  l@        #
+#OOOO#   l         #
+#OOO#O   O#     m###
+#OOO    #O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO @ k      #
+#XO#OOO  l         #
+#OOOO#   l         #
+#OOO#O   O#     m###
+#OOO    #O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO@  k      #
+#XO#OOO  l         #
+#OOOO#   l         #
+#OOO#O   O#     m###
+#OOO    #O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO  @         #
+#OOOO#   l         #
+#OOO#O   l#     m###
+#OOO    #O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO   @        #
+#OOOO#   l         #
+#OOO#O   l#     m###
+#OOO    #O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#   l@        #
+#OOO#O   l#     m###
+#OOO    #O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#  l@         #
+#OOO#O  lO#     m###
+#OOO    #O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO# l@          #
+#OOO#O l O#     m###
+#OOO    #O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO @          #
+#OOOO# l           #
+#OOO#O l O#     m###
+#OOO    #O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO@           #
+#OOOO# l           #
+#OOO#O l O#     m###
+#OOO    #O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO# @           #
+#OOO#O l O#     m###
+#OOO   l#O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#  @          #
+#OOO#O l O#     m###
+#OOO   l#O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O l@O#     m###
+#OOO   l#O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#Ol@ O#     m###
+#OOO  l #O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO# @           #
+#OOO#Ol  O#     m###
+#OOO  l #O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#@            #
+#OOO#Ol  O#     m###
+#OOO  l #O#  a  m###
+#OOOOOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O@  O#     m###
+#OOO  l #O#  a  m###
+#OOOOOlOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O @ O#     m###
+#OOO  l #O#  a  m###
+#OOOOOlOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#OOO  l@#O#  a  m###
+#OOOOOlOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#OOO l@ #O#  a  m###
+#OOOOlOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#OOOl@  #O#  a  m###
+#OOOlOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#OO @   #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#OO  @  #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#OO   @ #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#OO    @#O#  a  m###
+#OO OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O @ O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO# @           #
+#OOO#O   O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#  @          #
+#OOO#O   O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#   @         #
+#OOO#O   O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#    @        #
+#OOO#O   O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#     @       #
+#OOO#O   O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO    @       #
+#OOOO#             #
+#OOO#O   O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO  @k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#@knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#@     ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# @    ###
+#OOO#OOOOO# knn  ###
+#OOOO#OOO   k      #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# @nn  ###
+#OOOO#OOO   k      #
+#XO#OOO     k      #
+#OOOO#             #
+#OOO#O   O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO   @      #
+#XO#OOO     k      #
+#OOOO#      k      #
+#OOO#O   O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO    @     #
+#XO#OOO     k      #
+#OOOO#      k      #
+#OOO#O   O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO     k@     #
+#OOOO#      k      #
+#OOO#O   O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO    k@      #
+#OOOO#     k       #
+#OOO#O   O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO   k@       #
+#OOOO#    k        #
+#OOO#O   O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO  k@        #
+#OOOO#   k         #
+#OOO#O   O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO @        #
+#XO#OOO  k         #
+#OOOO#   k         #
+#OOO#O   O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO@         #
+#XO#OOO  k         #
+#OOOO#   k         #
+#OOO#O   O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO  @         #
+#OOOO#   k         #
+#OOO#O   k#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO   @        #
+#OOOO#   k         #
+#OOO#O   k#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#   k@        #
+#OOO#O   k#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#  k@         #
+#OOO#O  kO#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO# k@          #
+#OOO#O k O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO @          #
+#OOOO# k           #
+#OOO#O k O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO@           #
+#OOOO# k           #
+#OOO#O k O#     m###
+#OO     #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO# @           #
+#OOO#O k O#     m###
+#OO    k#O#  a  m###
+#OO OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#  @          #
+#OOO#O k O#     m###
+#OO    k#O#  a  m###
+#OO OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O k@O#     m###
+#OO    k#O#  a  m###
+#OO OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#Ok@ O#     m###
+#OO   k #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO# @           #
+#OOO#Ok  O#     m###
+#OO   k #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#@            #
+#OOO#Ok  O#     m###
+#OO   k #O#  a  m###
+#OO OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O@  O#     m###
+#OO   k #O#  a  m###
+#OO OOkOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O @ O#     m###
+#OO   k #O#  a  m###
+#OO OOkOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#OO   k@#O#  a  m###
+#OO OOkOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#OO  k@ #O#  a  m###
+#OO OkOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#OO k@  #O#  a  m###
+#OO kOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#OOk@   #O#  a  m###
+#OOkOOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#O @    #O#  a  m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#O  @   #O#  a  m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#O   @  #O#  a  m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#O    @ #O#  a  m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#O     @#O#  a  m###
+#O  OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O @ O#     m###
+#O      #O#  a  m###
+#O  OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO# @           #
+#OOO#O   O#     m###
+#O      #O#  a  m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#  @          #
+#OOO#O   O#     m###
+#O      #O#  a  m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#   @         #
+#OOO#O   O#     m###
+#O      #O#  a  m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#    @        #
+#OOO#O   O#     m###
+#O      #O#  a  m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#     @       #
+#OOO#O   O#     m###
+#O      #O#  a  m###
+#O  OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#@    m###
+#O      #O#  a  m###
+#O  OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#O      #O#@ a  m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#O      #O# @a  m###
+#O  OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#O      #O#  a  m###
+#O  OOOOOO# @   m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#O      #O#  a  m###
+#O  OOOOOO#  @  m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#  a  m###
+#O      #O#  @  m###
+#O  OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#       a     #
+#OOO#O   O#  @  m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#       a     #
+#OOO#O   O#   @ m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#       a@    #
+#OOO#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#      a@     #
+#OOO#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#     a@      #
+#OOO#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#    a@       #
+#OOO#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#   a@        #
+#OOO#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#  a@         #
+#OOO#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO# a@          #
+#OOO#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO @          #
+#OOOO# a           #
+#OOO#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO@           #
+#OOOO# a           #
+#OOO#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO# @           #
+#OOO#O a O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#  @          #
+#OOO#O a O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O a@O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#Oa@ O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO# @           #
+#OOO#Oa  O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#@            #
+#OOO#Oa  O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O@  O#     m###
+#O    a #O#     m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O @ O#     m###
+#O    a #O#     m###
+#O  OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#O    a@#O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#O   a@ #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#O  a@  #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#O a@   #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#Oa@    #O#     m###
+#O  OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#Oa     #O#     m###
+#O @OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#OOO#O   O#     m###
+#Oa     #O#     m###
+#O@ OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#O   O#     m###
+#O@     #O#     m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#O   O#     m###
+#O @    #O#     m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#O   O#     m###
+#O  @   #O#     m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#O   O#     m###
+#O   @  #O#     m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#O   O#     m###
+#O    @ #O#     m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#O   O#     m###
+#O     @#O#     m###
+#O  OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#O @ O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO# @           #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#  @          #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#   @         #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#    @        #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#     @       #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#      @      #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO     @      #
+#OOOO#             #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO   @      #
+#XO#OOO            #
+#OOOO#             #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO# @nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O# @    ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#  @   ###
+#OOO#OOOOO#  nn  ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#  @   ###
+#OOOO#OOO    nn    #
+#XO#OOO            #
+#OOOO#             #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#   @  ###
+#OOOO#OOO    nn    #
+#XO#OOO            #
+#OOOO#             #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO     @    #
+#XO#OOO      nn    #
+#OOOO#             #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO       @    #
+#OOOO#       nn    #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO        @   #
+#OOOO#       nn    #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#       nn@   #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#      nn@    #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#     nn@     #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#    nn@      #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#   nn@       #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#  nn@        #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO# nn@         #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#nn@          #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO @          #
+#OOOO#nn           #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO@           #
+#OOOO#nn           #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO# @           #
+#O O#Onn O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#  @          #
+#O O#Onn O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#Onn@O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#nn@ O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO# @           #
+#O O#nn  O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#@            #
+#O O#nn  O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#O@  O#     m###
+#O   nn #O#     m###
+#O  OOOOOO#     m###
+####################
+Right
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#O @ O#     m###
+#O   nn #O#     m###
+#O  OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#O   O#     m###
+#O   nn@#O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#O   O#     m###
+#O  nn@ #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#O   O#     m###
+#O nn@  #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#O   O#     m###
+#Onn@   #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#O   O#     m###
+#nn@    #O#     m###
+#O  OOOOOO#     m###
+####################
+Down
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#O   O#     m###
+#nn     #O#     m###
+#O @OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#O O#O   O#     m###
+#nn     #O#     m###
+#O@ OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#OOOO#             #
+#nnO#O   O#     m###
+#O@     #O#     m###
+#O  OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#  OO#             #
+#O@O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+# @OO#             #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Left
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#@ OO#             #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Up
+####################
+#OOOOOOOOO#      ###
+#OOOOOOO#O#      ###
+#OOO#OOOOO#      ###
+#OOOO#OOO          #
+#XO#OOO            #
+#  OO#             #
+#O O#O   O#     m###
+#O      #O#     m###
+#O  OOOOOO#     m###
+####################
+Total 412+0 steps, 4170 frames (69.500 seconds)

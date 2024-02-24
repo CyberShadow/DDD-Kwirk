@@ -238,4 +238,4 @@ Left
 #   #  `   #   #
 #####      #####
 ################
-Total 29+0 steps, 300 frames (5.000 seconds)
+Total 29+0 steps, 292 frames (4.867 seconds)

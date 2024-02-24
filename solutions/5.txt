@@ -302,4 +302,4 @@ Left
 # X #     #   #
 #   # # # #   #
 ###############
-Total 34+3 steps, 461 frames (7.683 seconds)
+Total 34+3 steps, 453 frames (7.550 seconds)

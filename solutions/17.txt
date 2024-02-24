@@ -3998,4 +3998,4 @@ Down
 ##X##   #     k## ##
 #####nn #     k#####
 ####################
-Total 249+0 steps, 2623 frames (43.717 seconds)
+Total 249+0 steps, 2535 frames (42.250 seconds)

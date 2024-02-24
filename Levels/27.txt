@@ -1,5 +1,6 @@
 MAX_STEPS (217+24)
 MAX_FRAMES 2864
+MAX_FRAMES_BIRDS_EYE_VIEW 2858
 ##################
 ## #####  ## #+++#
 #   b   QQd  O  +#

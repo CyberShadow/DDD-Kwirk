@@ -1,5 +1,6 @@
 MAX_STEPS 232
 MAX_FRAMES 2246
+MAX_FRAMES_BIRDS_EYE_VIEW 2230
 ##############
 #   Z ##XXQQ #
 #  ZZZ#  X Q #

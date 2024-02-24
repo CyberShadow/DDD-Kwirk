@@ -1,5 +1,6 @@
 MAX_STEPS (34+3)
 MAX_FRAMES 461
+MAX_FRAMES_BIRDS_EYE_VIEW 453
 ###############
 #   # # # #   #
 #   #     # 1 #

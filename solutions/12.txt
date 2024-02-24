@@ -1384,4 +1384,4 @@ Left
 #  #d   #   #
 #  #d  O#   #
 #############
-Total 98+0 steps, 1015 frames (16.917 seconds)
+Total 98+0 steps, 983 frames (16.383 seconds)

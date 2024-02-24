@@ -4112,4 +4112,4 @@ Left
 #     ###      #
 #     #X       #
 ################
-Total 241+0 steps, 2465 frames (41.083 seconds)
+Total 241+0 steps, 2409 frames (40.150 seconds)

@@ -4192,4 +4192,4 @@ Left
 #  <+g#  ^ ^ #
 #   `g##<+<+ #
 ##############
-Total 232+0 steps, 2246 frames (37.433 seconds)
+Total 232+0 steps, 2230 frames (37.167 seconds)

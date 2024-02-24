@@ -1,5 +1,6 @@
 MAX_STEPS 391
 MAX_FRAMES 4012
+MAX_FRAMES_BIRDS_EYE_VIEW 3916
 ##################
 ###Oa cc  ^ ## e1#
 ###b  cc  G   ffg#

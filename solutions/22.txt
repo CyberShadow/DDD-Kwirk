@@ -1510,4 +1510,4 @@ Left
 #       #       #
 ##      #  fffa##
 #################
-Total 125+0 steps, 1212 frames (20.200 seconds)
+Total 125+0 steps, 1196 frames (19.933 seconds)

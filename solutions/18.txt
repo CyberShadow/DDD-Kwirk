@@ -2392,4 +2392,4 @@ Up
 #### ###### ###
 ###  ####   ###
 ###############
-Total 118+7 steps, 1430 frames (23.833 seconds)
+Total 118+7 steps, 1414 frames (23.567 seconds)

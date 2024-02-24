@@ -1109,4 +1109,4 @@ Left
 #  ##    #
 #  #X    #
 ##########
-Total 100+0 steps, 953 frames (15.883 seconds)
+Total 100+0 steps, 945 frames (15.750 seconds)

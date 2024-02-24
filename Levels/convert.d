@@ -323,8 +323,31 @@ void main()
 			}+/
 
 			string[] output;
+			string option_MAX_FRAMES;
+			string option_MAX_FRAMES_BIRDS_EYE_VIEW;
 			foreach (option; options)
-				output ~= ["#define " ~ option];
+			{
+				string firstWord;
+				auto firstSpace = option.indexOf(' ');
+				if (firstSpace > -1)
+					firstWord = option[0..firstSpace];
+				{{}} if (firstWord == "MAX_FRAMES"               ) option_MAX_FRAMES                = option[firstSpace..option.length];
+				else if (firstWord == "MAX_FRAMES_BIRDS_EYE_VIEW") option_MAX_FRAMES_BIRDS_EYE_VIEW = option[firstSpace..option.length];
+				else
+					output ~= ["#define " ~ option];
+			}
+			if (option_MAX_FRAMES_BIRDS_EYE_VIEW)
+			{
+				output ~= "#ifdef BIRDS_EYE_VIEW";
+				{                    } {output ~= ["\t" ~ "#define MAX_FRAMES" ~ option_MAX_FRAMES_BIRDS_EYE_VIEW];}
+				if (option_MAX_FRAMES) {output ~= "#else";
+				                        output ~= ["\t" ~ "#define MAX_FRAMES" ~ option_MAX_FRAMES               ];}
+				output ~= "#endif";
+			}
+			else if (option_MAX_FRAMES)
+			{
+				output ~= ["#define MAX_FRAMES" ~ option_MAX_FRAMES];
+			}
 			/+output ~= "const char level[Y][X+1] = {";
 			foreach (line; level)
 				output ~= ['\"' ~ line ~ "\","];

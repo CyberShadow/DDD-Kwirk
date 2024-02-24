@@ -1,5 +1,6 @@
 MAX_STEPS 98
 MAX_FRAMES 1015
+MAX_FRAMES_BIRDS_EYE_VIEW 983
 #############
 #  # ObO#   #
 #  #  b #   #

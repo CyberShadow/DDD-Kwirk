@@ -5888,4 +5888,4 @@ Left
 ##X    #############
 ####################
 ####################
-Total 309+0 steps, 3105 frames (51.750 seconds)
+Total 309+0 steps, 3049 frames (50.817 seconds)

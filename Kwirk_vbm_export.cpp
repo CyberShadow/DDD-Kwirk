@@ -6,6 +6,7 @@ int export_vbm()
 {
 	FILE *solution_in;
 	{} {            } solution_in = fopen(STRINGIZE(LEVEL)".txt",         "rt");
+	if (!solution_in) solution_in = fopen(STRINGIZE(LEVEL)"_bk2_bird's-eye.txt", "rt"); // same as "_bk2.txt", but redubbed for BIRDS_EYE_VIEW
 	if (!solution_in) solution_in = fopen(STRINGIZE(LEVEL)"_bk2.txt",     "rt");
 	if (!solution_in) solution_in = fopen(STRINGIZE(LEVEL)"_vbm_mod.txt", "rt");
 	if (!solution_in) solution_in = fopen(STRINGIZE(LEVEL)"_vbm.txt",     "rt");

@@ -3722,4 +3722,4 @@ Up
 ##X###   O# e # #
 ##     OOO#     #
 #################
-Total 195+0 steps, 1916 frames (31.933 seconds)
+Total 195+0 steps, 1884 frames (31.400 seconds)

@@ -1,5 +1,5 @@
 import std.format;
-import std.stdio : stderr;
+import std.stdio : stderr, File;
 
 import ae.utils.funopt;
 import ae.utils.main;
@@ -23,6 +23,8 @@ void program(
 	StateSet[] statesAtFrame = [initialSet];
 	StateSet seenStates;
 
+	auto trace = File(levelFileName ~ ".trace", "wb");
+
 	for (uint frameNumber = 0; ; frameNumber++)
 	{
 		assert(frameNumber < statesAtFrame.length, "No more states.");
@@ -43,6 +45,8 @@ void program(
 		stderr.writefln("  Total: %d states, %d nodes", seenStates.count, seenStates.uniqueNodes);
 		seenStates = seenStates.optimize();
 		stderr.writefln("    Optimized: %d nodes", seenStates.uniqueNodes);
+
+		trace.writefln("%d\t%d\t%d", frameNumber, seenStates.count, seenStates.uniqueNodes); trace.flush();
 
 		foreach (action; Action.init .. enumLength!Action)
 		{

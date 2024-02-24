@@ -22,6 +22,8 @@ enum Action : ubyte
 	switchCharacter,
 }
 
+enum performImpossible = -1;
+
 enum delayMove         =  9; // 1+8
 enum delayPush         = 10; // 2+8
 enum delayFill         = 26;
@@ -39,7 +41,7 @@ int perform(ref const Level level, ref Vars v, Action action)
 
 		case Action.switchCharacter:
 			if (level.numCharacters == 1)
-				return -1;
+				return performImpossible;
 			else
 			{
 				auto c0coord_ = v[VarName.character0Coord];
@@ -60,7 +62,7 @@ int perform(ref const Level level, ref Vars v, Action action)
 				}
 
 				if (c == 1)
-					return -1; // Just one character left, no one to switch to.
+					return performImpossible; // Just one character left, no one to switch to.
 
 				v[varNameCharacterCoord(c - 1)] = c0coord;
 
@@ -126,7 +128,7 @@ int perform(ref const Level level, ref Vars v, Action action)
 
 				case Tile.wall:
 				case Tile.turnstileCenter:
-					return -1;
+					return performImpossible;
 
 				case Tile.free:
 					const cell = v[varNameCell(n.x, n.y)].resolve().VarValueCell;
@@ -134,7 +136,7 @@ int perform(ref const Level level, ref Vars v, Action action)
 					// If there is a hole, we cannot step into it,
 					// no matter what else is here.
 					if (cell.hole)
-						return -1;
+						return performImpossible;
 
 					final switch (cell.type)
 					{
@@ -170,7 +172,7 @@ int perform(ref const Level level, ref Vars v, Action action)
 											case Tile.wall:
 											case Tile.turnstileCenter:
 											case Tile.exit:
-												return -1;
+												return performImpossible;
 										}
 								}
 
@@ -194,7 +196,7 @@ int perform(ref const Level level, ref Vars v, Action action)
 											}
 										}).resolve();
 										if (!ok)
-											return -1;
+											return performImpossible;
 									}
 								}
 
@@ -283,7 +285,7 @@ int perform(ref const Level level, ref Vars v, Action action)
 									break;
 								case 2:
 									// We're walking into it head-on.
-									return -1;
+									return performImpossible;
 								case 3:
 									// Clockwise
 									spin = -1;
@@ -315,7 +317,7 @@ int perform(ref const Level level, ref Vars v, Action action)
 											case Tile.wall:
 											case Tile.turnstileCenter:
 											case Tile.exit:
-												return -1;
+												return performImpossible;
 										}
 									}
 								}
@@ -380,7 +382,7 @@ int perform(ref const Level level, ref Vars v, Action action)
 											}).resolve();
 										}();
 										if (!ok)
-											return -1;
+											return performImpossible;
 									}
 								}
 
@@ -394,7 +396,7 @@ int perform(ref const Level level, ref Vars v, Action action)
 									auto targetCell = v[varNameCell(n.x, n.y)].resolve().VarValueCell;
 									assert(targetCell.type == VarValueCell.Type.empty);
 									if (targetCell.hole)
-										return -1;
+										return performImpossible;
 								}
 							}
 
@@ -454,7 +456,7 @@ int perform(ref const Level level, ref Vars v, Action action)
 							return delayRotate;
 
 						case VarValueCell.Type.character:
-							return -1;
+							return performImpossible;
 					}
 			}
 	}

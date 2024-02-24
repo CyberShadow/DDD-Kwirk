@@ -54,7 +54,7 @@ void program(
 			{
 				numIterations++;
 				auto duration = perform(level, v, action);
-				if (duration < 0)
+				if (duration == performImpossible)
 					continue;
 				auto nextFrame = frameNumber + duration;
 				if (statesAtFrame.length < nextFrame + 1)

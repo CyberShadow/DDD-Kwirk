@@ -1,18 +1,18 @@
 MAX_STEPS 338
 MAX_FRAMES 3484
 #################
-##O  a   N  B  1#
-## #M>bb `dBB  ##
-## O c  LL   VV##
-## OO  OOLOXfV ##
+##O  a   *  ^  1#
+## #*>bb `d<*  ##
+## O c  <*   *>##
+## OO  OO`O*f` ##
 ## OOO   O `fg ##
-##eeO   Ott f<Z##
-## A># O tt  h ##
-## i  j O  JO# ##
-## i SS DDJJOO ##
-##   S  D    q ##
-###  #  F  p qs##
-##OOO##FF kp<Hs##
-##O ##  G mm rs##
-#2OO #  GGOn  O##
+##eeO   Ott f<*##
+## *># O tt  h ##
+## i  j O  ^O# ##
+## i *> *><*OO ##
+##   `  `    q ##
+###  #  ^  p qs##
+##OOO##<* kp<*s##
+##O ##  ^ mm rs##
+#%OO #  *>On  O##
 #################

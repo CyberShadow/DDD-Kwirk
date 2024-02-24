@@ -3,17 +3,17 @@ MAX_FRAMES 310
 ####################
 ##       1        ##
 #  aabb ccdd eeff  #
-# Qaabb ccdd eeffR #
-#QQ  g hhiijj k  RR#
+# ^aabb ccdd eeff^ #
+#<*  g hhiijj k  *>#
 ##   g   ii   k   ##
 ##  mm        vv  ##
-# MMmm qqrruu vvAA #
-# M  nn  rr  ww  A #
+# *>mm qqrruu vv<* #
+# `  nn  rr  ww  ` #
 ##   nn sstt ww   ##
 ##  pp  sstt  xx  ##
 ##  pp        xx  ##
 ######### ##########
 #                  #
-#        2         #
+#        %         #
 ##                ##
 ####################

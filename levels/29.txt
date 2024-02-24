@@ -5,7 +5,7 @@ MAX_FRAMES 4513
 #OOOOOOO#O# f  k ###
 #OOO#OOOOO# f mm ###
 #OOOO#OOOOaccc n s #
-#2O#OOOOOO dd  n 1 #
+#%O#OOOOOO dd  n 1 #
 #OOOO#OOOObeee n t #
 #OOO#OOOOO# g pp ###
 #OOOOOOO#O# g  q ###

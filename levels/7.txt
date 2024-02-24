@@ -5,7 +5,7 @@ MAX_FRAMES 442
 ####    d    ####
 ####a bcdfg h####
 #   a bcdfg h   #
-# 2 a b e g h 1 #
+# % a b e g h 1 #
 #   a b e g h   #
 ####  b   g  ####
 #################

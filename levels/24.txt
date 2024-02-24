@@ -1,17 +1,17 @@
 MAX_STEPS 47
 MAX_FRAMES 461
 ####################
-###   NN  ^ ^   ####
-###MM N BBX RTT ####
-###M  c B Z   T ####
-##   dd V ZZ  Y  ###
-## aaddVV Z A YYm###
-## aa e j SAA  n ###
-#2   # ikSS  P>p  1#
-## bb f k SEE  q ###
-## bbggFF D E LLr###
-##   gg F DD  L  ###
-###Q  h G D   K ####
-###QQ W GGH JKK ####
-###   WW  ` `   ####
+###   *>  ^ ^   ####
+###*> ` *>* *<* ####
+###`  c ` ^   ` ####
+##   dd ^ *>  ^  ###
+## aadd<* ` ^ *>m###
+## aa e j ^<*  n ###
+#%   # ik<*  *>p  1#
+## bb f k `<*  q ###
+## bbgg<* ^ ` *>r###
+##   gg ` *>  `  ###
+###^  h ^ `   ^ ####
+###*> ^ *>* *<* ####
+###   *>  ` `   ####
 ####################

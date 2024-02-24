@@ -4,12 +4,12 @@ MAX_FRAMES 1812
 #    ########      #
 #       aa         #
 #    ########      #
-############ AA  MM#
-#  bbOOOOOOO A fffM#
-#2 ccOOOOOOO   fff1#
+############ *>  <*#
+#  bbOOOOOOO ` fff`#
+#% ccOOOOOOO   fff1#
 #  ddOOOOOOO   fff #
-#############Z    Q#
-#    ####### ZZ  QQ#
+#############^    ^#
+#    ####### *>  <*#
 #       ee         #
 #    #######       #
 ####################

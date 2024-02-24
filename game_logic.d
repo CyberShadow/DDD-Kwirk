@@ -23,6 +23,7 @@ enum Action : ubyte
 }
 
 enum performImpossible = -1;
+enum performComplete   = -2;
 
 enum delayMove         =  9; // 1+8
 enum delayPush         = 10; // 2+8
@@ -120,7 +121,7 @@ int perform(ref const Level level, ref Vars v, Action action)
 					if (c == 1)
 					{
 						dump(level, v.visitor);
-						assert(false, "TODO Solved");
+						return performComplete;
 						//return delayMove + delayExit;
 					}
 

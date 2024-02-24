@@ -6,6 +6,7 @@ int export_vbm()
 {
 	FILE *solution_in;
 	{} {            } solution_in = fopen(STRINGIZE(LEVEL)".txt",         "rt");
+	if (!solution_in) solution_in = fopen(STRINGIZE(LEVEL)"_bk2_new.txt",        "rt");
 	if (!solution_in) solution_in = fopen(STRINGIZE(LEVEL)"_bk2_bird's-eye.txt", "rt"); // same as "_bk2.txt", but redubbed for BIRDS_EYE_VIEW
 	if (!solution_in) solution_in = fopen(STRINGIZE(LEVEL)"_bk2.txt",     "rt");
 	if (!solution_in) solution_in = fopen(STRINGIZE(LEVEL)"_vbm_mod.txt", "rt");
@@ -50,7 +51,7 @@ int export_vbm()
 
 	if (LEVEL == 0)
 	{
-		strcpy((char*)(vbm_header+0x40), "Nitrodon, ZenicReverie, Alyosha, CyberShadow, Sand, Deadcode");
+		strcpy((char*)(vbm_header+0x40), "Nitrodon, ZenicReverie, CyberShadow, Sand, Alyosha, Deadcode");
 		fwrite(vbm_header, sizeof(vbm_header), 1, vbm_out);
 
 		control = 0x0000; // no buttons

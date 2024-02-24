@@ -113,8 +113,10 @@ int export_vbm()
 			delay += 3;
 		else
 #ifdef BIRDS_EYE_VIEW
-		if (LEVEL==1 || LEVEL==6 || LEVEL==8 || LEVEL==9 || LEVEL==22 || LEVEL==27)
+		if (LEVEL==1 || LEVEL==8 || LEVEL==9 || LEVEL==22 || LEVEL==27)
 			delay += 1;
+		if (LEVEL==6)
+			delay += 2;
 #else
 		if (LEVEL==14 || LEVEL==25 || LEVEL==26 || LEVEL==28)
 			delay += 1;

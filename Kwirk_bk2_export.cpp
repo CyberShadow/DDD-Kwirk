@@ -2,8 +2,6 @@
 // #define PROBLEM_RELATED Kwirk_bk2_export
 // This must be run once for each level, from 0 to 29 consecutively.
 
-#define BIRDS_EYE_VIEW // against intuition, this actually takes less total time, even though it initially adds 1 extra frame; as an added bonus, it's nicer to watch
-
 //#define BIZHAWK_2_3_2 // requires Config -> Cores -> GB -> GBHawk
 //#define BIZHAWK_2_5_2
 #define BIZHAWK_2_9_1

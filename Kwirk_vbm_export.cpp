@@ -2,8 +2,6 @@
 // #define PROBLEM_RELATED Kwirk_vbm_export
 // This must be run once for each level, from 0 to 29 consecutively.
 
-#define BIRDS_EYE_VIEW // against intuition, this actually takes less total time, even though it initially adds 2 extra frames; as an added bonus, it's nicer to watch
-
 int export_vbm()
 {
 	FILE *solution_in;

@@ -1,6 +1,7 @@
 // Kwirk DDD module
 // Configuration:
 // LEVEL - sets the level to solve, from 0 (1-1) to 29 (3-10)
+// BIRDS_EYE_VIEW - #define it to enable, or comment out its #define to get "Diagonal View". Note that Bird's-eye View actually takes less total time, even though it initially adds 1 extra frame to be chosen in the game's menu; as an added bonus, it's nicer to watch.
 
 #include <math.h>
 #include <stdio.h>
@@ -77,7 +78,11 @@ enum
 {
 	DELAY_MOVE         =  9, // 1+8
 	DELAY_PUSH         = 10, // 2+8
+#ifdef BIRDS_EYE_VIEW
 	DELAY_FILL         = 18,
+#else
+	DELAY_FILL         = 26,
+#endif
 	DELAY_ROTATE       = 12,
 	DELAY_SWITCH       = 30,
 	DELAY_SWITCH_AGAIN = 32,

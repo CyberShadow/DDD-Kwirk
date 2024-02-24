@@ -1,6 +1,7 @@
 import std.string;
 import std.conv;
 import std.stdio;
+import std.file;
 
 enum Action : ubyte
 {
@@ -22,8 +23,8 @@ void main(string[] args)
 	if (args.length!=2)
 		throw new Exception("Specify solution number to unroll.");
 	char[][] level;
-	auto output = File(args[1] ~ "u.txt", "wb");
-	foreach (string line; File(args[1] ~ ".txt", "rb").byLineCopy)
+	auto output = File(args[1] ~ "u.txt", "w");
+	foreach (string line; readText(args[1] ~ ".txt").splitLines())
 	{
 		if (line[0]=='[')
 			line = line[line.indexOf(']')+2..$];
@@ -35,8 +36,8 @@ void main(string[] args)
 				ubyte x1 = to!ubyte(coords[0]);
 				ubyte y1 = to!ubyte(coords[1]);
 				ubyte x0, y0;
-				foreach (uint y, l; level)
-					foreach (uint x, c; l)
+				foreach (size_t y, l; level)
+					foreach (size_t x, c; l)
 						if (c=='@')
 							x0 = cast(ubyte)x,
 							y0 = cast(ubyte)y;
@@ -44,8 +45,8 @@ void main(string[] args)
 				struct Coord { ubyte x, y; }
 				const ubyte QUEUELENGTH = X+Y;
 				Coord[QUEUELENGTH] queue;
-				ubyte[Y-2][X-2]  distance;
-				Action[Y-2][X-2] from;
+				ubyte[X-2][Y-2]  distance;
+				Action[X-2][Y-2] from;
 				ubyte queueStart=0, queueEnd=1;
 				foreach (ref r;distance)
 					foreach (ref c;r)

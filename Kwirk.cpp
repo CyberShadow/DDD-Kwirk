@@ -933,7 +933,13 @@ int initialStateCount = 1;
 
 void initProblem()
 {
-	printf("Kwirk Level %u (%d-%d): %ux%u, %u players\n", LEVEL, LEVEL/10+1, LEVEL%10+1, X, Y, PLAYERS);
+	printf("Kwirk Level %u (%d-%d), "
+#ifdef BIRDS_EYE_VIEW
+		"Bird's-eye"
+#else
+		"Diagonal"
+#endif
+		" View: %ux%u, %u players\n", LEVEL, LEVEL/10+1, LEVEL%10+1, X, Y, PLAYERS);
 
 #ifdef HAVE_VALIDATOR
 	printf("Level state validator present\n");

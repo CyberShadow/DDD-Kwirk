@@ -108,9 +108,6 @@ int export_vbm()
 		if (LEVEL==15)
 			delay += 1;
 		else
-		if (LEVEL==5 || LEVEL==10)
-			delay += 2;
-		else
 		if (LEVEL==18)
 			delay += 3;
 		else

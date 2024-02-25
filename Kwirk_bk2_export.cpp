@@ -90,7 +90,7 @@ int export_bk2()
 		delay -= 12;
 #endif
 #ifdef GAMBATTE_CORE
-		delay += 15;
+		delay += 5;
 #endif
 #ifdef GBC_MODE
 		delay -= 149;

@@ -366,6 +366,10 @@ int export_bk2()
 		else
 		if (LEVEL==16)
 			delay -= 3;
+	#ifndef BIRDS_EYE_VIEW
+		if (LEVEL==6)
+			delay -= 1;
+	#endif
 #endif
 #ifdef GBC_MODE
 		if (LEVEL==12 || LEVEL==26)
@@ -414,8 +418,12 @@ int export_bk2()
 #endif
 #ifdef GAMBATTE_CORE
 			delay += 2;
-			if (LEVEL==0 || LEVEL==5 || LEVEL==18)
+			if (LEVEL==0)
 				delay += 1;
+	#ifdef BIRDS_EYE_VIEW
+			if (LEVEL==5 || LEVEL==18)
+				delay += 1;
+	#endif
 #endif
 			for (int i=0; i<delay; i++)
 				fputs(action_to_bk2[NONE], bk2_out);

@@ -413,7 +413,9 @@ int export_bk2()
 			delay += 1;
 #endif
 #ifdef GAMBATTE_CORE
-			delay += 3;
+			delay += 2;
+			if (LEVEL==0 || LEVEL==5 || LEVEL==18)
+				delay += 1;
 #endif
 			for (int i=0; i<delay; i++)
 				fputs(action_to_bk2[NONE], bk2_out);

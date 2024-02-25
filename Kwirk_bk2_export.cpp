@@ -198,16 +198,16 @@ int export_bk2()
 		if (LEVEL==28)
 			delay += 1;
 	#endif
-	#ifdef GAMBATTE_CORE
-		if (LEVEL==19)
-			delay += 1;
-	#endif
 #else
 		delay += 1;
 		if (LEVEL != 0)
 			delay += 1;
 		if (LEVEL==14 || LEVEL==25 || LEVEL==26 || LEVEL==28)
 			delay += 1;
+	#ifdef GAMBATTE_CORE
+		if (!(LEVEL<=1 || LEVEL>=8 && LEVEL<=10 || LEVEL==19 || LEVEL==20 || LEVEL==22 || LEVEL==27))
+			delay -= 2;
+	#endif
 #endif
 #ifdef BIZHAWK_2_3_2
 		if (LEVEL==3)
@@ -222,6 +222,16 @@ int export_bk2()
 		else
 		if (LEVEL==22)
 			delay += 2;
+#endif
+#ifdef GAMBATTE_CORE
+		if (LEVEL>=1 && LEVEL<=3 || LEVEL==6 || LEVEL==8 || LEVEL==9 || LEVEL==18 || LEVEL==20 || LEVEL==27)
+			delay -= 2;
+		else
+		if (LEVEL==19)
+			delay -= 2;
+		else
+		if (LEVEL==5 || LEVEL==10 || LEVEL==22)
+			delay -= 4;
 #endif
 #ifdef GBC_MODE
 		if (LEVEL==13)

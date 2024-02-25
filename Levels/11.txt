@@ -16,6 +16,6 @@ MAX_FRAMES_BIRDS_EYE_VIEW 1884
 #++++#OO O  g # #
 #++++#OOO # g # #
 #++++#OOOO# g # #
-#+2++#OOOO# g # #
-#+     OOO#     #
+#+2  #OOOO# g # #
+#      OOO#     #
 #################

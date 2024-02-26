@@ -222,6 +222,13 @@ int export_bk2()
 		else
 		if (LEVEL==22)
 			delay += 2;
+	#ifndef GAMBATTE_CORE
+		if (LEVEL>=1 && LEVEL<=3 || LEVEL==6 || LEVEL==8 || LEVEL==9 || LEVEL==18 || LEVEL==19 || LEVEL==27)
+			delay -= 2;
+		else
+		if (LEVEL==5 || LEVEL==10 || LEVEL==22)
+			delay -= 4;
+	#endif
 #endif
 #ifdef GAMBATTE_CORE
 		if (LEVEL>=1 && LEVEL<=3 || LEVEL==6 || LEVEL==8 || LEVEL==9 || LEVEL==18 || LEVEL==20 || LEVEL==27)
@@ -364,6 +371,16 @@ int export_bk2()
 		else
 		if (LEVEL==16)
 			delay += 3;
+		#ifndef GAMBATTE_CORE
+		if (LEVEL==23)
+			delay -= 1;
+		else
+		if (LEVEL==3)
+			delay -= 2;
+		else
+		if (LEVEL==16)
+			delay -= 3;
+		#endif
 	#endif
 #endif
 #ifdef GAMBATTE_CORE
@@ -395,6 +412,14 @@ int export_bk2()
 			delay = 254;
 #ifdef BIZHAWK_2_3_2
 			delay -= 1;
+#else
+	#if defined(BIZHAWK_2_9_1) && !defined(GAMBATTE_CORE)
+			if (LEVEL==9)
+				delay -= 1;
+			else
+			if (LEVEL==19)
+				delay -= 2;
+	#endif
 #endif
 #ifndef BIRDS_EYE_VIEW
 			delay += 1;
@@ -407,6 +432,14 @@ int export_bk2()
 			delay = 33;
 #ifdef BIZHAWK_2_3_2
 			delay -= 2;
+#else
+	#if defined(BIZHAWK_2_9_1) && !defined(GAMBATTE_CORE)
+			if (LEVEL==9)
+				delay += 1;
+			else
+			if (LEVEL==19)
+				delay += 2;
+	#endif
 #endif
 #ifdef GAMBATTE_CORE
 			delay += 3;
@@ -422,6 +455,10 @@ int export_bk2()
 #else
 			if (LEVEL != 0)
 				delay += 1;
+	#if defined(BIZHAWK_2_9_1) && !defined(GAMBATTE_CORE)
+			if (LEVEL==3 || LEVEL==5 || LEVEL==6 || LEVEL==8 || LEVEL==11 || LEVEL==14 || LEVEL==17 || LEVEL==20 || LEVEL==22)
+				delay -= 1;
+	#endif
 #endif
 #ifndef BIRDS_EYE_VIEW
 			delay += 1;

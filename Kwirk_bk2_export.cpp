@@ -5,8 +5,8 @@
 //#define BIZHAWK_2_3_2 // requires Config -> Cores -> GB -> GBHawk
 //#define BIZHAWK_2_5_2
 #define BIZHAWK_2_9_1
-#define GAMBATTE_CORE // currently only tested with BIZHAWK_2_9_1 with GBC_MODE disabled
-//#define GBC_MODE // currently only tested with BIZHAWK_2_9_1
+#define GAMBATTE_CORE // currently only tested with BIZHAWK_2_9_1
+//#define GBA_MODE      // currently only tested with BIZHAWK_2_9_1 + GAMBATTE_CORE
 
 #if defined(BIZHAWK_2_3_2)
 	#if defined(BIZHAWK_2_5_2) || defined(BIZHAWK_2_9_1)
@@ -22,17 +22,17 @@
 	#if defined(BIZHAWK_2_3_2) || defined(BIZHAWK_2_5_2)
 		#error Must define exactly one
 	#endif
-	#ifdef GBC_MODE
-		#define BIZHAWK_VERSION "2.9.1 (GBC)"
-	#else
-		#define BIZHAWK_VERSION "2.9.1"
-	#endif
+	#define BIZHAWK_VERSION "2.9.1"
 #else
 	#error Must define exactly one
 #endif
 
 #ifdef GAMBATTE_CORE
-	#define BIZHAWK_CORE " (Gambatte)"
+	#ifdef GBA_MODE
+		#define BIZHAWK_CORE " (Gambatte GBA)"
+	#else
+		#define BIZHAWK_CORE " (Gambatte)"
+	#endif
 #else
 	#define BIZHAWK_CORE ""
 #endif
@@ -94,8 +94,12 @@ int export_bk2()
 #ifdef GAMBATTE_CORE
 			delay += 5;
 #endif
-#ifdef GBC_MODE
+#ifdef GBA_MODE
+	#ifdef GAMBATTE_CORE
+			delay -= 135;
+	#else
 			delay -= 149;
+	#endif
 #endif
 			for (int i=0; i<delay; i++)
 				fputs(action_to_bk2[NONE], bk2_out);
@@ -257,10 +261,6 @@ int export_bk2()
 #ifdef GAMBATTE_CORE
 			if (LEVEL==20)
 				delay -= 2;
-#endif
-#ifdef GBC_MODE
-			if (LEVEL==13)
-				delay += 2;
 #endif
 			for (int i=0; i<delay; i++)
 				fputs(action_to_bk2[NONE], bk2_out);
@@ -436,10 +436,6 @@ int export_bk2()
 			if (LEVEL==6)
 				delay -= 1;
 	#endif
-#endif
-#ifdef GBC_MODE
-			if (LEVEL==12 || LEVEL==26)
-				delay += 1;
 #endif
 			for (int i=0; i<delay; i++)
 				fputs(action_to_bk2[NONE], bk2_out);

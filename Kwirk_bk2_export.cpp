@@ -350,9 +350,6 @@ int export_bk2()
 		}
 		printf("Total %d+%d steps, %d frames (%1.3f seconds)\n", steps-switches, switches, frames, frames/59.7275005696058);
 
-		if (LEVEL == 29)
-			fputs("[/Input]\n", bk2_out);
-		else
 		{
 			for (int i=0; i<repeatCount; i++)
 				fputs(action_to_bk2[repeatAction], bk2_out);
@@ -444,70 +441,75 @@ int export_bk2()
 
 			if (LEVEL % 10 == 9)
 			{
-				delay = 254;
-#ifdef BIZHAWK_2_3_2
-				delay -= 1;
-				if (LEVEL==9)
-					delay += 2;
+				if (LEVEL == 29)
+					fputs("[/Input]\n", bk2_out);
 				else
-				if (LEVEL==19)
-					delay += 1;
+				{
+					delay = 254;
+#ifdef BIZHAWK_2_3_2
+					delay -= 1;
+					if (LEVEL==9)
+						delay += 2;
+					else
+					if (LEVEL==19)
+						delay += 1;
 #else
 	#if defined(BIZHAWK_2_9_1) && !defined(GAMBATTE_CORE)
-				if (LEVEL==9)
-					delay -= 1;
-				else
-				if (LEVEL==19)
-					delay -= 2;
+					if (LEVEL==9)
+						delay -= 1;
+					else
+					if (LEVEL==19)
+						delay -= 2;
 	#endif
 #endif
 #ifndef BIZHAWK_2_9_1
-				if (LEVEL==3)
-					delay += 1;
-				else
-				if (LEVEL==9)
-					delay -= 2;
-				else
-				if (LEVEL==19)
-					delay -= 1;
+					if (LEVEL==3)
+						delay += 1;
+					else
+					if (LEVEL==9)
+						delay -= 2;
+					else
+					if (LEVEL==19)
+						delay -= 1;
 #endif
 #ifndef BIRDS_EYE_VIEW
-				delay += 1;
+					delay += 1;
 #endif
-				for (int i=0; i<delay; i++)
-					fputs(action_to_bk2[NONE], bk2_out);
+					for (int i=0; i<delay; i++)
+						fputs(action_to_bk2[NONE], bk2_out);
 
-				fputs(pressStart, bk2_out);
+					fputs(pressStart, bk2_out);
 
-				delay = 33;
+					delay = 33;
 #ifdef BIZHAWK_2_3_2
-				delay -= 2;
-				if (LEVEL==9)
 					delay -= 2;
-				else
-				if (LEVEL==19)
-					delay -= 1;
+					if (LEVEL==9)
+						delay -= 2;
+					else
+					if (LEVEL==19)
+						delay -= 1;
 #else
 	#if defined(BIZHAWK_2_9_1) && !defined(GAMBATTE_CORE)
-				if (LEVEL==9)
-					delay += 1;
-				else
-				if (LEVEL==19)
-					delay += 2;
+					if (LEVEL==9)
+						delay += 1;
+					else
+					if (LEVEL==19)
+						delay += 2;
 	#endif
 #endif
 #ifndef BIZHAWK_2_9_1
-				if (LEVEL==9)
-					delay += 2;
-				else
-				if (LEVEL==19)
-					delay += 1;
+					if (LEVEL==9)
+						delay += 2;
+					else
+					if (LEVEL==19)
+						delay += 1;
 #endif
 #ifdef GAMBATTE_CORE
-				delay += 3;
+					delay += 3;
 #endif
-				for (int i=0; i<delay; i++)
-					fputs(action_to_bk2[NONE], bk2_out);
+					for (int i=0; i<delay; i++)
+						fputs(action_to_bk2[NONE], bk2_out);
+				}
 			}
 			else
 			{

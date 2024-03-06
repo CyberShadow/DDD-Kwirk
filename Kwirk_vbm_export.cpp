@@ -208,19 +208,19 @@ int export_vbm()
 	}
 	printf("Total %d+%d steps, %d frames (%1.3f seconds)\n", steps-switches, switches, frames, frames/60.);
 
-	if (LEVEL != 29)
-	{
-		for (int i=0; i<repeatCount; i++)
-			fwrite(&action_to_vbm[repeatAction], sizeof(WORD), 1, vbm_out);
+	for (int i=0; i<repeatCount; i++)
+		fwrite(&action_to_vbm[repeatAction], sizeof(WORD), 1, vbm_out);
 
-		control = 0x0000; // no buttons
-		for (int i=0; i<182; i++)
-			fwrite(&control, sizeof(WORD), 1, vbm_out);
-
-		control = 0x0008; // Start
+	control = 0x0000; // no buttons
+	for (int i=0; i<182; i++)
 		fwrite(&control, sizeof(WORD), 1, vbm_out);
 
-		if (LEVEL % 10 == 9)
+	control = 0x0008; // Start
+	fwrite(&control, sizeof(WORD), 1, vbm_out);
+
+	if (LEVEL % 10 == 9)
+	{
+		if (LEVEL != 29)
 		{
 			control = 0x0000; // no buttons
 			for (int i=0; i<254; i++)
@@ -229,19 +229,22 @@ int export_vbm()
 			control = 0x0008; // Start
 			fwrite(&control, sizeof(WORD), 1, vbm_out);
 
-			control = 0x0000; // no buttons
-			for (int i=0; i<31; i++)
-				fwrite(&control, sizeof(WORD), 1, vbm_out);
+			if (LEVEL != 29)
+			{
+				control = 0x0000; // no buttons
+				for (int i=0; i<31; i++)
+					fwrite(&control, sizeof(WORD), 1, vbm_out);
+			}
 		}
-		else
-		{
-			control = 0x0000; // no buttons
-			for (int i=0; i<45; i++)
-				fwrite(&control, sizeof(WORD), 1, vbm_out);
-#ifndef BIRDS_EYE_VIEW
+	}
+	else
+	{
+		control = 0x0000; // no buttons
+		for (int i=0; i<45; i++)
 			fwrite(&control, sizeof(WORD), 1, vbm_out);
+#ifndef BIRDS_EYE_VIEW
+		fwrite(&control, sizeof(WORD), 1, vbm_out);
 #endif
-		}
 	}
 
 	uint32_t frameCount = (ftell(vbm_out) - sizeof(vbm_header)) / sizeof(WORD) - 1;
